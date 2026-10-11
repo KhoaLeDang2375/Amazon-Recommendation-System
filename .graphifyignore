@@ -1,0 +1,12 @@
+data/
+artifacts/
+outputs/
+.env
+.git/
+.agents/
+.codex/
+.tools/
+graphify-out/
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.log

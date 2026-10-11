@@ -1,0 +1,8 @@
+.git
+.env
+data
+artifacts
+outputs
+graphify-out
+**/.ipynb_checkpoints
+**/__pycache__

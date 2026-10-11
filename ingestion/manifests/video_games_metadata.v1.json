@@ -1,0 +1,24 @@
+{
+  "name": "video_games_metadata",
+  "version": "v1",
+  "format": "jsonl",
+  "encoding": "UTF-8",
+  "source_url": null,
+  "source_note": "User-downloaded dataset; source URL and download date not yet supplied.",
+  "downloaded_at": null,
+  "files": [
+    {
+      "filename": "meta_Video_Games.jsonl",
+      "bytes": 437375785,
+      "sha256": "3ad94dfaa8dfed23c5f420aa9ddec415d00f2b8ec9f2d796f487b4b2c4d256de",
+      "records": 137269
+    }
+  ],
+  "hdfs_path": "/project/raw/video_games_metadata/v1",
+  "ingestion": {
+    "source": "Flume spooldir",
+    "output_files": 4,
+    "status": "finalized"
+  },
+  "schema_note": "JSON keys can differ only by case; Spark SQL caseSensitive=true is required before inference."
+}

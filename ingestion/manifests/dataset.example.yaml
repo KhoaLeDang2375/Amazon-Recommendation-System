@@ -1,0 +1,12 @@
+name: dataset
+version: v1
+format: jsonl
+encoding: UTF-8
+source_url: null
+downloaded_at: null
+files:
+  - filename: null
+    sha256: null
+    records: null
+hdfs_path: /project/raw/dataset/v1
+notes: "One complete JSON object per line; uncompressed input. Fill in before ingestion."

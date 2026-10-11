@@ -1,0 +1,145 @@
+name: hadoop-demo
+
+services:
+  namenode-init:
+    image: apache/hadoop:3.5.0
+    user: "0:0"
+    command: ["sh", "-c", "chown -R 1001:100 /tmp/hadoop-root/dfs/name"]
+    volumes:
+      - namenode_data:/tmp/hadoop-root/dfs/name
+
+  namenode:
+    image: apache/hadoop:3.5.0
+    hostname: namenode
+    env_file: ./infrastructure/hadoop/hadoop.env
+    environment:
+      ENSURE_NAMENODE_DIR: /tmp/hadoop-root/dfs/name
+    command:
+      - /bin/sh
+      - -c
+      - |
+        if [ ! -f /tmp/hadoop-root/dfs/name/current/VERSION ]; then
+          hdfs namenode -format -force -nonInteractive
+        fi
+        exec hdfs namenode
+    ports:
+      - "127.0.0.1:${HDFS_UI_PORT:-9870}:9870"
+    volumes:
+      - namenode_data:/tmp/hadoop-root/dfs/name
+      - ./data/staging:/ingestion/staging:ro
+    depends_on:
+      namenode-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "hdfs dfsadmin -safemode get | grep -q 'Safe mode is OFF'"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+
+  datanode-init:
+    image: apache/hadoop:3.5.0
+    user: "0:0"
+    command: ["sh", "-c", "chown -R 1001:100 /tmp/hadoop-root/dfs/data"]
+    volumes:
+      - datanode_data:/tmp/hadoop-root/dfs/data
+
+  datanode:
+    image: apache/hadoop:3.5.0
+    hostname: datanode
+    command: ["hdfs", "datanode"]
+    env_file: ./infrastructure/hadoop/hadoop.env
+    volumes:
+      - datanode_data:/tmp/hadoop-root/dfs/data
+    depends_on:
+      namenode:
+        condition: service_started
+      datanode-init:
+        condition: service_completed_successfully
+
+  hdfs-init:
+    image: apache/hadoop:3.5.0
+    env_file: ./infrastructure/hadoop/hadoop.env
+    environment:
+      DATASET_NAME: ${DATASET_NAME:-video_games_metadata}
+      DATASET_VERSION: ${DATASET_VERSION:-v1}
+    command: ["bash", "/scripts/init-hdfs.sh"]
+    volumes:
+      - ./ingestion/scripts:/scripts:ro
+    depends_on:
+      namenode:
+        condition: service_healthy
+
+  flume-init:
+    image: apache/hadoop:3.5.0
+    user: "0:0"
+    command: ["sh", "-c", "chown -R 1001:100 /var/lib/flume"]
+    volumes:
+      - flume_state:/var/lib/flume
+
+  flume:
+    build:
+      context: ./infrastructure/flume
+    image: bigdata-flume:1.11.0-hadoop3.5.0
+    hostname: flume
+    env_file: ./infrastructure/hadoop/hadoop.env
+    environment:
+      DATASET_NAME: ${DATASET_NAME:-video_games_metadata}
+      DATASET_VERSION: ${DATASET_VERSION:-v1}
+    volumes:
+      - ./data/spool:/ingestion/spool
+      - ./infrastructure/flume/flume.conf:/opt/flume/conf/ingestion.conf:ro
+      - flume_state:/var/lib/flume
+    depends_on:
+      hdfs-init:
+        condition: service_completed_successfully
+      flume-init:
+        condition: service_completed_successfully
+    mem_limit: ${FLUME_MEMORY_LIMIT:-1g}
+
+  spark-notebook:
+    profiles: ["eda"]
+    build:
+      context: ./infrastructure/spark
+    image: bigdata-spark-notebook:3.5.6
+    hostname: spark-notebook
+    environment:
+      HADOOP_CONF_DIR: /opt/hadoop/conf
+      HADOOP_USER_NAME: hadoop
+      PYSPARK_PYTHON: python
+      PYSPARK_SUBMIT_ARGS: --driver-memory ${SPARK_DRIVER_MEMORY:-2g} pyspark-shell
+      SPARK_DRIVER_MEMORY: ${SPARK_DRIVER_MEMORY:-2g}
+      DATASET_NAME: ${DATASET_NAME:-video_games_metadata}
+      DATASET_VERSION: ${DATASET_VERSION:-v1}
+    ports:
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
+      - "127.0.0.1:${SPARK_UI_PORT:-4040}:4040"
+    volumes:
+      - ./notebooks:/workspace/notebooks
+      - ./outputs:/workspace/outputs
+      - ./infrastructure/spark/conf:/opt/hadoop/conf:ro
+      - ./ingestion/scripts:/workspace/ingestion/scripts:ro
+      - ./tests:/workspace/tests:ro
+      - ./artifacts:/workspace/artifacts
+    depends_on:
+      hdfs-init:
+        condition: service_completed_successfully
+    mem_limit: ${SPARK_MEMORY_LIMIT:-4g}
+    cpus: ${SPARK_CPUS:-2}
+
+  graphify:
+    profiles: ["tools"]
+    build:
+      context: ./infrastructure/graphify
+    image: bigdata-graphify:0.9.85
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+
+volumes:
+  namenode_data:
+    name: ${NAMENODE_VOLUME:-hadoop-demo_namenode_data}
+  datanode_data:
+    name: ${DATANODE_VOLUME:-hadoop-demo_datanode_data}
+  flume_state:
+    name: ${FLUME_VOLUME:-hadoop-demo_flume_state}

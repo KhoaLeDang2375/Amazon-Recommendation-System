@@ -1,0 +1,2308 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "schema_version": 1,
+    "graphify_version": "0.9.85"
+  },
+  "nodes": [
+    {
+      "id": "tools_graphify_enrich_graph_add_node",
+      "label": "add_node()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "add_node()",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L17"
+    },
+    {
+      "id": "tools_graphify_enrich_graph_link",
+      "label": "link()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "link()",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L23"
+    },
+    {
+      "id": "ingestion_scripts_init_hdfs",
+      "label": "init-hdfs.sh",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Community 11",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "init-hdfs.sh",
+      "source_file": "ingestion/scripts/init-hdfs.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_init_hdfs_sh__entry",
+      "label": "init-hdfs.sh script",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Community 11",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "init-hdfs.sh script",
+      "source_file": "ingestion/scripts/init-hdfs.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_migrate_hdfs_layout",
+      "label": "migrate-hdfs-layout.sh",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "migrate-hdfs-layout.sh",
+      "source_file": "ingestion/scripts/migrate-hdfs-layout.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_migrate_hdfs_layout_sh__entry",
+      "label": "migrate-hdfs-layout.sh script",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "migrate-hdfs-layout.sh script",
+      "source_file": "ingestion/scripts/migrate-hdfs-layout.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_publish_file",
+      "label": "Publish-File.ps1",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Community 13",
+      "file_type": "code",
+      "norm_label": "publish-file.ps1",
+      "source_file": "ingestion/scripts/Publish-File.ps1",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_graphify_refresh_graph",
+      "label": "Refresh-Graph.ps1",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": "refresh-graph.ps1",
+      "source_file": "tools/graphify/Refresh-Graph.ps1",
+      "source_location": "L1"
+    },
+    {
+      "id": "infrastructure_flume_flume_env",
+      "label": "flume-env.sh",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "flume-env.sh",
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "infrastructure_flume_flume_env_java_opts",
+      "label": "JAVA_OPTS",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "norm_label": "java_opts",
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "infrastructure_flume_flume_env_sh__entry",
+      "label": "flume-env.sh script",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "flume-env.sh script",
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_graphify_enrich_graph",
+      "label": "enrich_graph.py",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "enrich_graph.py",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_graphify_enrich_graph_rationale_1",
+      "label": "Add deterministic Compose and Markdown navigation to Graphify's AST graph. No\u2026",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "rationale",
+      "norm_label": "add deterministic compose and markdown navigation to graphify's ast graph. no...",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_integration_verify_smoke",
+      "label": "verify-smoke.py",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": "verify-smoke.py",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_integration_verify_smoke_rationale_1",
+      "label": "Run inside spark-notebook; verifies only the three-record sample dataset.",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "rationale",
+      "norm_label": "run inside spark-notebook; verifies only the three-record sample dataset.",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:AGENTS.md",
+      "label": "AGENTS.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:AGENTS.md:L1",
+      "label": "Repository navigation",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "repository navigation",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:compose.yaml",
+      "label": "Compose services, ports, mounts and resource limits",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "compose services, ports, mounts and resource limits",
+      "source_file": "compose.yaml",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/data-management.md",
+      "label": "docs/data-management.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/data-management.md",
+      "source_file": "docs/data-management.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/data-management.md:L1",
+      "label": "Qu\u1ea3n l\u00fd d\u1eef li\u1ec7u",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "quan ly du lieu",
+      "source_file": "docs/data-management.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/graphify.md",
+      "label": "docs/graphify.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/graphify.md",
+      "source_file": "docs/graphify.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/graphify.md:L1",
+      "label": "Graphify cho repository",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "graphify cho repository",
+      "source_file": "docs/graphify.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/project-map.md",
+      "label": "docs/project-map.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/project-map.md",
+      "source_file": "docs/project-map.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/project-map.md:L1",
+      "label": "B\u1ea3n \u0111\u1ed3 \u0111\u1ecdc nhanh",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ban \u0111o \u0111oc nhanh",
+      "source_file": "docs/project-map.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/validation.md",
+      "label": "docs/validation.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/validation.md",
+      "source_file": "docs/validation.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/validation.md:L1",
+      "label": "X\u00e1c nh\u1eadn sau khi s\u1eafp x\u1ebfp",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "xac nhan sau khi sap xep",
+      "source_file": "docs/validation.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/web-demo.md",
+      "label": "docs/web-demo.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/web-demo.md",
+      "source_file": "docs/web-demo.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/web-demo.md:L1",
+      "label": "Chu\u1ea9n b\u1ecb web demo",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "chuan bi web demo",
+      "source_file": "docs/web-demo.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/graphify/Dockerfile",
+      "label": "graphify/Dockerfile",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "graphify/dockerfile",
+      "source_file": "infrastructure/graphify/Dockerfile",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/hadoop/hadoop.env",
+      "label": "infrastructure/hadoop/hadoop.env",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/hadoop/hadoop.env",
+      "source_file": "infrastructure/hadoop/hadoop.env",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:tests/README.md",
+      "label": "tests/README.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "tests/readme.md",
+      "source_file": "tests/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:tests/README.md:L1",
+      "label": "Ki\u1ec3m th\u1eed nh\u1ecf",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "kiem thu nho",
+      "source_file": "tests/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "path:data/staging",
+      "label": "data/staging mounted path",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "data/staging mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L29"
+    },
+    {
+      "id": "service:datanode",
+      "label": "datanode Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "datanode compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L47"
+    },
+    {
+      "id": "service:datanode-init",
+      "label": "datanode-init Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "datanode-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L40"
+    },
+    {
+      "id": "service:graphify",
+      "label": "graphify Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "graphify compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L130"
+    },
+    {
+      "id": "service:namenode",
+      "label": "namenode Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "namenode compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L11"
+    },
+    {
+      "id": "service:namenode-init",
+      "label": "namenode-init Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "namenode-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L4"
+    },
+    {
+      "id": "file:infrastructure/spark/Dockerfile",
+      "label": "spark/Dockerfile",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "spark/dockerfile",
+      "source_file": "infrastructure/spark/Dockerfile",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/spark/conf/core-site.xml",
+      "label": "infrastructure/spark/conf/core-site.xml",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/spark/conf/core-site.xml",
+      "source_file": "infrastructure/spark/conf/core-site.xml",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/spark/requirements.txt",
+      "label": "infrastructure/spark/requirements.txt",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/spark/requirements.txt",
+      "source_file": "infrastructure/spark/requirements.txt",
+      "source_location": "L1"
+    },
+    {
+      "id": "path:artifacts",
+      "label": "artifacts mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "artifacts mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L123"
+    },
+    {
+      "id": "path:infrastructure/spark/conf",
+      "label": "infrastructure/spark/conf mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "infrastructure/spark/conf mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L120"
+    },
+    {
+      "id": "path:ingestion/scripts",
+      "label": "ingestion/scripts mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "ingestion/scripts mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L121"
+    },
+    {
+      "id": "path:notebooks",
+      "label": "notebooks mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "notebooks mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L118"
+    },
+    {
+      "id": "path:outputs",
+      "label": "outputs mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "outputs mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L119"
+    },
+    {
+      "id": "path:tests",
+      "label": "tests mounted path",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "tests mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L122"
+    },
+    {
+      "id": "service:hdfs-init",
+      "label": "hdfs-init Compose service",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "hdfs-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L60"
+    },
+    {
+      "id": "service:spark-notebook",
+      "label": "spark-notebook Compose service",
+      "_origin": "config_navigation",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "spark-notebook compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L100"
+    },
+    {
+      "id": "file:ingestion/README.md",
+      "label": "ingestion/README.md",
+      "_origin": "config_navigation",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "ingestion/readme.md",
+      "source_file": "ingestion/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:ingestion/README.md:L1",
+      "label": "Ingestion",
+      "_origin": "config_navigation",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ingestion",
+      "source_file": "ingestion/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/flume/Dockerfile",
+      "label": "flume/Dockerfile",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "flume/dockerfile",
+      "source_file": "infrastructure/flume/Dockerfile",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/flume/flume.conf",
+      "label": "infrastructure/flume/flume.conf",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/flume/flume.conf",
+      "source_file": "infrastructure/flume/flume.conf",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/flume/log4j2.xml",
+      "label": "infrastructure/flume/log4j2.xml",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/flume/log4j2.xml",
+      "source_file": "infrastructure/flume/log4j2.xml",
+      "source_location": "L1"
+    },
+    {
+      "id": "path:data/spool",
+      "label": "data/spool mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "data/spool mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L90"
+    },
+    {
+      "id": "path:infrastructure/flume/flume.conf",
+      "label": "infrastructure/flume/flume.conf mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "infrastructure/flume/flume.conf mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L91"
+    },
+    {
+      "id": "service:flume",
+      "label": "flume Compose service",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "flume compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L80"
+    },
+    {
+      "id": "service:flume-init",
+      "label": "flume-init Compose service",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "flume-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L73"
+    },
+    {
+      "id": "file:docs/troubleshooting.md",
+      "label": "docs/troubleshooting.md",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/troubleshooting.md",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L1",
+      "label": "C\u00e1c l\u1ed7i th\u01b0\u1eddng g\u1eb7p",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "cac loi thuong gap",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L11",
+      "label": "PowerShell b\u00e1o duplicated keys",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "powershell bao duplicated keys",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L15",
+      "label": "Spark COLUMN_ALREADY_EXISTS",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "spark column_already_exists",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L19",
+      "label": "Kh\u00f4ng th\u1ea5y \u0111\u01b0\u1eddng d\u1eabn c\u0169",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khong thay \u0111uong dan cu",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L23",
+      "label": "C\u00f3 .COMPLETED nh\u01b0ng ch\u01b0a \u0111\u1ee7 d\u1eef li\u1ec7u HDFS",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "co .completed nhung chua \u0111u du lieu hdfs",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L27",
+      "label": "File legacy thi\u1ebfu block",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "file legacy thieu block",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L27"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L3",
+      "label": "Kh\u00f4ng c\u00f3 pyspark",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khong co pyspark",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L7",
+      "label": "Jupyter h\u1ecfi token/password",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "jupyter hoi token/password",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "file:README.md",
+      "label": "README.md",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "readme.md",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:README.md:L1",
+      "label": "\u0110\u1ed3 \u00e1n Big Data \u2014 ingestion v\u00e0 Spark EDA",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "\u0111o an big data \u2014 ingestion va spark eda",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:README.md:L18",
+      "label": "Kh\u1edfi ch\u1ea1y",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khoi chay",
+      "source_file": "README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "file:README.md:L31",
+      "label": "Nh\u1eadp d\u1eef li\u1ec7u",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "nhap du lieu",
+      "source_file": "README.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "file:README.md:L43",
+      "label": "Spark notebook",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "spark notebook",
+      "source_file": "README.md",
+      "source_location": "L43"
+    },
+    {
+      "id": "file:README.md:L63",
+      "label": "Th\u01b0 m\u1ee5c",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "thu muc",
+      "source_file": "README.md",
+      "source_location": "L63"
+    },
+    {
+      "id": "file:README.md:L78",
+      "label": "B\u1ea3n \u0111\u1ed3 Graphify",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ban \u0111o graphify",
+      "source_file": "README.md",
+      "source_location": "L78"
+    },
+    {
+      "id": "file:README.md:L88",
+      "label": "V\u1eadn h\u00e0nh v\u00e0 chia s\u1ebb",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "van hanh va chia se",
+      "source_file": "README.md",
+      "source_location": "L88"
+    },
+    {
+      "id": "file:docs/commands.md",
+      "label": "docs/commands.md",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/commands.md",
+      "source_file": "docs/commands.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/commands.md:L1",
+      "label": "C\u00e1c l\u1ec7nh v\u00e0 \u00fd ngh\u0129a",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "cac lenh va y nghia",
+      "source_file": "docs/commands.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/commands.md:L21",
+      "label": "Publish",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "publish",
+      "source_file": "docs/commands.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "file:docs/commands.md:L29",
+      "label": "HDFS",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "hdfs",
+      "source_file": "docs/commands.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "file:docs/commands.md:L42",
+      "label": "Python trong notebook",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "python trong notebook",
+      "source_file": "docs/commands.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "file:docs/commands.md:L54",
+      "label": "Graphify",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "graphify",
+      "source_file": "docs/commands.md",
+      "source_location": "L54"
+    },
+    {
+      "id": "file:docs/github.md",
+      "label": "docs/github.md",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/github.md",
+      "source_file": "docs/github.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/github.md:L1",
+      "label": "\u0110\u01b0a l\u00ean GitHub v\u00e0 ch\u1ea1y c\u00f9ng nh\u00f3m",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "\u0111ua len github va chay cung nhom",
+      "source_file": "docs/github.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/github.md:L10",
+      "label": "Sau khi ki\u1ec3m tra n\u1ed9i dung staged:",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "sau khi kiem tra noi dung staged:",
+      "source_file": "docs/github.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "file:docs/architecture.md",
+      "label": "docs/architecture.md",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/architecture.md",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/architecture.md:L1",
+      "label": "Ki\u1ebfn tr\u00fac hi\u1ec7n t\u1ea1i",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "kien truc hien tai",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "json",
+      "label": "json",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "json",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "pathlib",
+      "label": "pathlib",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pathlib",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "re",
+      "label": "re",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "re",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "nbformat",
+      "label": "nbformat",
+      "community": 8,
+      "community_name": "Community 8",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "nbformat",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "pyspark_sql",
+      "label": "pyspark_sql",
+      "community": 8,
+      "community_name": "Community 8",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pyspark_sql",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "sys",
+      "label": "sys",
+      "community": 8,
+      "community_name": "Community 8",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "sys",
+      "source_file": "",
+      "type": "external"
+    }
+  ],
+  "links": [
+    {
+      "source": "tests_integration_verify_smoke",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_integration_verify_smoke",
+      "target": "nbformat",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_integration_verify_smoke",
+      "target": "pyspark_sql",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "infrastructure_flume_flume_env",
+      "target": "infrastructure_flume_flume_env_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_init_hdfs",
+      "target": "ingestion_scripts_init_hdfs_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/init-hdfs.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_migrate_hdfs_layout",
+      "target": "ingestion_scripts_migrate_hdfs_layout_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/migrate-hdfs-layout.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph",
+      "target": "tools_graphify_enrich_graph_add_node",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph",
+      "target": "tools_graphify_enrich_graph_link",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "infrastructure_flume_flume_env",
+      "target": "infrastructure_flume_flume_env_java_opts",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_integration_verify_smoke_rationale_1",
+      "target": "tests_integration_verify_smoke",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_graphify_enrich_graph_rationale_1",
+      "target": "tools_graphify_enrich_graph",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/graphify/enrich_graph.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode",
+      "target": "file:infrastructure/hadoop/hadoop.env",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/hadoop/hadoop.env",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "file:infrastructure/flume/Dockerfile",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/Dockerfile",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "infrastructure_flume_flume_env",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "file:infrastructure/flume/flume.conf",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/flume.conf",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "file:infrastructure/flume/log4j2.xml",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/flume/log4j2.xml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:graphify",
+      "target": "file:infrastructure/graphify/Dockerfile",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/graphify/Dockerfile",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:namenode",
+      "target": "file:infrastructure/hadoop/hadoop.env",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/hadoop/hadoop.env",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "file:infrastructure/spark/Dockerfile",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/spark/Dockerfile",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "file:infrastructure/spark/conf/core-site.xml",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/spark/conf/core-site.xml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "file:infrastructure/spark/requirements.txt",
+      "relation": "configured_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "infrastructure/spark/requirements.txt",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:AGENTS.md",
+      "target": "file:AGENTS.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L18",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L31",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L43",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L63",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L78",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:README.md:L88",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/architecture.md",
+      "target": "file:docs/architecture.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/commands.md",
+      "target": "file:docs/commands.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/commands.md",
+      "target": "file:docs/commands.md:L21",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/commands.md",
+      "target": "file:docs/commands.md:L29",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/commands.md",
+      "target": "file:docs/commands.md:L42",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/commands.md",
+      "target": "file:docs/commands.md:L54",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/data-management.md",
+      "target": "file:docs/data-management.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/data-management.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/github.md",
+      "target": "file:docs/github.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/github.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/github.md",
+      "target": "file:docs/github.md:L10",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/github.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/graphify.md",
+      "target": "file:docs/graphify.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/graphify.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/project-map.md",
+      "target": "file:docs/project-map.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/project-map.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L11",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L15",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L19",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L23",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L27",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L3",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/troubleshooting.md",
+      "target": "file:docs/troubleshooting.md:L7",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/validation.md",
+      "target": "file:docs/validation.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/validation.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/web-demo.md",
+      "target": "file:docs/web-demo.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/web-demo.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:ingestion/README.md",
+      "target": "file:ingestion/README.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tests/README.md",
+      "target": "file:tests/README.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:datanode",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:datanode-init",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:flume",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:flume-init",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:graphify",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:hdfs-init",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:namenode",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:namenode-init",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "service:spark-notebook",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode",
+      "target": "service:datanode-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode",
+      "target": "service:namenode",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "service:flume-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "service:hdfs-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:hdfs-init",
+      "target": "service:namenode",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:namenode",
+      "target": "service:namenode-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "service:hdfs-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:AGENTS.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:README.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/architecture.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/commands.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/commands.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/data-management.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/data-management.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/github.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/github.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/graphify.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/graphify.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/project-map.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/project-map.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/troubleshooting.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/validation.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/validation.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/web-demo.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/web-demo.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:ingestion/README.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:tests/README.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "path:data/spool",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:flume",
+      "target": "path:infrastructure/flume/flume.conf",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:hdfs-init",
+      "target": "path:ingestion/scripts",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:namenode",
+      "target": "path:data/staging",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:artifacts",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:infrastructure/spark/conf",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:ingestion/scripts",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:notebooks",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:outputs",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:spark-notebook",
+      "target": "path:tests",
+      "relation": "mounts",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}
