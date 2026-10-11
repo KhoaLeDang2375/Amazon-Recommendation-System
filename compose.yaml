@@ -44,9 +44,9 @@ services:
     volumes:
       - datanode_data:/tmp/hadoop-root/dfs/data
 
-  datanode:
+  datanode1:
     image: apache/hadoop:3.5.0
-    hostname: datanode
+    hostname: datanode1
     command: ["hdfs", "datanode"]
     env_file: ./infrastructure/hadoop/hadoop.env
     volumes:

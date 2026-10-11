@@ -40,6 +40,8 @@ docker compose exec namenode hdfs dfs -ls -R /project/raw/video_games_metadata/v
 
 Máy hiện tại đã nhập dataset thật; không chạy publish lại chỉ để cập nhật cấu trúc. Mỗi lần publish tạo batch mới và có thể trùng dữ liệu. `.COMPLETED` chỉ xác nhận Source đã đọc vào channel; cần kiểm tra channel đã rỗng và HDFS không còn file `.tmp`.
 
+Để tải Amazon Reviews 2023 vào staging rồi nhập các file còn thiếu vào HDFS raw, xem [hướng dẫn tải và nhập từ Hugging Face](docs/download-amazon-hf.md). Quy trình này tách biệt với publish qua Flume.
+
 ## Spark notebook
 
 ```powershell
@@ -93,6 +95,8 @@ docker compose --profile eda down
 ```
 
 `down` giữ named volumes; `down -v` sẽ xóa dữ liệu HDFS và trạng thái Flume. Một DataNode, replication 1 phù hợp môi trường phát triển.
+
+Có thể bật thêm hai DataNode bằng Compose overlay; thao tác này dùng volume riêng và không tự thay đổi replication. Xem [hướng dẫn thêm DataNode](docs/datanodes.md) trước khi chạy hoặc quản lý các node bổ sung.
 
 Đưa code, cấu hình, manifest, tài liệu và fixture nhỏ lên GitHub. Dataset, `.env`, token, output và model không đi theo Git hay Docker image. Bạn cùng nhóm cần tải dữ liệu và ingest trên máy họ. Xem [hướng dẫn GitHub](docs/github.md).
 

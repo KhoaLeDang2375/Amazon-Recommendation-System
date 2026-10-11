@@ -39,6 +39,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\ingestion\scripts\Publish-
 
 `-put` dùng đường dẫn nhìn từ container. `hdfs dfs -cat <file-nhỏ>` xem nội dung; tránh in toàn bộ dataset ra terminal. `migrate-hdfs-layout.sh` là script chuyển dữ liệu lịch sử trên máy hiện tại, không thuộc quy trình clone mới.
 
+## DataNode bổ sung
+
+Cấu hình mặc định chỉ chạy `datanode1`. Để bật `datanode2` và `datanode3`, luôn ghép cả hai file Compose khi kiểm tra hoặc khởi động stack; các lệnh khởi tạo, kiểm tra trạng thái và lưu ý về named volumes nằm trong [hướng dẫn thêm DataNode](datanodes.md). Thêm node không tự tăng replication.
+
 ## Python trong notebook
 
 ```python

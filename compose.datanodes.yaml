@@ -1,0 +1,40 @@
+services:
+  datanodes-extra-init:
+    image: apache/hadoop:3.5.0
+    user: "0:0"
+    command: ["sh", "-c", "chown 1001:100 /data2 /data3"]
+    volumes:
+      - datanode2_data:/data2
+      - datanode3_data:/data3
+
+  datanode2:
+    image: apache/hadoop:3.5.0
+    hostname: datanode2
+    command: ["hdfs", "datanode"]
+    env_file: ./infrastructure/hadoop/hadoop.env
+    volumes:
+      - datanode2_data:/tmp/hadoop-root/dfs/data
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanodes-extra-init:
+        condition: service_completed_successfully
+
+  datanode3:
+    image: apache/hadoop:3.5.0
+    hostname: datanode3
+    command: ["hdfs", "datanode"]
+    env_file: ./infrastructure/hadoop/hadoop.env
+    volumes:
+      - datanode3_data:/tmp/hadoop-root/dfs/data
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanodes-extra-init:
+        condition: service_completed_successfully
+
+volumes:
+  datanode2_data:
+    name: hadoop-demo_datanode2_data
+  datanode3_data:
+    name: hadoop-demo_datanode3_data

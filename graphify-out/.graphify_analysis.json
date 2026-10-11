@@ -3,9 +3,14 @@
     "0": [
       "file:AGENTS.md",
       "file:AGENTS.md:L1",
+      "file:compose.datanodes.yaml",
       "file:compose.yaml",
+      "file:docs/architecture.md",
+      "file:docs/architecture.md:L1",
       "file:docs/data-management.md",
       "file:docs/data-management.md:L1",
+      "file:docs/datanodes.md",
+      "file:docs/datanodes.md:L1",
       "file:docs/graphify.md",
       "file:docs/graphify.md:L1",
       "file:docs/project-map.md",
@@ -16,16 +21,43 @@
       "file:docs/web-demo.md:L1",
       "file:infrastructure/graphify/Dockerfile",
       "file:infrastructure/hadoop/hadoop.env",
+      "file:ingestion/README.md",
+      "file:ingestion/README.md:L1",
       "file:tests/README.md",
       "file:tests/README.md:L1",
       "path:data/staging",
       "service:datanode",
       "service:datanode-init",
+      "service:datanode2",
+      "service:datanode3",
+      "service:datanodes-extra-init",
       "service:graphify",
       "service:namenode",
       "service:namenode-init"
     ],
     "1": [
+      "argparse",
+      "concurrent_futures",
+      "datetime",
+      "hashlib",
+      "ingestion_scripts_download_amazon_hf",
+      "ingestion_scripts_download_amazon_hf_existing_file",
+      "ingestion_scripts_download_amazon_hf_filenames",
+      "ingestion_scripts_download_amazon_hf_main",
+      "ingestion_scripts_download_amazon_hf_main_download",
+      "ingestion_scripts_download_amazon_hf_main_download_transfer",
+      "ingestion_scripts_download_amazon_hf_parse_args",
+      "ingestion_scripts_download_amazon_hf_rationale_1",
+      "ingestion_scripts_download_amazon_hf_retry",
+      "ingestion_scripts_download_amazon_hf_save_manifest",
+      "ingestion_scripts_download_amazon_hf_sha256",
+      "ingestion_scripts_download_amazon_hf_verify",
+      "json",
+      "os",
+      "shutil",
+      "time"
+    ],
+    "2": [
       "file:infrastructure/spark/Dockerfile",
       "file:infrastructure/spark/conf/core-site.xml",
       "file:infrastructure/spark/requirements.txt",
@@ -38,7 +70,40 @@
       "service:hdfs-init",
       "service:spark-notebook"
     ],
-    "2": [
+    "3": [
+      "file:docs/download-amazon-hf.md",
+      "file:docs/download-amazon-hf.md:L1",
+      "file:docs/download-amazon-hf.md:L33",
+      "file:docs/download-amazon-hf.md:L35",
+      "file:docs/download-amazon-hf.md:L39",
+      "file:docs/download-amazon-hf.md:L53",
+      "file:docs/download-amazon-hf.md:L58",
+      "file:docs/download-amazon-hf.md:L60",
+      "file:docs/download-amazon-hf.md:L7",
+      "file:docs/download-amazon-hf.md:L70"
+    ],
+    "4": [
+      "importlib_util",
+      "io",
+      "nbformat",
+      "pathlib",
+      "pyspark_sql",
+      "re",
+      "sys",
+      "tempfile",
+      "tests_integration_verify_smoke",
+      "tests_integration_verify_smoke_rationale_1",
+      "tests_test_download_amazon_hf",
+      "tests_test_download_amazon_hf_rationale_1",
+      "tools_graphify_enrich_graph",
+      "tools_graphify_enrich_graph_add_node",
+      "tools_graphify_enrich_graph_link",
+      "tools_graphify_enrich_graph_rationale_1",
+      "types",
+      "unittest",
+      "unittest_mock"
+    ],
+    "5": [
       "file:infrastructure/flume/Dockerfile",
       "file:infrastructure/flume/flume.conf",
       "file:infrastructure/flume/log4j2.xml",
@@ -50,7 +115,7 @@
       "service:flume",
       "service:flume-init"
     ],
-    "3": [
+    "6": [
       "file:docs/troubleshooting.md",
       "file:docs/troubleshooting.md:L1",
       "file:docs/troubleshooting.md:L11",
@@ -61,16 +126,7 @@
       "file:docs/troubleshooting.md:L3",
       "file:docs/troubleshooting.md:L7"
     ],
-    "4": [
-      "json",
-      "pathlib",
-      "re",
-      "tools_graphify_enrich_graph",
-      "tools_graphify_enrich_graph_add_node",
-      "tools_graphify_enrich_graph_link",
-      "tools_graphify_enrich_graph_rationale_1"
-    ],
-    "5": [
+    "7": [
       "file:README.md",
       "file:README.md:L1",
       "file:README.md:L18",
@@ -80,7 +136,16 @@
       "file:README.md:L78",
       "file:README.md:L88"
     ],
-    "6": [
+    "8": [
+      "tests_test_download_amazon_hf_downloadtests",
+      "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
+      "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer_transfer",
+      "tests_test_download_amazon_hf_downloadtests_test_partial_is_not_treated_as_complete",
+      "tests_test_download_amazon_hf_downloadtests_test_same_size_corruption_is_not_overwritten",
+      "tests_test_download_amazon_hf_downloadtests_test_selection_is_exact_and_deduplicated",
+      "tests_test_download_amazon_hf_downloadtests_test_verified_existing_file_is_reused_without_manifest"
+    ],
+    "9": [
       "file:docs/commands.md",
       "file:docs/commands.md:L1",
       "file:docs/commands.md:L21",
@@ -88,25 +153,10 @@
       "file:docs/commands.md:L42",
       "file:docs/commands.md:L54"
     ],
-    "7": [
+    "10": [
       "file:docs/github.md",
       "file:docs/github.md:L1",
       "file:docs/github.md:L10"
-    ],
-    "8": [
-      "nbformat",
-      "pyspark_sql",
-      "sys",
-      "tests_integration_verify_smoke",
-      "tests_integration_verify_smoke_rationale_1"
-    ],
-    "9": [
-      "file:docs/architecture.md",
-      "file:docs/architecture.md:L1"
-    ],
-    "10": [
-      "file:ingestion/README.md",
-      "file:ingestion/README.md:L1"
     ],
     "11": [
       "ingestion_scripts_init_hdfs",
@@ -117,39 +167,49 @@
       "ingestion_scripts_migrate_hdfs_layout_sh__entry"
     ],
     "13": [
-      "ingestion_scripts_publish_file"
+      "ingestion_scripts_put_amazonraw",
+      "ingestion_scripts_put_amazonraw_invoke_hdfs"
     ],
     "14": [
+      "ingestion_scripts_publish_file"
+    ],
+    "15": [
       "tools_graphify_refresh_graph"
     ]
   },
   "cohesion": {
-    "0": 0.10276679841897234,
-    "1": 0.2,
+    "0": 0.07575757575757576,
+    "1": 0.17894736842105263,
     "2": 0.2,
-    "3": 0.2222222222222222,
-    "4": 0.2857142857142857,
-    "5": 0.25,
-    "6": 0.3333333333333333,
-    "7": 0.6666666666666666,
-    "8": 0.4,
-    "9": 1.0,
-    "10": 1.0,
+    "3": 0.2,
+    "4": 0.10526315789473684,
+    "5": 0.2,
+    "6": 0.2222222222222222,
+    "7": 0.25,
+    "8": 0.2857142857142857,
+    "9": 0.3333333333333333,
+    "10": 0.6666666666666666,
     "11": 1.0,
     "12": 1.0,
     "13": 1.0,
-    "14": 1.0
+    "14": 1.0,
+    "15": 1.0
   },
   "gods": [
     {
       "id": "file:compose.yaml",
       "label": "Compose services, ports, mounts and resource limits",
-      "degree": 22
+      "degree": 25
     },
     {
       "id": "service:spark-notebook",
       "label": "spark-notebook Compose service",
       "degree": 11
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_main",
+      "label": "main()",
+      "degree": 9
     },
     {
       "id": "service:flume",
@@ -159,6 +219,11 @@
     {
       "id": "service:namenode",
       "label": "namenode Compose service",
+      "degree": 8
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests",
+      "label": "DownloadTests",
       "degree": 6
     },
     {
@@ -167,91 +232,91 @@
       "degree": 5
     },
     {
-      "id": "service:datanode",
-      "label": "datanode Compose service",
+      "id": "ingestion_scripts_download_amazon_hf_sha256",
+      "label": "sha256()",
       "degree": 4
     },
     {
-      "id": "service:namenode-init",
-      "label": "namenode-init Compose service",
-      "degree": 2
+      "id": "ingestion_scripts_download_amazon_hf_verify",
+      "label": "verify()",
+      "degree": 4
     },
     {
-      "id": "service:datanode-init",
-      "label": "datanode-init Compose service",
-      "degree": 2
-    },
-    {
-      "id": "path:ingestion/scripts",
-      "label": "ingestion/scripts mounted path",
-      "degree": 2
-    },
-    {
-      "id": "service:flume-init",
-      "label": "flume-init Compose service",
-      "degree": 2
+      "id": "ingestion_scripts_download_amazon_hf_retry",
+      "label": "retry()",
+      "degree": 4
     }
   ],
   "surprises": [
     {
       "source": "Compose services, ports, mounts and resource limits",
-      "target": "flume Compose service",
+      "target": "Additional DataNode services and volumes",
       "source_files": [
         "compose.yaml",
-        "compose.yaml"
+        "compose.datanodes.yaml"
       ],
       "confidence": "EXTRACTED",
-      "relation": "defines",
-      "note": "Bridges community 0 → community 2"
+      "relation": "extended_by",
+      "why": "cross-file semantic connection"
     },
     {
-      "source": "Compose services, ports, mounts and resource limits",
-      "target": "hdfs-init Compose service",
+      "source": "datanode2 Compose service",
+      "target": "namenode Compose service",
       "source_files": [
-        "compose.yaml",
-        "compose.yaml"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "defines",
-      "note": "Bridges community 0 → community 1"
-    },
-    {
-      "source": "flume Compose service",
-      "target": "hdfs-init Compose service",
-      "source_files": [
-        "compose.yaml",
+        "compose.datanodes.yaml",
         "compose.yaml"
       ],
       "confidence": "EXTRACTED",
       "relation": "depends_on",
-      "note": "Bridges community 1 → community 2"
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "datanode3 Compose service",
+      "target": "namenode Compose service",
+      "source_files": [
+        "compose.datanodes.yaml",
+        "compose.yaml"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "depends_on",
+      "why": "cross-file semantic connection"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `Compose services, ports, mounts and resource limits` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 10`?",
-      "why": "High betweenness centrality (0.570) - this node is a cross-community bridge."
+      "question": "Why does `Compose services, ports, mounts and resource limits` connect `Community 0` to `Community 2`, `Community 3`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 10`?",
+      "why": "High betweenness centrality (0.348) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `main()` (e.g. with `download()` and `sha256()`) actually correct?",
+      "why": "`main()` has 2 INFERRED edges - model-reasoned connections that need verification."
     },
     {
       "type": "isolated_nodes",
       "question": "What connects `JAVA_OPTS`, `data/staging mounted path`, `data/spool mounted path` to the rest of the system?",
-      "why": "40 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "50 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
       "question": "Should `Community 0` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.10276679841897234 - nodes in this community are weakly interconnected."
+      "why": "Cohesion score 0.07575757575757576 - nodes in this community are weakly interconnected."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `spark-notebook Compose service` connect `Community 1` to `Community 0`?",
-      "why": "High betweenness centrality (0.140) - this node is a cross-community bridge."
+      "question": "Why does `spark-notebook Compose service` connect `Community 2` to `Community 0`?",
+      "why": "High betweenness centrality (0.070) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 4` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `flume Compose service` connect `Community 2` to `Community 0`, `Community 1`?",
-      "why": "High betweenness centrality (0.133) - this node is a cross-community bridge."
+      "question": "Why does `flume Compose service` connect `Community 5` to `Community 0`, `Community 2`?",
+      "why": "High betweenness centrality (0.066) - this node is a cross-community bridge."
     }
   ]
 }

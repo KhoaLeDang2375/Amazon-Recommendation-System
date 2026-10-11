@@ -6,8 +6,11 @@ Luồng hiện tại: staging → publish → spool → Flume → HDFS raw → S
 |---|---|
 | Service, port, mount, RAM | `compose.yaml`, `.env.example` |
 | HDFS và replication | `infrastructure/hadoop/` |
+| Thêm DataNode với volume riêng | `compose.datanodes.yaml`, `docs/datanodes.md` |
 | Source / Channel / Sink | `infrastructure/flume/` |
 | Kiểm tra và publish file | `ingestion/scripts/Publish-File.ps1` |
+| Put Amazon raw, bỏ qua dataset đã có | `ingestion/scripts/Put-AmazonRaw.ps1`, `docs/download-amazon-hf.md` |
+| Tải Amazon từ Hugging Face, bỏ qua file đã có | `docs/download-amazon-hf.md`, `ingestion/scripts/download_amazon_hf.py` |
 | Thư mục HDFS | `ingestion/scripts/init-hdfs.sh` |
 | Dataset, checksum, số dòng | `ingestion/manifests/video_games_metadata.v1.json` |
 | Môi trường EDA | `infrastructure/spark/`, `notebooks/01_eda.ipynb` |

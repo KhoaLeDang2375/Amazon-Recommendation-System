@@ -17,7 +17,7 @@ flowchart LR
 | Service | Vai trò | Khi chạy |
 |---|---|---|
 | `namenode` | Quản lý namespace và vị trí block | Mặc định |
-| `datanode` | Lưu block thật | Mặc định |
+| `datanode1` | Lưu block thật; giữ volume `hadoop-demo_datanode_data` | Mặc định |
 | `flume` | Nhập event theo dòng | Mặc định |
 | `namenode-init`, `datanode-init` | Chuẩn bị volume/quyền | One-shot |
 | `hdfs-init` | Tạo đường dẫn dataset | One-shot |
@@ -26,6 +26,8 @@ flowchart LR
 | `graphify` | Tạo và truy vấn bản đồ repository | Profile `tools`, chạy khi cần |
 
 Một NameNode, một DataNode, replication 1. Chưa có HA, YARN, Spark worker riêng hoặc GPU. `local[*]` dùng CPU của container; giới hạn tài nguyên từ Compose và `.env`.
+
+Có thể ghép `compose.datanodes.yaml` để chạy thêm `datanode2` và `datanode3`, mỗi node dùng volume riêng. Đây là tùy chọn; replication vẫn là `1` trừ khi được cấu hình riêng. Xem [hướng dẫn thêm DataNode](datanodes.md) để chạy và kiểm tra overlay an toàn.
 
 Trong mạng Compose, Spark/Flume dùng `hdfs://namenode:8020`, DataNode được truy cập bằng hostname service. Trình duyệt trên host dùng `localhost` với port đã publish, mặc định NameNode 9870 và Jupyter 8888. URL trong container không phải URL dùng từ Colab.
 

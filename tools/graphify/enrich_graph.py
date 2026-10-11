@@ -50,6 +50,29 @@ for index, line in enumerate(lines, 1):
             target = add_node('path:' + source, source + ' mounted path', 'compose.yaml', index, 'mount')
             link(service, target, 'mounts', 'compose.yaml')
 
+extra_compose = ROOT / 'compose.datanodes.yaml'
+if extra_compose.exists():
+    source = extra_compose.name
+    extra = add_node('file:' + source, 'Additional DataNode services and volumes', source)
+    link(compose, extra, 'extended_by', source)
+    in_services = False
+    service = None
+    for index, line in enumerate(extra_compose.read_text(encoding='utf-8').splitlines(), 1):
+        if line == 'services:':
+            in_services = True
+        elif line and not line.startswith(' '):
+            in_services = False
+        if not in_services:
+            continue
+        match = re.fullmatch(r'  ([a-z][\w-]*):', line)
+        if match:
+            service = add_node('service:' + match[1], match[1] + ' Compose service', source, index, 'service')
+            link(extra, service, 'defines', source)
+        elif service:
+            dependency = re.fullmatch(r'      ([a-z][\w-]*):', line)
+            if dependency:
+                link(service, 'service:' + dependency[1], 'depends_on', source)
+
 files = [ROOT / 'README.md', ROOT / 'AGENTS.md']
 files += sorted((ROOT / 'docs').glob('*.md'))
 files += [ROOT / 'ingestion/README.md', ROOT / 'tests/README.md']
@@ -63,7 +86,7 @@ for file in files:
             link(identifier, heading, 'contains', source)
 
 for service_name, directory in [('flume', 'infrastructure/flume'), ('namenode', 'infrastructure/hadoop'),
-                                 ('datanode', 'infrastructure/hadoop'), ('spark-notebook', 'infrastructure/spark'),
+                                 ('datanode1', 'infrastructure/hadoop'), ('spark-notebook', 'infrastructure/spark'),
                                  ('graphify', 'infrastructure/graphify')]:
     for file in sorted((ROOT / directory).rglob('*')):
         if file.is_file():

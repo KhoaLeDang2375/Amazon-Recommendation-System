@@ -7,6 +7,142 @@
   },
   "nodes": [
     {
+      "id": "tests_test_download_amazon_hf_downloadtests",
+      "label": "DownloadTests",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "metadata": {
+        "python_opaque_bases": true
+      },
+      "norm_label": "downloadtests",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_existing_file",
+      "label": "existing_file()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "existing_file()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L45"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_filenames",
+      "label": "filenames()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "filenames()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L21"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L88"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_main_download",
+      "label": "download()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "download()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L153"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_main_download_transfer",
+      "label": "transfer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "transfer()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L155"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_parse_args",
+      "label": "parse_args()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "parse_args()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L71"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_retry",
+      "label": "retry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "retry()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L55"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_save_manifest",
+      "label": "save_manifest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "save_manifest()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L65"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_sha256",
+      "label": "sha256()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "sha256()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L31"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_verify",
+      "label": "verify()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "verify()",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L39"
+    },
+    {
       "id": "tools_graphify_enrich_graph_add_node",
       "label": "add_node()",
       "_callable": true,
@@ -29,6 +165,100 @@
       "norm_label": "link()",
       "source_file": "tools/graphify/enrich_graph.py",
       "source_location": "L23"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
+      "label": ".test_download_verifies_and_second_run_makes_no_transfer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": ".test_download_verifies_and_second_run_makes_no_transfer()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L19"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer_transfer",
+      "label": "transfer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": "transfer()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L30"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_partial_is_not_treated_as_complete",
+      "label": ".test_partial_is_not_treated_as_complete()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": ".test_partial_is_not_treated_as_complete()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L67"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_same_size_corruption_is_not_overwritten",
+      "label": ".test_same_size_corruption_is_not_overwritten()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": ".test_same_size_corruption_is_not_overwritten()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L58"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_selection_is_exact_and_deduplicated",
+      "label": ".test_selection_is_exact_and_deduplicated()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": ".test_selection_is_exact_and_deduplicated()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L73"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_downloadtests_test_verified_existing_file_is_reused_without_manifest",
+      "label": ".test_verified_existing_file_is_reused_without_manifest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "Community 8",
+      "file_type": "code",
+      "norm_label": ".test_verified_existing_file_is_reused_without_manifest()",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L47"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf",
+      "label": "download_amazon_hf.py",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "download_amazon_hf.py",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_download_amazon_hf_rationale_1",
+      "label": "Download selected Amazon Reviews 2023 raw JSONL files without publishing them.",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "rationale",
+      "norm_label": "download selected amazon reviews 2023 raw jsonl files without publishing them.",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L1"
     },
     {
       "id": "ingestion_scripts_init_hdfs",
@@ -91,11 +321,33 @@
       "source_location": "L1"
     },
     {
-      "id": "ingestion_scripts_publish_file",
-      "label": "Publish-File.ps1",
+      "id": "ingestion_scripts_put_amazonraw",
+      "label": "Put-AmazonRaw.ps1",
       "_origin": "ast",
       "community": 13,
       "community_name": "Community 13",
+      "file_type": "code",
+      "norm_label": "put-amazonraw.ps1",
+      "source_file": "ingestion/scripts/Put-AmazonRaw.ps1",
+      "source_location": "L1"
+    },
+    {
+      "id": "ingestion_scripts_put_amazonraw_invoke_hdfs",
+      "label": "Invoke-Hdfs()",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Community 13",
+      "file_type": "code",
+      "norm_label": "invoke-hdfs()",
+      "source_file": "ingestion/scripts/Put-AmazonRaw.ps1",
+      "source_location": "L6"
+    },
+    {
+      "id": "ingestion_scripts_publish_file",
+      "label": "Publish-File.ps1",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
       "file_type": "code",
       "norm_label": "publish-file.ps1",
       "source_file": "ingestion/scripts/Publish-File.ps1",
@@ -105,56 +357,33 @@
       "id": "tools_graphify_refresh_graph",
       "label": "Refresh-Graph.ps1",
       "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
+      "community": 15,
+      "community_name": "Community 15",
       "file_type": "code",
       "norm_label": "refresh-graph.ps1",
       "source_file": "tools/graphify/Refresh-Graph.ps1",
       "source_location": "L1"
     },
     {
-      "id": "infrastructure_flume_flume_env",
-      "label": "flume-env.sh",
+      "id": "tests_integration_verify_smoke",
+      "label": "verify-smoke.py",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "norm_label": "flume-env.sh",
-      "source_file": "infrastructure/flume/flume-env.sh",
+      "norm_label": "verify-smoke.py",
+      "source_file": "tests/integration/verify-smoke.py",
       "source_location": "L1"
     },
     {
-      "id": "infrastructure_flume_flume_env_java_opts",
-      "label": "JAVA_OPTS",
+      "id": "tests_test_download_amazon_hf",
+      "label": "test_download_amazon_hf.py",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "metadata": {
-        "language": "bash",
-        "kind": "code"
-      },
-      "norm_label": "java_opts",
-      "source_file": "infrastructure/flume/flume-env.sh",
-      "source_location": "L1"
-    },
-    {
-      "id": "infrastructure_flume_flume_env_sh__entry",
-      "label": "flume-env.sh script",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "norm_label": "flume-env.sh script",
-      "source_file": "infrastructure/flume/flume-env.sh",
+      "norm_label": "test_download_amazon_hf.py",
+      "source_file": "tests/test_download_amazon_hf.py",
       "source_location": "L1"
     },
     {
@@ -169,6 +398,28 @@
       "source_location": "L1"
     },
     {
+      "id": "tests_integration_verify_smoke_rationale_1",
+      "label": "Run inside spark-notebook; verifies only the three-record sample dataset.",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "rationale",
+      "norm_label": "run inside spark-notebook; verifies only the three-record sample dataset.",
+      "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_download_amazon_hf_rationale_1",
+      "label": "Offline checks; fixtures stay under tests, never real dataset directories.",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "rationale",
+      "norm_label": "offline checks; fixtures stay under tests, never real dataset directories.",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_graphify_enrich_graph_rationale_1",
       "label": "Add deterministic Compose and Markdown navigation to Graphify's AST graph. No\u2026",
       "_origin": "ast",
@@ -180,25 +431,48 @@
       "source_location": "L1"
     },
     {
-      "id": "tests_integration_verify_smoke",
-      "label": "verify-smoke.py",
+      "id": "infrastructure_flume_flume_env",
+      "label": "flume-env.sh",
       "_origin": "ast",
-      "community": 8,
-      "community_name": "Community 8",
+      "community": 5,
+      "community_name": "Community 5",
       "file_type": "code",
-      "norm_label": "verify-smoke.py",
-      "source_file": "tests/integration/verify-smoke.py",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "flume-env.sh",
+      "source_file": "infrastructure/flume/flume-env.sh",
       "source_location": "L1"
     },
     {
-      "id": "tests_integration_verify_smoke_rationale_1",
-      "label": "Run inside spark-notebook; verifies only the three-record sample dataset.",
+      "id": "infrastructure_flume_flume_env_java_opts",
+      "label": "JAVA_OPTS",
       "_origin": "ast",
-      "community": 8,
-      "community_name": "Community 8",
-      "file_type": "rationale",
-      "norm_label": "run inside spark-notebook; verifies only the three-record sample dataset.",
-      "source_file": "tests/integration/verify-smoke.py",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "norm_label": "java_opts",
+      "source_file": "infrastructure/flume/flume-env.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "infrastructure_flume_flume_env_sh__entry",
+      "label": "flume-env.sh script",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "flume-env.sh script",
+      "source_file": "infrastructure/flume/flume-env.sh",
       "source_location": "L1"
     },
     {
@@ -230,6 +504,20 @@
       "source_location": "L1"
     },
     {
+      "id": "file:compose.datanodes.yaml",
+      "label": "Additional DataNode services and volumes",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "additional datanode services and volumes",
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1"
+    },
+    {
       "id": "file:compose.yaml",
       "label": "Compose services, ports, mounts and resource limits",
       "_origin": "config_navigation",
@@ -241,6 +529,34 @@
       },
       "norm_label": "compose services, ports, mounts and resource limits",
       "source_file": "compose.yaml",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/architecture.md",
+      "label": "docs/architecture.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/architecture.md",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/architecture.md:L1",
+      "label": "Ki\u1ebfn tr\u00fac hi\u1ec7n t\u1ea1i",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "kien truc hien tai",
+      "source_file": "docs/architecture.md",
       "source_location": "L1"
     },
     {
@@ -269,6 +585,34 @@
       },
       "norm_label": "quan ly du lieu",
       "source_file": "docs/data-management.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/datanodes.md",
+      "label": "docs/datanodes.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/datanodes.md",
+      "source_file": "docs/datanodes.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/datanodes.md:L1",
+      "label": "Th\u00eam DataNode",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "them datanode",
+      "source_file": "docs/datanodes.md",
       "source_location": "L1"
     },
     {
@@ -412,6 +756,34 @@
       "source_location": "L1"
     },
     {
+      "id": "file:ingestion/README.md",
+      "label": "ingestion/README.md",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "ingestion/readme.md",
+      "source_file": "ingestion/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:ingestion/README.md:L1",
+      "label": "Ingestion",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ingestion",
+      "source_file": "ingestion/README.md",
+      "source_location": "L1"
+    },
+    {
       "id": "file:tests/README.md",
       "label": "tests/README.md",
       "_origin": "config_navigation",
@@ -482,6 +854,48 @@
       "source_location": "L40"
     },
     {
+      "id": "service:datanode2",
+      "label": "datanode2 Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "datanode2 compose service",
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L10"
+    },
+    {
+      "id": "service:datanode3",
+      "label": "datanode3 Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "datanode3 compose service",
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L23"
+    },
+    {
+      "id": "service:datanodes-extra-init",
+      "label": "datanodes-extra-init Compose service",
+      "_origin": "config_navigation",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "datanodes-extra-init compose service",
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L2"
+    },
+    {
       "id": "service:graphify",
       "label": "graphify Compose service",
       "_origin": "config_navigation",
@@ -524,613 +938,11 @@
       "source_location": "L4"
     },
     {
-      "id": "file:infrastructure/spark/Dockerfile",
-      "label": "spark/Dockerfile",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "spark/dockerfile",
-      "source_file": "infrastructure/spark/Dockerfile",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:infrastructure/spark/conf/core-site.xml",
-      "label": "infrastructure/spark/conf/core-site.xml",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "infrastructure/spark/conf/core-site.xml",
-      "source_file": "infrastructure/spark/conf/core-site.xml",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:infrastructure/spark/requirements.txt",
-      "label": "infrastructure/spark/requirements.txt",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "infrastructure/spark/requirements.txt",
-      "source_file": "infrastructure/spark/requirements.txt",
-      "source_location": "L1"
-    },
-    {
-      "id": "path:artifacts",
-      "label": "artifacts mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "artifacts mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L123"
-    },
-    {
-      "id": "path:infrastructure/spark/conf",
-      "label": "infrastructure/spark/conf mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "infrastructure/spark/conf mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L120"
-    },
-    {
-      "id": "path:ingestion/scripts",
-      "label": "ingestion/scripts mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "ingestion/scripts mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L121"
-    },
-    {
-      "id": "path:notebooks",
-      "label": "notebooks mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "notebooks mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L118"
-    },
-    {
-      "id": "path:outputs",
-      "label": "outputs mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "outputs mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L119"
-    },
-    {
-      "id": "path:tests",
-      "label": "tests mounted path",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "tests mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L122"
-    },
-    {
-      "id": "service:hdfs-init",
-      "label": "hdfs-init Compose service",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "service"
-      },
-      "norm_label": "hdfs-init compose service",
-      "source_file": "compose.yaml",
-      "source_location": "L60"
-    },
-    {
-      "id": "service:spark-notebook",
-      "label": "spark-notebook Compose service",
-      "_origin": "config_navigation",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "document",
-      "metadata": {
-        "kind": "service"
-      },
-      "norm_label": "spark-notebook compose service",
-      "source_file": "compose.yaml",
-      "source_location": "L100"
-    },
-    {
-      "id": "file:ingestion/README.md",
-      "label": "ingestion/README.md",
-      "_origin": "config_navigation",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "ingestion/readme.md",
-      "source_file": "ingestion/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:ingestion/README.md:L1",
-      "label": "Ingestion",
-      "_origin": "config_navigation",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "ingestion",
-      "source_file": "ingestion/README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:infrastructure/flume/Dockerfile",
-      "label": "flume/Dockerfile",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "flume/dockerfile",
-      "source_file": "infrastructure/flume/Dockerfile",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:infrastructure/flume/flume.conf",
-      "label": "infrastructure/flume/flume.conf",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "infrastructure/flume/flume.conf",
-      "source_file": "infrastructure/flume/flume.conf",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:infrastructure/flume/log4j2.xml",
-      "label": "infrastructure/flume/log4j2.xml",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "infrastructure/flume/log4j2.xml",
-      "source_file": "infrastructure/flume/log4j2.xml",
-      "source_location": "L1"
-    },
-    {
-      "id": "path:data/spool",
-      "label": "data/spool mounted path",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "data/spool mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L90"
-    },
-    {
-      "id": "path:infrastructure/flume/flume.conf",
-      "label": "infrastructure/flume/flume.conf mounted path",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "mount"
-      },
-      "norm_label": "infrastructure/flume/flume.conf mounted path",
-      "source_file": "compose.yaml",
-      "source_location": "L91"
-    },
-    {
-      "id": "service:flume",
-      "label": "flume Compose service",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "service"
-      },
-      "norm_label": "flume compose service",
-      "source_file": "compose.yaml",
-      "source_location": "L80"
-    },
-    {
-      "id": "service:flume-init",
-      "label": "flume-init Compose service",
-      "_origin": "config_navigation",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "document",
-      "metadata": {
-        "kind": "service"
-      },
-      "norm_label": "flume-init compose service",
-      "source_file": "compose.yaml",
-      "source_location": "L73"
-    },
-    {
-      "id": "file:docs/troubleshooting.md",
-      "label": "docs/troubleshooting.md",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "docs/troubleshooting.md",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L1",
-      "label": "C\u00e1c l\u1ed7i th\u01b0\u1eddng g\u1eb7p",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "cac loi thuong gap",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L11",
-      "label": "PowerShell b\u00e1o duplicated keys",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "powershell bao duplicated keys",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L11"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L15",
-      "label": "Spark COLUMN_ALREADY_EXISTS",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "spark column_already_exists",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L15"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L19",
-      "label": "Kh\u00f4ng th\u1ea5y \u0111\u01b0\u1eddng d\u1eabn c\u0169",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "khong thay \u0111uong dan cu",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L19"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L23",
-      "label": "C\u00f3 .COMPLETED nh\u01b0ng ch\u01b0a \u0111\u1ee7 d\u1eef li\u1ec7u HDFS",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "co .completed nhung chua \u0111u du lieu hdfs",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L23"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L27",
-      "label": "File legacy thi\u1ebfu block",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "file legacy thieu block",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L27"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L3",
-      "label": "Kh\u00f4ng c\u00f3 pyspark",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "khong co pyspark",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L3"
-    },
-    {
-      "id": "file:docs/troubleshooting.md:L7",
-      "label": "Jupyter h\u1ecfi token/password",
-      "_origin": "config_navigation",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "jupyter hoi token/password",
-      "source_file": "docs/troubleshooting.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "file:README.md",
-      "label": "README.md",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "readme.md",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:README.md:L1",
-      "label": "\u0110\u1ed3 \u00e1n Big Data \u2014 ingestion v\u00e0 Spark EDA",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "\u0111o an big data \u2014 ingestion va spark eda",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:README.md:L18",
-      "label": "Kh\u1edfi ch\u1ea1y",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "khoi chay",
-      "source_file": "README.md",
-      "source_location": "L18"
-    },
-    {
-      "id": "file:README.md:L31",
-      "label": "Nh\u1eadp d\u1eef li\u1ec7u",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "nhap du lieu",
-      "source_file": "README.md",
-      "source_location": "L31"
-    },
-    {
-      "id": "file:README.md:L43",
-      "label": "Spark notebook",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "spark notebook",
-      "source_file": "README.md",
-      "source_location": "L43"
-    },
-    {
-      "id": "file:README.md:L63",
-      "label": "Th\u01b0 m\u1ee5c",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "thu muc",
-      "source_file": "README.md",
-      "source_location": "L63"
-    },
-    {
-      "id": "file:README.md:L78",
-      "label": "B\u1ea3n \u0111\u1ed3 Graphify",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "ban \u0111o graphify",
-      "source_file": "README.md",
-      "source_location": "L78"
-    },
-    {
-      "id": "file:README.md:L88",
-      "label": "V\u1eadn h\u00e0nh v\u00e0 chia s\u1ebb",
-      "_origin": "config_navigation",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "van hanh va chia se",
-      "source_file": "README.md",
-      "source_location": "L88"
-    },
-    {
-      "id": "file:docs/commands.md",
-      "label": "docs/commands.md",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "file"
-      },
-      "norm_label": "docs/commands.md",
-      "source_file": "docs/commands.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:docs/commands.md:L1",
-      "label": "C\u00e1c l\u1ec7nh v\u00e0 \u00fd ngh\u0129a",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "cac lenh va y nghia",
-      "source_file": "docs/commands.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "file:docs/commands.md:L21",
-      "label": "Publish",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "publish",
-      "source_file": "docs/commands.md",
-      "source_location": "L21"
-    },
-    {
-      "id": "file:docs/commands.md:L29",
-      "label": "HDFS",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "hdfs",
-      "source_file": "docs/commands.md",
-      "source_location": "L29"
-    },
-    {
-      "id": "file:docs/commands.md:L42",
-      "label": "Python trong notebook",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "python trong notebook",
-      "source_file": "docs/commands.md",
-      "source_location": "L42"
-    },
-    {
-      "id": "file:docs/commands.md:L54",
-      "label": "Graphify",
-      "_origin": "config_navigation",
-      "community": 6,
-      "community_name": "Community 6",
-      "file_type": "document",
-      "metadata": {
-        "kind": "heading"
-      },
-      "norm_label": "graphify",
-      "source_file": "docs/commands.md",
-      "source_location": "L54"
-    },
-    {
       "id": "file:docs/github.md",
       "label": "docs/github.md",
       "_origin": "config_navigation",
-      "community": 7,
-      "community_name": "Community 7",
+      "community": 10,
+      "community_name": "Community 10",
       "file_type": "document",
       "metadata": {
         "kind": "file"
@@ -1143,8 +955,8 @@
       "id": "file:docs/github.md:L1",
       "label": "\u0110\u01b0a l\u00ean GitHub v\u00e0 ch\u1ea1y c\u00f9ng nh\u00f3m",
       "_origin": "config_navigation",
-      "community": 7,
-      "community_name": "Community 7",
+      "community": 10,
+      "community_name": "Community 10",
       "file_type": "document",
       "metadata": {
         "kind": "heading"
@@ -1157,8 +969,8 @@
       "id": "file:docs/github.md:L10",
       "label": "Sau khi ki\u1ec3m tra n\u1ed9i dung staged:",
       "_origin": "config_navigation",
-      "community": 7,
-      "community_name": "Community 7",
+      "community": 10,
+      "community_name": "Community 10",
       "file_type": "document",
       "metadata": {
         "kind": "heading"
@@ -1168,8 +980,638 @@
       "source_location": "L10"
     },
     {
-      "id": "file:docs/architecture.md",
-      "label": "docs/architecture.md",
+      "id": "file:infrastructure/spark/Dockerfile",
+      "label": "spark/Dockerfile",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "spark/dockerfile",
+      "source_file": "infrastructure/spark/Dockerfile",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/spark/conf/core-site.xml",
+      "label": "infrastructure/spark/conf/core-site.xml",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/spark/conf/core-site.xml",
+      "source_file": "infrastructure/spark/conf/core-site.xml",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/spark/requirements.txt",
+      "label": "infrastructure/spark/requirements.txt",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/spark/requirements.txt",
+      "source_file": "infrastructure/spark/requirements.txt",
+      "source_location": "L1"
+    },
+    {
+      "id": "path:artifacts",
+      "label": "artifacts mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "artifacts mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L123"
+    },
+    {
+      "id": "path:infrastructure/spark/conf",
+      "label": "infrastructure/spark/conf mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "infrastructure/spark/conf mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L120"
+    },
+    {
+      "id": "path:ingestion/scripts",
+      "label": "ingestion/scripts mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "ingestion/scripts mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L121"
+    },
+    {
+      "id": "path:notebooks",
+      "label": "notebooks mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "notebooks mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L118"
+    },
+    {
+      "id": "path:outputs",
+      "label": "outputs mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "outputs mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L119"
+    },
+    {
+      "id": "path:tests",
+      "label": "tests mounted path",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "tests mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L122"
+    },
+    {
+      "id": "service:hdfs-init",
+      "label": "hdfs-init Compose service",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "hdfs-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L60"
+    },
+    {
+      "id": "service:spark-notebook",
+      "label": "spark-notebook Compose service",
+      "_origin": "config_navigation",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "spark-notebook compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L100"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md",
+      "label": "docs/download-amazon-hf.md",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/download-amazon-hf.md",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L1",
+      "label": "T\u1ea3i Amazon Reviews 2023 qua Hugging Face",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "tai amazon reviews 2023 qua hugging face",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L33",
+      "label": "SSD v\u00e0 m\u1ea1ng t\u1ed1t; c\u00f3 th\u1ec3 d\u00f9ng nhi\u1ec1u CPU h\u01a1n",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ssd va mang tot; co the dung nhieu cpu hon",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L35",
+      "label": "Ch\u1ec9 m\u1ed9t category v\u00e0 metadata",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "chi mot category va metadata",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L39",
+      "label": "Ki\u1ec3m tra \u0111\u00e3 c\u00f3 d\u1eef li\u1ec7u v\u00e0 t\u1ea3i ti\u1ebfp",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "kiem tra \u0111a co du lieu va tai tiep",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L53",
+      "label": "Nh\u1eadp ph\u1ea7n c\u00f2n thi\u1ebfu v\u00e0o HDFS raw",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "nhap phan con thieu vao hdfs raw",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L53"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L58",
+      "label": "Xem k\u1ebf ho\u1ea1ch; ki\u1ec3m tra SHA-256 ngu\u1ed3n tr\u01b0\u1edbc khi put",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "xem ke hoach; kiem tra sha-256 nguon truoc khi put",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L60",
+      "label": "Nh\u1eadp c\u00e1c file c\u00f2n thi\u1ebfu, replication 1",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "nhap cac file con thieu, replication 1",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L7",
+      "label": "Ch\u1ea1y tr\u00ean host PowerShell",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "chay tren host powershell",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "file:docs/download-amazon-hf.md:L70",
+      "label": "Ki\u1ec3m th\u1eed offline (host PowerShell)",
+      "_origin": "config_navigation",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "kiem thu offline (host powershell)",
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L70"
+    },
+    {
+      "id": "file:infrastructure/flume/Dockerfile",
+      "label": "flume/Dockerfile",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "flume/dockerfile",
+      "source_file": "infrastructure/flume/Dockerfile",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/flume/flume.conf",
+      "label": "infrastructure/flume/flume.conf",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/flume/flume.conf",
+      "source_file": "infrastructure/flume/flume.conf",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:infrastructure/flume/log4j2.xml",
+      "label": "infrastructure/flume/log4j2.xml",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "infrastructure/flume/log4j2.xml",
+      "source_file": "infrastructure/flume/log4j2.xml",
+      "source_location": "L1"
+    },
+    {
+      "id": "path:data/spool",
+      "label": "data/spool mounted path",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "data/spool mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L90"
+    },
+    {
+      "id": "path:infrastructure/flume/flume.conf",
+      "label": "infrastructure/flume/flume.conf mounted path",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "mount"
+      },
+      "norm_label": "infrastructure/flume/flume.conf mounted path",
+      "source_file": "compose.yaml",
+      "source_location": "L91"
+    },
+    {
+      "id": "service:flume",
+      "label": "flume Compose service",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "flume compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L80"
+    },
+    {
+      "id": "service:flume-init",
+      "label": "flume-init Compose service",
+      "_origin": "config_navigation",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "document",
+      "metadata": {
+        "kind": "service"
+      },
+      "norm_label": "flume-init compose service",
+      "source_file": "compose.yaml",
+      "source_location": "L73"
+    },
+    {
+      "id": "file:docs/troubleshooting.md",
+      "label": "docs/troubleshooting.md",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "docs/troubleshooting.md",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L1",
+      "label": "C\u00e1c l\u1ed7i th\u01b0\u1eddng g\u1eb7p",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "cac loi thuong gap",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L11",
+      "label": "PowerShell b\u00e1o duplicated keys",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "powershell bao duplicated keys",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L15",
+      "label": "Spark COLUMN_ALREADY_EXISTS",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "spark column_already_exists",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L15"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L19",
+      "label": "Kh\u00f4ng th\u1ea5y \u0111\u01b0\u1eddng d\u1eabn c\u0169",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khong thay \u0111uong dan cu",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L23",
+      "label": "C\u00f3 .COMPLETED nh\u01b0ng ch\u01b0a \u0111\u1ee7 d\u1eef li\u1ec7u HDFS",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "co .completed nhung chua \u0111u du lieu hdfs",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L27",
+      "label": "File legacy thi\u1ebfu block",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "file legacy thieu block",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L27"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L3",
+      "label": "Kh\u00f4ng c\u00f3 pyspark",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khong co pyspark",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "file:docs/troubleshooting.md:L7",
+      "label": "Jupyter h\u1ecfi token/password",
+      "_origin": "config_navigation",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "jupyter hoi token/password",
+      "source_file": "docs/troubleshooting.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "file:README.md",
+      "label": "README.md",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "file"
+      },
+      "norm_label": "readme.md",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:README.md:L1",
+      "label": "\u0110\u1ed3 \u00e1n Big Data \u2014 ingestion v\u00e0 Spark EDA",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "\u0111o an big data \u2014 ingestion va spark eda",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "file:README.md:L18",
+      "label": "Kh\u1edfi ch\u1ea1y",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "khoi chay",
+      "source_file": "README.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "file:README.md:L31",
+      "label": "Nh\u1eadp d\u1eef li\u1ec7u",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "nhap du lieu",
+      "source_file": "README.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "file:README.md:L43",
+      "label": "Spark notebook",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "spark notebook",
+      "source_file": "README.md",
+      "source_location": "L43"
+    },
+    {
+      "id": "file:README.md:L63",
+      "label": "Th\u01b0 m\u1ee5c",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "thu muc",
+      "source_file": "README.md",
+      "source_location": "L63"
+    },
+    {
+      "id": "file:README.md:L78",
+      "label": "B\u1ea3n \u0111\u1ed3 Graphify",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "ban \u0111o graphify",
+      "source_file": "README.md",
+      "source_location": "L78"
+    },
+    {
+      "id": "file:README.md:L88",
+      "label": "V\u1eadn h\u00e0nh v\u00e0 chia s\u1ebb",
+      "_origin": "config_navigation",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "van hanh va chia se",
+      "source_file": "README.md",
+      "source_location": "L88"
+    },
+    {
+      "id": "file:docs/commands.md",
+      "label": "docs/commands.md",
       "_origin": "config_navigation",
       "community": 9,
       "community_name": "Community 9",
@@ -1177,13 +1619,13 @@
       "metadata": {
         "kind": "file"
       },
-      "norm_label": "docs/architecture.md",
-      "source_file": "docs/architecture.md",
+      "norm_label": "docs/commands.md",
+      "source_file": "docs/commands.md",
       "source_location": "L1"
     },
     {
-      "id": "file:docs/architecture.md:L1",
-      "label": "Ki\u1ebfn tr\u00fac hi\u1ec7n t\u1ea1i",
+      "id": "file:docs/commands.md:L1",
+      "label": "C\u00e1c l\u1ec7nh v\u00e0 \u00fd ngh\u0129a",
       "_origin": "config_navigation",
       "community": 9,
       "community_name": "Community 9",
@@ -1191,18 +1633,184 @@
       "metadata": {
         "kind": "heading"
       },
-      "norm_label": "kien truc hien tai",
-      "source_file": "docs/architecture.md",
+      "norm_label": "cac lenh va y nghia",
+      "source_file": "docs/commands.md",
       "source_location": "L1"
+    },
+    {
+      "id": "file:docs/commands.md:L21",
+      "label": "Publish",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "publish",
+      "source_file": "docs/commands.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "file:docs/commands.md:L29",
+      "label": "HDFS",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "hdfs",
+      "source_file": "docs/commands.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "file:docs/commands.md:L42",
+      "label": "Python trong notebook",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "python trong notebook",
+      "source_file": "docs/commands.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "file:docs/commands.md:L54",
+      "label": "Graphify",
+      "_origin": "config_navigation",
+      "community": 9,
+      "community_name": "Community 9",
+      "file_type": "document",
+      "metadata": {
+        "kind": "heading"
+      },
+      "norm_label": "graphify",
+      "source_file": "docs/commands.md",
+      "source_location": "L54"
+    },
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "argparse",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "concurrent_futures",
+      "label": "concurrent_futures",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "concurrent_futures",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "datetime",
+      "label": "datetime",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "datetime",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "hashlib",
+      "label": "hashlib",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "hashlib",
+      "source_file": "",
+      "type": "external"
     },
     {
       "id": "json",
       "label": "json",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "json",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "os",
+      "label": "os",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "os",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "shutil",
+      "label": "shutil",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "shutil",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "time",
+      "label": "time",
+      "community": 1,
+      "community_name": "Community 1",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "time",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "importlib_util",
+      "label": "importlib_util",
       "community": 4,
       "community_name": "Community 4",
       "external": true,
       "file_type": "concept",
-      "norm_label": "json",
+      "norm_label": "importlib_util",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "io",
+      "label": "io",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "io",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "nbformat",
+      "label": "nbformat",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "nbformat",
       "source_file": "",
       "type": "external"
     },
@@ -1218,6 +1826,17 @@
       "type": "external"
     },
     {
+      "id": "pyspark_sql",
+      "label": "pyspark_sql",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "pyspark_sql",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "re",
       "label": "re",
       "community": 4,
@@ -1229,40 +1848,314 @@
       "type": "external"
     },
     {
-      "id": "nbformat",
-      "label": "nbformat",
-      "community": 8,
-      "community_name": "Community 8",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "nbformat",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "pyspark_sql",
-      "label": "pyspark_sql",
-      "community": 8,
-      "community_name": "Community 8",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "pyspark_sql",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "sys",
       "label": "sys",
-      "community": 8,
-      "community_name": "Community 8",
+      "community": 4,
+      "community_name": "Community 4",
       "external": true,
       "file_type": "concept",
       "norm_label": "sys",
       "source_file": "",
       "type": "external"
+    },
+    {
+      "id": "tempfile",
+      "label": "tempfile",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "tempfile",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "types",
+      "label": "types",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "types",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "unittest",
+      "label": "unittest",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "unittest",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "unittest_mock",
+      "label": "unittest_mock",
+      "community": 4,
+      "community_name": "Community 4",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "unittest_mock",
+      "source_file": "",
+      "type": "external"
     }
   ],
   "links": [
+    {
+      "source": "ingestion_scripts_download_amazon_hf_existing_file",
+      "target": "ingestion_scripts_download_amazon_hf_verify",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_retry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_filenames",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_existing_file",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "shutil",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_save_manifest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_parse_args",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main_download",
+      "target": "ingestion_scripts_download_amazon_hf_retry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main_download_transfer",
+      "target": "ingestion_scripts_download_amazon_hf_verify",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_parse_args",
+      "target": "argparse",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_retry",
+      "target": "time",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_save_manifest",
+      "target": "json",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_sha256",
+      "target": "hashlib",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_verify",
+      "target": "ingestion_scripts_download_amazon_hf_sha256",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "time",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "argparse",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "shutil",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
     {
       "source": "tests_integration_verify_smoke",
       "target": "sys",
@@ -1285,6 +2178,78 @@
       "context": "import",
       "source_file": "tests/integration/verify-smoke.py",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "importlib_util",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "io",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "tempfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "unittest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -1312,6 +2277,42 @@
       "weight": 1.0
     },
     {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "concurrent_futures",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "datetime",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "tests_integration_verify_smoke",
       "target": "pyspark_sql",
       "relation": "imports_from",
@@ -1321,6 +2322,42 @@
       "context": "import",
       "source_file": "tests/integration/verify-smoke.py",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "unittest_mock",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -1347,6 +2384,116 @@
       "weight": 1.0
     },
     {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_filenames",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_sha256",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_verify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_existing_file",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_retry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_save_manifest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_parse_args",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf",
+      "target": "ingestion_scripts_download_amazon_hf_main",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_main_download",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main_download",
+      "target": "ingestion_scripts_download_amazon_hf_main_download_transfer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
       "source": "ingestion_scripts_init_hdfs",
       "target": "ingestion_scripts_init_hdfs_sh__entry",
       "relation": "contains",
@@ -1366,6 +2513,39 @@
       "confidence_score": 1.0,
       "source_file": "ingestion/scripts/migrate-hdfs-layout.sh",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_put_amazonraw",
+      "target": "ingestion_scripts_put_amazonraw_invoke_hdfs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/Put-AmazonRaw.ps1",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf",
+      "target": "tests_test_download_amazon_hf_downloadtests",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer_transfer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -1402,6 +2582,72 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_download_amazon_hf_downloadtests",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_verified_existing_file_is_reused_without_manifest",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_same_size_corruption_is_not_overwritten",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_partial_is_not_treated_as_complete",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_selection_is_exact_and_deduplicated",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_rationale_1",
+      "target": "ingestion_scripts_download_amazon_hf",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tests_integration_verify_smoke_rationale_1",
       "target": "tests_integration_verify_smoke",
       "relation": "rationale_for",
@@ -1409,6 +2655,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/integration/verify-smoke.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_rationale_1",
+      "target": "tests_test_download_amazon_hf",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_download_amazon_hf.py",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -1421,6 +2678,54 @@
       "confidence_score": 1.0,
       "source_file": "tools/graphify/enrich_graph.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_main_download",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main_download",
+      "target": "ingestion_scripts_download_amazon_hf_main_download_transfer",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
+      "target": "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer_transfer",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "tests/test_download_amazon_hf.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "ingestion_scripts_download_amazon_hf_main",
+      "target": "ingestion_scripts_download_amazon_hf_sha256",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "getattr",
+      "source_file": "ingestion/scripts/download_amazon_hf.py",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -1699,6 +3004,116 @@
       "weight": 1.0
     },
     {
+      "source": "file:docs/datanodes.md",
+      "target": "file:docs/datanodes.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/datanodes.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L1",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L33",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L35",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L39",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L53",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L58",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L60",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L7",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:docs/download-amazon-hf.md",
+      "target": "file:docs/download-amazon-hf.md:L70",
+      "relation": "contains",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "file:docs/github.md",
       "target": "file:docs/github.md:L1",
       "relation": "contains",
@@ -1875,6 +3290,39 @@
       "weight": 1.0
     },
     {
+      "source": "file:compose.datanodes.yaml",
+      "target": "service:datanode2",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.datanodes.yaml",
+      "target": "service:datanode3",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.datanodes.yaml",
+      "target": "service:datanodes-extra-init",
+      "relation": "defines",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "file:compose.yaml",
       "target": "service:datanode",
       "relation": "defines",
@@ -1996,6 +3444,50 @@
       "weight": 1.0
     },
     {
+      "source": "service:datanode2",
+      "target": "service:datanodes-extra-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode2",
+      "target": "service:namenode",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode3",
+      "target": "service:datanodes-extra-init",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "service:datanode3",
+      "target": "service:namenode",
+      "relation": "depends_on",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "service:flume",
       "target": "service:flume-init",
       "relation": "depends_on",
@@ -2107,6 +3599,28 @@
     },
     {
       "source": "file:compose.yaml",
+      "target": "file:docs/datanodes.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/datanodes.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:docs/download-amazon-hf.md",
+      "relation": "documented_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/download-amazon-hf.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
       "target": "file:docs/github.md",
       "relation": "documented_by",
       "_origin": "config_navigation",
@@ -2190,6 +3704,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "file:compose.yaml",
+      "target": "file:compose.datanodes.yaml",
+      "relation": "extended_by",
+      "_origin": "config_navigation",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "compose.datanodes.yaml",
       "source_location": "L1",
       "weight": 1.0
     },
