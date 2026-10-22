@@ -1,0 +1,8 @@
+# Batch EDA: one disposable container per category; no Jupyter ports are published by run.
+services:
+  spark-notebook:
+    environment:
+      PYSPARK_SUBMIT_ARGS: --driver-memory 1g pyspark-shell
+      SPARK_DRIVER_MEMORY: 1g
+    mem_limit: 2g
+    cpus: 2

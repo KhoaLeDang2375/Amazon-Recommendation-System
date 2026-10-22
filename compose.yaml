@@ -119,6 +119,7 @@ services:
       - ./outputs:/workspace/outputs
       - ./infrastructure/spark/conf:/opt/hadoop/conf:ro
       - ./ingestion/scripts:/workspace/ingestion/scripts:ro
+      - ./ingestion/manifests:/workspace/ingestion/manifests:ro
       - ./tests:/workspace/tests:ro
       - ./artifacts:/workspace/artifacts
     depends_on:
@@ -129,6 +130,8 @@ services:
 
   graphify:
     profiles: ["tools"]
+    mem_limit: 512m
+    cpus: 1
     build:
       context: ./infrastructure/graphify
     image: bigdata-graphify:0.9.85

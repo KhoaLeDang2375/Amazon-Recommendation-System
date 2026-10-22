@@ -72,9 +72,17 @@ class DownloadTests(unittest.TestCase):
 
     def test_selection_is_exact_and_deduplicated(self):
         paths = downloader.filenames(list(downloader.CATEGORIES) * 2, "both")
-        self.assertEqual(len(paths), 12)
-        self.assertIn("raw/meta_categories/meta_Health_and_Personal_Care.jsonl", paths)
+        self.assertEqual(len(paths), 6)
+        self.assertNotIn("raw/meta_categories/meta_Health_and_Personal_Care.jsonl", paths)
         self.assertIn("raw/review_categories/Industrial_and_Scientific.jsonl", paths)
+
+    def test_default_scope_and_outside_scope_rejected(self):
+        with patch.object(sys, "argv", ["download"]):
+            args = downloader.parse_args()
+        self.assertEqual(args.categories, ["All_Beauty", "Video_Games", "Industrial_and_Scientific"])
+        self.assertEqual(args.workers, 1)
+        with self.assertRaises(ValueError):
+            downloader.filenames(["Sports_and_Outdoors"], "both")
 
 
 if __name__ == "__main__":

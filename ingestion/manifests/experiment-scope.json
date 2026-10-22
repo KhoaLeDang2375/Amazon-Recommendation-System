@@ -1,0 +1,7 @@
+{
+  "dataset": "Amazon Reviews 2023",
+  "categories": ["All_Beauty", "Video_Games", "Industrial_and_Scientific"],
+  "kinds": ["reviews", "metadata"],
+  "version": "v1",
+  "hdfs_base": "/project/raw"
+}

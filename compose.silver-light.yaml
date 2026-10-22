@@ -1,0 +1,11 @@
+services:
+  spark-notebook:
+    environment:
+      PYTHONPATH: /workspace
+      PYSPARK_SUBMIT_ARGS: --driver-memory 1g pyspark-shell
+      SPARK_DRIVER_MEMORY: 1g
+    volumes:
+      - ./processing:/workspace/processing:ro
+      - ./data/staging/amazon-reviews-2023/download-manifest.json:/workspace/ingestion/source-manifest.json:ro
+    mem_limit: 2g
+    cpus: 2

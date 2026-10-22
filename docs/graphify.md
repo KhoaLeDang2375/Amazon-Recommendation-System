@@ -1,15 +1,21 @@
-# Graphify cho repository
+# Graphify cho điều hướng repository
 
-Dùng [Graphify](https://github.com/safishamsi/graphify), package `graphifyy==0.9.85`, trong container profile `tools`. Không cài thêm vào Python của Spark hay máy host. Đây là tích hợp CLI; không tự cài skill toàn cục cho coding agent.
+Dùng Graphify (package graphifyy==0.9.85) trong image tools, không cài thêm vào Python Spark/host. Container giới hạn CPU 1/RAM 512 MiB. Đây là CLI, không tự cài skill toàn cục.
 
-`tools/graphify/Refresh-Graph.ps1` thực hiện ba bước: AST extraction `--code-only --no-cluster`; bổ sung service/mount/dependency Compose và heading tài liệu bằng script Python; cluster và export bằng `--no-label`. Workflow không cần API key hoặc semantic extraction qua LLM.
+[Refresh-Graph.ps1](../tools/graphify/Refresh-Graph.ps1) dùng AST --code-only --no-cluster, bổ sung service/mount/dependencies/heading tài liệu, rồi cluster/export --no-label; không cần API key hoặc semantic LLM pass. Dùng overlay ba DataNode trong cấu hình, --no-deps không khởi động HDFS và --pull never không tải image.
 
-Graphify không hiểu đầy đủ PowerShell/YAML/notebook chỉ bằng AST. Script bổ sung tạo liên kết cấu hình xác định; nó không suy diễn ý nghĩa nghiệp vụ từ dataset. Heading tiếng Việt và source location giúp tra cứu file liên quan, không thay thế nguồn.
+PowerShell host tại project/; build image riêng nếu chưa có:
 
-Đọc `docs/project-map.md` trước, truy vấn với budget nhỏ, rồi mở đúng file. Ví dụ:
+~~~powershell
+docker compose --profile tools build graphify
+& ./tools/graphify/Refresh-Graph.ps1
+docker compose -f compose.yaml -f compose.datanodes.yaml --profile tools run --rm --pull never --no-deps graphify query run_eda --budget 700
+~~~
 
-```powershell
-docker compose --profile tools run --rm --no-deps graphify query "spark-notebook" --budget 1200
-```
+Đọc [project-map](project-map.md) trước, query nhỏ rồi mở source. --budget là mục tiêu dung lượng ngữ cảnh query, có thể truncate hoặc vượt để giữ liên kết; không là giới hạn chi phí hội thoại. Thu hẹp tên symbol/câu hỏi trước tăng budget.
 
-Graph được lưu ở `graphify-out/graph.json`, báo cáo và HTML do CLI export. Refresh sau thay đổi cấu trúc/code/tài liệu. `.graphifyignore` loại data, artifacts, `.env`, graph output và cache khỏi đầu vào. Generated graph được commit để bạn cùng nhóm đọc, cache/machine state không commit. Không khẳng định mức tiết kiệm token cố định: hiệu quả phụ thuộc truy vấn và việc chỉ đọc file liên quan.
+Graphify không hiểu đầy đủ PowerShell/YAML/notebook chỉ bằng AST. [enrich_graph.py](../tools/graphify/enrich_graph.py) bổ sung liên kết cấu hình/heading xác định, không suy diễn dữ liệu/nghiệp vụ. Cảnh báo script không có symbol không có nghĩa script không hợp lệ.
+
+graphify-out/graph.json, GRAPH_REPORT.md và graph.html là artifacts điều hướng được commit; cache/manifest machine state không commit. .graphifyignore loại data, artifacts, outputs, .env, Git/caches. Refresh sau đổi code/layout/docs; file deleted trong Git diff là thay đổi source cần giữ, không restore từ graph cũ.
+
+Nguồn công cụ để tra cứu: [Graphify repository](https://github.com/safishamsi/graphify). Không hứa mức tiết kiệm token cố định hoặc dùng graph thay code review.

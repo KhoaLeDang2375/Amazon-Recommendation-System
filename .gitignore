@@ -15,7 +15,14 @@ data/spool/*
 !data/spool/.gitkeep
 outputs/eda/*
 !outputs/eda/.gitkeep
+outputs/validation/
+outputs/processing/
 **/.ipynb_checkpoints/
 **/__pycache__/
 *.pyc
 *.log
+outputs/eda-compact-diskpart.txt
+outputs/eda-reclaim-result.json
+
+outputs/eda_model_readiness/
+outputs/als_baseline/

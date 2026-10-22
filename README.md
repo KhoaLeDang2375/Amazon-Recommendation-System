@@ -1,103 +1,81 @@
-# Đồ án Big Data — ingestion và Spark EDA
+# Đồ án Big Data — hệ thống gợi ý sản phẩm
 
-Dataset hiện tại: `video_games_metadata/v1`. Luồng xử lý:
+## Bài toán và dữ liệu
 
-```mermaid
-flowchart LR
-    A[data/staging] --> B[Publish-File.ps1]
-    B --> C[data/spool]
-    C --> D[Flume: Source → File Channel → Sink]
-    D --> E[HDFS raw]
-    E --> F[Spark notebook]
-    F -. tương lai .-> G[artifacts: analytics / models]
-    G -. tương lai .-> H[apps/web]
-```
+Khi danh mục sản phẩm và lượng đánh giá tăng, người dùng khó tìm được sản phẩm phù hợp; hệ thống gợi ý hỗ trợ cá nhân hóa việc lựa chọn và khám phá sản phẩm. Đề tài xây dựng pipeline Big Data để khai thác dữ liệu đánh giá và thông tin sản phẩm thuộc ba ngành hàng All Beauty, Video Games và Industrial and Scientific của Amazon Reviews 2023. Thực nghiệm giới hạn trên dữ liệu của ba ngành hàng này, với dung lượng được xác nhận sau khi giải nén; kiến trúc hướng đến khả năng mở rộng khi dữ liệu và tương tác người dùng tăng.
 
-`apps/web`, `artifacts/analytics`, `artifacts/models` chỉ có file giữ chỗ. Chưa có web, model hoặc code EDA mới.
+Phạm vi chuẩn nằm trong [experiment-scope.json](ingestion/manifests/experiment-scope.json): ba category, reviews và metadata, tổng **7.136.947.646 bytes (~7,14 GB / 6,65 GiB JSONL không nén)**. Quy mô thực nghiệm này chưa phải bằng chứng khả năng mở rộng trên nhiều máy.
 
-## Khởi chạy
+## Trạng thái hiện tại
 
-Cần Docker Desktop chạy Linux containers/WSL2 và Docker Compose v2. Chạy PowerShell tại thư mục gốc:
+- Đã có ingestion, HDFS và code EDA; máy hiện tại dùng một NameNode và ba DataNode cùng host, replication 1.
+- EDA chạy một category mỗi process; batch mặc định Spark local[2], container 2 GiB/CPU 2, driver 1 GiB. Fixture chất lượng dữ liệu và vòng đời đã đạt ngày 14/10/2026; cấu hình hai CPU chưa có số đo tăng tốc raw.
+- Ba job EDA full-category đã complete ngày 14/10/2026: All Beauty 701.528, Video Games 4.624.615 và Industrial and Scientific 5.183.005 reviews; cùng scope/code/cutoff. Phân tích và kế hoạch chuyển sang ETL nằm trong [processing.md](docs/processing.md). All Beauty gặp lỗi lưu log wrapper lịch sử, đã sửa; run/summary/resources vẫn có đủ.
+- Pha 5 ngày 14/10/2026 đã dọn dữ liệu Sports/Toys/Health ngoài phạm vi; sáu dataset selected HEALTHY trước/sau, vẫn giữ sáu bản nguồn local và toàn bộ HDFS/Flume volumes. Kết quả dung lượng và biên bản nằm trong [kế hoạch dọn repo](docs/KE_HOACH_DON_DEP_REPO.md).
+- Đợt điều chỉnh scope và cleanup đã hoàn thành pha 0–6 ngày 14/10/2026. Tài liệu/graph đã cập nhật; notebook cũ đã sao lưu và bỏ output, giữ nguyên source. Chưa stage/commit/push.
+- Silver đã hoàn tất cả ba category ngày 16/10/2026: 10.395.239 reviews, 677.423 catalog rows, loại 113.909 bản sao chính xác; quarantine=0. Parquet đã đọc lại và đối soát. Xem [Silver](docs/silver.md) để lấy run/path và kết quả kiểm tra. Gold, mô hình, API và web chưa triển khai.
 
-```powershell
+Batch dữ liệu hiện tại đi theo **staging → direct HDFS put → raw → EDA → Silver**. Flume là nhánh ingestion event/batch theo dòng đã có; metadata Video Games được giữ theo layout Flume, không publish lại.
+
+## Bắt đầu trên máy đã có dữ liệu — PowerShell host
+
+Chạy tại Git root **project/**; không chạy script tương đối từ C:/Windows/system32.
+
+~~~powershell
 if (-not (Test-Path .env)) { Copy-Item .env.example .env }
-docker compose config --quiet
-docker compose up -d --build
-docker compose ps -a
-```
+docker compose -f compose.yaml -f compose.datanodes.yaml config --quiet
+docker compose -f compose.yaml -f compose.datanodes.yaml ps -a
+~~~
 
-Các service `*-init` kết thúc với mã 0 là bình thường. NameNode UI: http://localhost:9870. Tên project `hadoop-demo` và tên volume hiện có được giữ để tái sử dụng dữ liệu.
+Nếu các HDFS container hiện có đang dừng:
 
-## Nhập dữ liệu
+~~~powershell
+docker compose -f compose.yaml -f compose.datanodes.yaml start namenode datanode1 datanode2 datanode3
+docker compose exec -T namenode hdfs dfsadmin -report
+~~~
 
-Tải file UTF-8 JSON Lines vào `data/staging`. Một object mỗi dòng, tối đa 1 MiB/dòng, file đã giải nén và tải xong. Xem [manifest dataset](ingestion/manifests/video_games_metadata.v1.json); URL nguồn và ngày tải còn cần bổ sung.
+Không thay volume hoặc giảm số DataNode để tiết kiệm RAM. Hướng dẫn clone mới/build nằm trong [vận hành](docs/operations.md); tải/nhập trong [quản lý dữ liệu](docs/data-management.md).
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\ingestion\scripts\Publish-File.ps1 -File .\data\staging\meta_Video_Games.jsonl
-docker compose logs --tail 100 flume
-docker compose exec namenode hdfs dfs -ls -R /project/raw/video_games_metadata/v1
-```
+Khi cần chạy lại EDA dữ liệu thật, chọn một category:
 
-Máy hiện tại đã nhập dataset thật; không chạy publish lại chỉ để cập nhật cấu trúc. Mỗi lần publish tạo batch mới và có thể trùng dữ liệu. `.COMPLETED` chỉ xác nhận Source đã đọc vào channel; cần kiểm tra channel đã rỗng và HDFS không còn file `.tmp`.
+~~~powershell
+& ./tools/eda/Run-Eda.ps1 -Category All_Beauty
+~~~
 
-Để tải Amazon Reviews 2023 vào staging rồi nhập các file còn thiếu vào HDFS raw, xem [hướng dẫn tải và nhập từ Hugging Face](docs/download-amazon-hf.md). Quy trình này tách biệt với publish qua Flume.
+Wrapper không tự khởi động HDFS, build image hoặc compact đĩa. Nó kiểm tra tài nguyên, lưu log và dọn container sở hữu. Xem [EDA](docs/eda.md) trước khi chạy; không bật notebook và batch đồng thời. Xem báo cáo cũ bằng cell REPORT_DIRECTORY trong notebook, không tạo Spark.
 
-## Spark notebook
+## Tài liệu và cấu trúc
 
-```powershell
-docker compose --profile eda up -d --build spark-notebook
-docker compose exec spark-notebook jupyter server list
-```
+| Nội dung | Điểm đọc chính |
+| --- | --- |
+| Kiến trúc đang chạy và hướng mở rộng | [architecture.md](docs/architecture.md) |
+| Scope, tải, ingest, manifests và retention | [data-management.md](docs/data-management.md) |
+| Đặc tả insight, chạy EDA và đọc report | [eda.md](docs/eda.md) |
+| Phân tích ba full EDA và kế hoạch processing/snapshot | [processing.md](docs/processing.md) |
+| Code, vận hành và kết quả Silver | [silver.md](docs/silver.md) |
+| Khởi động/dừng, DataNodes, xử lý lỗi và bảo trì | [operations.md](docs/operations.md) |
+| Bằng chứng kiểm chứng theo ngày | [history.md](docs/history.md) |
+| Điều hướng source và Graphify | [project-map.md](docs/project-map.md), [graphify.md](docs/graphify.md) |
+| Fixture và kiểm thử | [tests/README.md](tests/README.md) |
+| Hồ sơ đợt dọn repo đã hoàn thành | [KE_HOACH_DON_DEP_REPO.md](docs/KE_HOACH_DON_DEP_REPO.md) |
+| Kế hoạch học thuật của nhóm | [KE_HOACH_TONG_QUAT.md](../doc/KE_HOACH_TONG_QUAT.md) |
 
-Mở URL bằng `localhost` và cổng `JUPYTER_PORT` trong `.env`, kèm token được in ra. Có thể kết nối VS Code tới server này. Mở `notebooks/01_eda.ipynb` và chạy setup trước. Token không được đưa lên GitHub.
-
-```python
-spark.conf.set("spark.sql.caseSensitive", "true")
-df = spark.read.option("recursiveFileLookup", "true").json(
-    "hdfs://namenode:8020/project/raw/video_games_metadata/v1"
-)
-df.printSchema()
-df.show(5, truncate=80)
-```
-
-Dataset có khóa JSON khác nhau chỉ ở chữ hoa/thường; cần cấu hình trên trước khi đọc. Spark chạy local trong container và dùng RAM máy bạn. Colab chưa được kết nối tới HDFS trong cấu hình này.
-
-## Thư mục
+Kế hoạch học thuật nằm ở **../doc/** ngoài Git root, không tự đi cùng khi clone repo project; chia sẻ thư mục đó riêng nếu cần. Checklist nền tảng của kế hoạch tuần 1 đã gộp vào kế hoạch tổng quát.
 
 | Thư mục | Vai trò |
-|---|---|
-| `infrastructure/` | Image và cấu hình Hadoop, Flume, Spark, Graphify |
-| `ingestion/` | Script nhập dữ liệu và manifest |
-| `data/staging`, `data/spool` | Dữ liệu tải về và hàng đợi; không commit |
-| `data/archive` | Smoke cũ, backup notebook; không commit |
-| `tests/` | Fixture nhỏ và kiểm thử tích hợp |
-| `notebooks/`, `outputs/eda/` | Notebook và kết quả EDA; output không commit |
-| `apps/web/` | Giữ chỗ cho web demo |
-| `artifacts/analytics`, `artifacts/models` | Kết quả phục vụ web, model; nội dung không commit |
-| `docs/` | Kiến trúc, vận hành, lịch sử |
-| `tools/graphify`, `graphify-out/` | Công cụ và bản đồ repository |
+| --- | --- |
+| infrastructure/ | Image, cấu hình Hadoop/Flume/Spark/Graphify |
+| ingestion/ | Scope, manifests và script tải/nhập |
+| notebooks/ | Implementation EDA và notebook xem/chạy |
+| tests/ | Fixture nhỏ, kiểm thử offline/integration |
+| tools/eda, tools/maintenance | Batch EDA, bảo trì VHDX thủ công |
+| tools/graphify, graphify-out/ | Công cụ và bản đồ source được sinh |
+| docs/ | Các hướng dẫn chuẩn và lịch sử |
+| data/, outputs/, artifacts/ | Dữ liệu local, kết quả, model; nội dung lớn không commit |
+| apps/web/ | Giữ chỗ; chưa có code web |
 
-## Bản đồ Graphify
+## Làm việc cùng nhóm
 
-```powershell
-docker compose --profile tools build graphify
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\graphify\Refresh-Graph.ps1
-docker compose --profile tools run --rm --no-deps graphify query "Flume ingestion" --budget 1200
-```
+Commit code, cấu hình, manifest quản lý, tài liệu, fixture nhỏ và graph. Dữ liệu, Docker volumes, .env, token, output và model không đi cùng Git/image. Backup notebook trước khi bỏ output; kiểm tra cả source cells để tránh đưa token vào Git. Dùng git status/diff và chọn file có chủ đích; không stage toàn bộ dữ liệu.
 
-Workflow dùng AST và liên kết cấu hình xác định, không cần API LLM. Đọc [bản đồ ngắn](docs/project-map.md) trước, rồi tra graph và mở đúng file nguồn. Xem [Graphify](docs/graphify.md).
-
-## Vận hành và chia sẻ
-
-```powershell
-docker compose --profile eda stop spark-notebook
-docker compose --profile eda down
-```
-
-`down` giữ named volumes; `down -v` sẽ xóa dữ liệu HDFS và trạng thái Flume. Một DataNode, replication 1 phù hợp môi trường phát triển.
-
-Có thể bật thêm hai DataNode bằng Compose overlay; thao tác này dùng volume riêng và không tự thay đổi replication. Xem [hướng dẫn thêm DataNode](docs/datanodes.md) trước khi chạy hoặc quản lý các node bổ sung.
-
-Đưa code, cấu hình, manifest, tài liệu và fixture nhỏ lên GitHub. Dataset, `.env`, token, output và model không đi theo Git hay Docker image. Bạn cùng nhóm cần tải dữ liệu và ingest trên máy họ. Xem [hướng dẫn GitHub](docs/github.md).
-
-Tài liệu: [kiến trúc](docs/architecture.md), [lệnh và ý nghĩa](docs/commands.md), [quản lý dữ liệu](docs/data-management.md), [xử lý lỗi](docs/troubleshooting.md), [web demo về sau](docs/web-demo.md).
+Các hướng dẫn an toàn về Git, notebook, replication và khôi phục nằm trong [operations.md](docs/operations.md). Image/dependency trực tiếp được ghim phiên bản, chưa bảo đảm build byte-identical.

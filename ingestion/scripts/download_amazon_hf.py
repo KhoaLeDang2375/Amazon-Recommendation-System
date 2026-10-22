@@ -10,15 +10,18 @@ import shutil
 import sys
 import time
 
+# Also support importlib-based offline tests and callers outside this directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from dataset_scope import load_scope
+
 ROOT = Path(__file__).resolve().parents[2]
 REPO = "McAuley-Lab/Amazon-Reviews-2023"
-CATEGORIES = (
-    "All_Beauty", "Video_Games", "Sports_and_Outdoors", "Toys_and_Games",
-    "Industrial_and_Scientific", "Health_and_Personal_Care",
-)
+CATEGORIES = tuple(load_scope()["categories"])
 
 
 def filenames(categories, kind):
+    if any(category not in CATEGORIES for category in categories) or kind not in ("both", "reviews", "metadata"):
+        raise ValueError("Category or kind outside experiment scope")
     result = []
     for category in dict.fromkeys(categories):
         if kind in ("both", "reviews"):
@@ -74,7 +77,7 @@ def parse_args():
     parser.add_argument("--kind", choices=("both", "reviews", "metadata"), default="both")
     parser.add_argument("--output", type=Path, default=ROOT / "data/staging/amazon-reviews-2023")
     parser.add_argument("--revision", default="main")
-    parser.add_argument("--workers", type=int, default=3)
+    parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--attempts", type=int, default=3)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--ask-token", action="store_true", help="Nhap token an, khong luu token")

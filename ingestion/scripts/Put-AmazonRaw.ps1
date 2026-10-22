@@ -1,4 +1,4 @@
-param([switch]$Apply)
+param([switch]$Apply, [string[]]$Categories)
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 Push-Location $projectRoot
@@ -9,27 +9,43 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "HDFS command failed: $($Arguments -join ' ')" }
         return $result
     }
+    . (Join-Path $PSScriptRoot 'Get-ExperimentScope.ps1')
+    $scope = Get-ExperimentScope
+    if (-not $Categories) { $Categories = @($scope.categories) }
+    if (@($Categories | Where-Object { $_ -cnotin $scope.categories }).Count -or @($Categories | Select-Object -Unique).Count -ne $Categories.Count) { throw 'Categories outside experiment scope or duplicated' }
     $manifest = Get-Content -Raw -Encoding UTF8 'data/staging/amazon-reviews-2023/download-manifest.json' | ConvertFrom-Json
-    $categories = @('All_Beauty', 'Video_Games', 'Sports_and_Outdoors', 'Toys_and_Games', 'Industrial_and_Scientific', 'Health_and_Personal_Care')
+    $safeMode = & docker compose exec -T namenode hdfs dfsadmin -safemode get
+    if ($LASTEXITCODE -ne 0 -or ($safeMode -join ' ') -notmatch 'Safe mode is OFF') { throw 'HDFS is not ready; no files were uploaded' }
     $stagingRoot = [IO.Path]::GetFullPath((Join-Path $projectRoot 'data/staging'))
     $existing = @{}
-    foreach ($line in @(Invoke-Hdfs -Arguments @('-ls', '-R', '/project/raw'))) {
-        if ($line -match '^-' ) {
-            $fields = $line.Trim() -split '\s+', 8
-            if ($fields.Count -ne 8) { throw "Unexpected HDFS listing: $line" }
-            $existing[$fields[7]] = [long]$fields[4]
+    foreach ($category in $Categories) {
+        foreach ($kind in $scope.kinds) {
+            $datasetPath = "$($scope.hdfs_base)/$($category.ToLowerInvariant())_${kind}/$($scope.version)"
+            & docker compose exec -T namenode hdfs dfs -test -d $datasetPath
+            if ($LASTEXITCODE -eq 1) { continue }
+            if ($LASTEXITCODE -ne 0) { throw "Cannot inspect HDFS dataset: $datasetPath" }
+            foreach ($line in @(Invoke-Hdfs -Arguments @('-ls', '-R', $datasetPath))) {
+                if ($line -match '^-' ) {
+                    $fields = $line.Trim() -split '\s+', 8
+                    if ($fields.Count -ne 8) { throw "Unexpected HDFS listing: $line" }
+                    $existing[$fields[7]] = [long]$fields[4]
+                }
+            }
         }
     }
     $plan = @()
-    foreach ($category in $categories) {
-        foreach ($kind in @('reviews', 'metadata')) {
+    foreach ($category in $Categories) {
+        foreach ($kind in $scope.kinds) {
             $name = if ($kind -eq 'metadata') { "meta_$category.jsonl" } else { "$category.jsonl" }
-            $directory = "/project/raw/$($category.ToLowerInvariant())_${kind}/v1"
+            $directory = "$($scope.hdfs_base)/$($category.ToLowerInvariant())_${kind}/$($scope.version)"
             $target = "$directory/$name"
             $entries = @($manifest.files | Where-Object { ($_.filename -split '/')[-1] -eq $name })
             if ($entries.Count -ne 1) { throw "Missing or duplicate manifest entry: $name" }
             $entry = $entries[0]
             if ($entry.status -notin @('downloaded_verified', 'skipped_verified')) { throw "Download not verified: $name" }
+            $expectedSize = 0L
+            if (-not [long]::TryParse([string]$entry.size, [ref]$expectedSize) -or $expectedSize -le 0 -or
+                $entry.sha256 -isnot [string] -or $entry.sha256 -notmatch '^[a-fA-F0-9]{64}$') { throw "Invalid source size/checksum: $name" }
             $datasetFiles = @($existing.Keys | Where-Object { $_.StartsWith("$directory/", [StringComparison]::Ordinal) })
             if ($existing.ContainsKey($target)) {
                 if ($existing[$target] -ne [long]$entry.size -or $datasetFiles.Count -ne 1) {
@@ -42,11 +58,15 @@ try {
                 # Preserve the known finalized Flume ingestion instead of adding duplicate source rows.
                 $legacy = Get-Content -Raw -Encoding UTF8 'ingestion/manifests/video_games_metadata.v1.json' | ConvertFrom-Json
                 $batchPrefix = "$directory/meta_Video_Games_"
-                $unexpected = @($datasetFiles | Where-Object { -not $_.StartsWith($batchPrefix, [StringComparison]::Ordinal) })
+                $unexpected = @($datasetFiles | Where-Object {
+                    -not $_.StartsWith($batchPrefix, [StringComparison]::Ordinal) -or -not $_.EndsWith('.jsonl', [StringComparison]::Ordinal)
+                })
+                $datasetBytes = ($datasetFiles | ForEach-Object { $existing[$_] } | Measure-Object -Sum).Sum
                 if ($category -eq 'Video_Games' -and $kind -eq 'metadata' -and
                     $legacy.ingestion.status -eq 'finalized' -and $legacy.hdfs_path -eq $directory -and
                     $legacy.files[0].sha256 -eq $entry.sha256 -and
-                    $datasetFiles.Count -eq $legacy.ingestion.output_files -and $unexpected.Count -eq 0) {
+                    $datasetFiles.Count -eq $legacy.ingestion.output_files -and $unexpected.Count -eq 0 -and
+                    $datasetBytes -eq [long]$entry.size) {
                     Write-Host "SKIP known finalized Flume dataset: $directory"
                     continue
                 }
