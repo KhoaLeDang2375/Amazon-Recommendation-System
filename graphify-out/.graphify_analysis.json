@@ -1,7 +1,6 @@
 {
   "communities": {
     "0": [
-      "argparse",
       "concurrent_futures",
       "ingestion_scripts_dataset_scope",
       "ingestion_scripts_dataset_scope_load_scope",
@@ -19,7 +18,6 @@
       "ingestion_scripts_download_amazon_hf_sha256",
       "ingestion_scripts_download_amazon_hf_verify",
       "re",
-      "shutil",
       "tests_test_experiment_scope_scopetests",
       "tests_test_experiment_scope_scopetests_test_invalid_scope_fails_before_data_access",
       "tests_test_experiment_scope_scopetests_test_notebook_selects_one_category_from_scope",
@@ -27,6 +25,7 @@
       "time"
     ],
     "1": [
+      "argparse",
       "collections",
       "decimal",
       "functools",
@@ -35,12 +34,17 @@
       "math",
       "notebooks_eda_recommendation",
       "notebooks_eda_recommendation_analyze_all",
+      "notebooks_eda_recommendation_analyze_category",
       "notebooks_eda_recommendation_canonical",
+      "notebooks_eda_recommendation_degree_bin",
       "notebooks_eda_recommendation_digest",
+      "notebooks_eda_recommendation_duplicates",
       "notebooks_eda_recommendation_get_categories",
+      "notebooks_eda_recommendation_identity_overview",
       "notebooks_eda_recommendation_inventory",
       "notebooks_eda_recommendation_key_value",
       "notebooks_eda_recommendation_load",
+      "notebooks_eda_recommendation_main",
       "notebooks_eda_recommendation_metadata_group",
       "notebooks_eda_recommendation_nested_issues",
       "notebooks_eda_recommendation_nested_issues_bad",
@@ -53,21 +57,23 @@
       "notebooks_eda_recommendation_rationale_124",
       "notebooks_eda_recommendation_rationale_164",
       "notebooks_eda_recommendation_rationale_528",
+      "notebooks_eda_recommendation_report",
+      "notebooks_eda_recommendation_report_chart",
+      "notebooks_eda_recommendation_report_heatmap",
+      "notebooks_eda_recommendation_report_init",
+      "notebooks_eda_recommendation_report_insight_charts",
+      "notebooks_eda_recommendation_report_rows",
+      "notebooks_eda_recommendation_report_table",
       "notebooks_eda_recommendation_resolve_timestamp",
+      "notebooks_eda_recommendation_run_eda",
+      "notebooks_eda_recommendation_run_eda_interrupt",
       "notebooks_eda_recommendation_state",
+      "notebooks_eda_recommendation_stats",
       "notebooks_eda_recommendation_text_value",
       "notebooks_eda_recommendation_validate_run",
       "os",
       "platform",
       "processing_silver",
-      "processing_silver_create_spark",
-      "processing_silver_hdfs",
-      "processing_silver_hdfs_bytes",
-      "processing_silver_hdfs_exists",
-      "processing_silver_hdfs_files",
-      "processing_silver_hdfs_init",
-      "processing_silver_hdfs_write_json",
-      "processing_silver_main",
       "processing_silver_parse_line",
       "processing_silver_parse_line_nested",
       "processing_silver_parse_line_number",
@@ -76,25 +82,31 @@
       "processing_silver_parse_rows",
       "processing_silver_rationale_1",
       "processing_silver_rationale_65",
-      "processing_silver_run_silver",
-      "processing_silver_run_silver_interrupted",
-      "processing_silver_schema",
-      "processing_silver_scope",
-      "processing_silver_source_lineage",
-      "processing_silver_validate_paths",
-      "pyspark",
-      "pyspark_sql",
-      "skipunless",
+      "shutil",
+      "signal",
       "tests_test_eda_recommendation_edachecks_test_full_fixture",
-      "tests_test_silver",
-      "tests_test_silver_rationale_1",
-      "tests_test_silver_silverchecks",
-      "tests_test_silver_silverchecks_test_hdfs_snapshot_and_failed_publication",
-      "tests_test_silver_silverchecks_test_rules_and_boundaries",
-      "threading",
-      "uuid"
+      "threading"
     ],
     "2": [
+      "datetime",
+      "notebooks_als_baseline",
+      "notebooks_als_baseline_evaluate",
+      "notebooks_als_baseline_fit_fold",
+      "notebooks_als_baseline_fit_fold_elapsed",
+      "notebooks_als_baseline_fit_fold_keep",
+      "notebooks_als_baseline_fit_fold_recommend",
+      "notebooks_als_baseline_query_population",
+      "notebooks_als_baseline_query_scores",
+      "notebooks_als_baseline_rationale_1",
+      "notebooks_als_baseline_rationale_162",
+      "notebooks_als_baseline_rationale_20",
+      "notebooks_als_baseline_rationale_251",
+      "notebooks_als_baseline_rationale_46",
+      "notebooks_als_baseline_run_baseline",
+      "notebooks_als_baseline_run_baseline_5f4229",
+      "notebooks_als_baseline_run_baseline_5f4229_checkpoint",
+      "notebooks_als_baseline_sample_users",
+      "notebooks_als_baseline_split_fold",
       "notebooks_eda_model_readiness",
       "notebooks_eda_model_readiness_analyze_fold",
       "notebooks_eda_model_readiness_analyze_fold_keep",
@@ -115,110 +127,15 @@
       "notebooks_eda_recommendation_check_disk_space",
       "notebooks_eda_recommendation_create_spark",
       "notebooks_eda_recommendation_get_scope",
-      "notebooks_eda_recommendation_main",
       "notebooks_eda_recommendation_rationale_871",
-      "notebooks_eda_recommendation_run_eda",
-      "notebooks_eda_recommendation_run_eda_interrupt",
       "notebooks_eda_recommendation_runtimemonitor",
       "notebooks_eda_recommendation_runtimemonitor_checkpoint",
       "notebooks_eda_recommendation_runtimemonitor_init",
-      "signal",
-      "tempfile"
+      "pyspark",
+      "pyspark_ml_feature",
+      "pyspark_sql"
     ],
     "3": [
-      "file:AGENTS.md",
-      "file:AGENTS.md:L1",
-      "file:compose.datanodes.yaml",
-      "file:compose.yaml",
-      "file:docs/architecture.md",
-      "file:docs/architecture.md:L1",
-      "file:docs/architecture.md:L3",
-      "file:docs/architecture.md:L38",
-      "file:docs/architecture.md:L48",
-      "file:docs/architecture.md:L62",
-      "file:docs/graphify.md",
-      "file:docs/graphify.md:L1",
-      "file:docs/project-map.md",
-      "file:docs/project-map.md:L1",
-      "file:infrastructure/flume/Dockerfile",
-      "file:infrastructure/flume/flume.conf",
-      "file:infrastructure/flume/log4j2.xml",
-      "file:infrastructure/graphify/Dockerfile",
-      "file:infrastructure/hadoop/hadoop.env",
-      "file:infrastructure/spark/Dockerfile",
-      "file:infrastructure/spark/conf/core-site.xml",
-      "file:infrastructure/spark/requirements.txt",
-      "file:ingestion/README.md",
-      "file:ingestion/README.md:L1",
-      "infrastructure_flume_flume_env",
-      "infrastructure_flume_flume_env_java_opts",
-      "infrastructure_flume_flume_env_sh__entry",
-      "path:artifacts",
-      "path:data/spool",
-      "path:data/staging",
-      "path:infrastructure/flume/flume.conf",
-      "path:infrastructure/spark/conf",
-      "path:ingestion/manifests",
-      "path:ingestion/scripts",
-      "path:notebooks",
-      "path:outputs",
-      "path:tests",
-      "service:datanode-init",
-      "service:datanode1",
-      "service:datanode2",
-      "service:datanode3",
-      "service:datanodes-extra-init",
-      "service:flume",
-      "service:flume-init",
-      "service:graphify",
-      "service:hdfs-init",
-      "service:namenode",
-      "service:namenode-init",
-      "service:spark-notebook"
-    ],
-    "4": [
-      "ast",
-      "csv",
-      "dataset_scope",
-      "datetime",
-      "eda_model_readiness",
-      "eda_recommendation",
-      "importlib_util",
-      "io",
-      "pathlib",
-      "sys",
-      "tests_integration_verify_smoke",
-      "tests_integration_verify_smoke_main",
-      "tests_integration_verify_smoke_rationale_1",
-      "tests_integration_verify_smoke_validate_path",
-      "tests_integration_verify_smoke_verify",
-      "tests_test_download_amazon_hf",
-      "tests_test_download_amazon_hf_rationale_1",
-      "tests_test_eda_recommendation",
-      "tests_test_eda_recommendation_edachecks",
-      "tests_test_eda_recommendation_rationale_1",
-      "tests_test_eda_recommendation_read_table",
-      "tests_test_eda_runtime",
-      "tests_test_eda_runtime_rationale_1",
-      "tests_test_experiment_scope",
-      "tests_test_experiment_scope_rationale_1",
-      "tests_test_model_readiness",
-      "tests_test_model_readiness_rationale_1",
-      "tools_eda_summarize_model_readiness",
-      "tools_eda_summarize_model_readiness_rate",
-      "tools_eda_summarize_model_readiness_rationale_1",
-      "tools_eda_summarize_model_readiness_read_csv",
-      "tools_eda_summarize_model_readiness_summarize",
-      "tools_graphify_enrich_graph",
-      "tools_graphify_enrich_graph_add_node",
-      "tools_graphify_enrich_graph_link",
-      "tools_graphify_enrich_graph_rationale_1",
-      "types",
-      "unittest",
-      "unittest_mock",
-      "urllib_parse"
-    ],
-    "5": [
       "file:docs/processing.md",
       "file:docs/processing.md:L1",
       "file:docs/processing.md:L11",
@@ -238,19 +155,106 @@
       "file:docs/processing.md:L223",
       "file:docs/processing.md:L245",
       "file:docs/processing.md:L258",
-      "file:docs/processing.md:L260",
-      "file:docs/processing.md:L272",
-      "file:docs/processing.md:L281",
-      "file:docs/processing.md:L287",
-      "file:docs/processing.md:L289",
-      "file:docs/processing.md:L321",
+      "file:docs/processing.md:L286",
+      "file:docs/processing.md:L288",
+      "file:docs/processing.md:L300",
+      "file:docs/processing.md:L309",
+      "file:docs/processing.md:L315",
+      "file:docs/processing.md:L317",
       "file:docs/processing.md:L33",
-      "file:docs/processing.md:L333",
+      "file:docs/processing.md:L349",
+      "file:docs/processing.md:L361",
       "file:docs/processing.md:L43",
       "file:docs/processing.md:L83",
       "file:docs/processing.md:L85",
       "file:docs/processing.md:L9",
       "file:docs/processing.md:L97"
+    ],
+    "4": [
+      "als_baseline",
+      "ast",
+      "csv",
+      "dataset_scope",
+      "eda_model_readiness",
+      "eda_recommendation",
+      "importlib_util",
+      "io",
+      "pathlib",
+      "pyspark_ml_recommendation",
+      "sys",
+      "tempfile",
+      "tests_integration_verify_smoke",
+      "tests_integration_verify_smoke_main",
+      "tests_integration_verify_smoke_rationale_1",
+      "tests_integration_verify_smoke_validate_path",
+      "tests_integration_verify_smoke_verify",
+      "tests_test_als_baseline",
+      "tests_test_als_baseline_baselinecheck",
+      "tests_test_als_baseline_baselinecheck_test_temporal_labels_metrics_and_saved_model",
+      "tests_test_als_baseline_rationale_1",
+      "tests_test_download_amazon_hf",
+      "tests_test_download_amazon_hf_rationale_1",
+      "tests_test_eda_recommendation",
+      "tests_test_eda_recommendation_edachecks",
+      "tests_test_eda_recommendation_rationale_1",
+      "tests_test_eda_recommendation_read_table",
+      "tests_test_eda_runtime",
+      "tests_test_eda_runtime_rationale_1",
+      "tests_test_experiment_scope",
+      "tests_test_experiment_scope_rationale_1",
+      "tests_test_model_readiness",
+      "tests_test_model_readiness_rationale_1",
+      "tests_test_model_readiness_readinesschecks",
+      "tests_test_model_readiness_readinesschecks_frames",
+      "tests_test_model_readiness_readinesschecks_setupclass",
+      "tests_test_model_readiness_readinesschecks_teardownclass",
+      "tests_test_model_readiness_readinesschecks_test_first_next_ties_repeat_and_empty_history",
+      "tests_test_model_readiness_readinesschecks_test_output_and_run_boundaries",
+      "tests_test_model_readiness_readinesschecks_test_profiles_full_diagnostic_and_empty",
+      "tools_eda_summarize_model_readiness",
+      "tools_eda_summarize_model_readiness_rate",
+      "tools_eda_summarize_model_readiness_rationale_1",
+      "tools_eda_summarize_model_readiness_read_csv",
+      "tools_eda_summarize_model_readiness_summarize",
+      "tools_graphify_enrich_graph",
+      "tools_graphify_enrich_graph_add_node",
+      "tools_graphify_enrich_graph_link",
+      "tools_graphify_enrich_graph_rationale_1",
+      "types",
+      "unittest",
+      "unittest_mock",
+      "urllib_parse"
+    ],
+    "5": [
+      "processing_silver_create_spark",
+      "processing_silver_hdfs",
+      "processing_silver_hdfs_bytes",
+      "processing_silver_hdfs_exists",
+      "processing_silver_hdfs_files",
+      "processing_silver_hdfs_init",
+      "processing_silver_hdfs_write_json",
+      "processing_silver_local_json",
+      "processing_silver_main",
+      "processing_silver_rationale_214",
+      "processing_silver_resources",
+      "processing_silver_resources_checkpoint",
+      "processing_silver_resources_close",
+      "processing_silver_resources_init",
+      "processing_silver_resources_monitor",
+      "processing_silver_resources_sample",
+      "processing_silver_run_silver",
+      "processing_silver_run_silver_interrupted",
+      "processing_silver_schema",
+      "processing_silver_scope",
+      "processing_silver_source_lineage",
+      "processing_silver_validate_paths",
+      "skipunless",
+      "tests_test_silver",
+      "tests_test_silver_rationale_1",
+      "tests_test_silver_silverchecks",
+      "tests_test_silver_silverchecks_test_hdfs_snapshot_and_failed_publication",
+      "tests_test_silver_silverchecks_test_rules_and_boundaries",
+      "uuid"
     ],
     "6": [
       "file:docs/KE_HOACH_DON_DEP_REPO.md",
@@ -358,6 +362,23 @@
       "file:docs/silver.md:L93"
     ],
     "10": [
+      "file:AGENTS.md",
+      "file:AGENTS.md:L1",
+      "file:compose.datanodes.yaml",
+      "file:compose.yaml",
+      "file:docs/project-map.md",
+      "file:docs/project-map.md:L1",
+      "file:infrastructure/hadoop/hadoop.env",
+      "path:data/staging",
+      "service:datanode-init",
+      "service:datanode1",
+      "service:datanode2",
+      "service:datanode3",
+      "service:datanodes-extra-init",
+      "service:namenode",
+      "service:namenode-init"
+    ],
+    "11": [
       "file:docs/history.md",
       "file:docs/history.md:L1",
       "file:docs/history.md:L101",
@@ -373,7 +394,7 @@
       "file:docs/history.md:L91",
       "file:docs/history.md:L97"
     ],
-    "11": [
+    "12": [
       "file:docs/operations.md",
       "file:docs/operations.md:L1",
       "file:docs/operations.md:L102",
@@ -389,7 +410,7 @@
       "file:docs/operations.md:L9",
       "file:docs/operations.md:L90"
     ],
-    "12": [
+    "13": [
       "file:docs/data-management.md",
       "file:docs/data-management.md:L1",
       "file:docs/data-management.md:L106",
@@ -404,21 +425,21 @@
       "file:docs/data-management.md:L96",
       "file:docs/data-management.md:L97"
     ],
-    "13": [
-      "notebooks_eda_recommendation_analyze_category",
-      "notebooks_eda_recommendation_degree_bin",
-      "notebooks_eda_recommendation_duplicates",
-      "notebooks_eda_recommendation_identity_overview",
-      "notebooks_eda_recommendation_report",
-      "notebooks_eda_recommendation_report_chart",
-      "notebooks_eda_recommendation_report_heatmap",
-      "notebooks_eda_recommendation_report_init",
-      "notebooks_eda_recommendation_report_insight_charts",
-      "notebooks_eda_recommendation_report_rows",
-      "notebooks_eda_recommendation_report_table",
-      "notebooks_eda_recommendation_stats"
-    ],
     "14": [
+      "file:infrastructure/spark/Dockerfile",
+      "file:infrastructure/spark/conf/core-site.xml",
+      "file:infrastructure/spark/requirements.txt",
+      "path:artifacts",
+      "path:infrastructure/spark/conf",
+      "path:ingestion/manifests",
+      "path:ingestion/scripts",
+      "path:notebooks",
+      "path:outputs",
+      "path:tests",
+      "service:hdfs-init",
+      "service:spark-notebook"
+    ],
+    "15": [
       "tests_test_eda_runtime_runtimechecks",
       "tests_test_eda_runtime_runtimechecks_test_category_load_failure_releases_all_registered_cache",
       "tests_test_eda_runtime_runtimechecks_test_category_load_failure_releases_all_registered_cache_load",
@@ -431,7 +452,19 @@
       "tests_test_eda_runtime_runtimechecks_test_phase_disk_drop_is_recorded_and_stops_next_phase",
       "tests_test_eda_runtime_runtimechecks_test_smoke_rejects_raw_before_session_and_bounds_collection"
     ],
-    "15": [
+    "16": [
+      "file:infrastructure/flume/Dockerfile",
+      "file:infrastructure/flume/flume.conf",
+      "file:infrastructure/flume/log4j2.xml",
+      "infrastructure_flume_flume_env",
+      "infrastructure_flume_flume_env_java_opts",
+      "infrastructure_flume_flume_env_sh__entry",
+      "path:data/spool",
+      "path:infrastructure/flume/flume.conf",
+      "service:flume",
+      "service:flume-init"
+    ],
+    "17": [
       "file:tests/README.md",
       "file:tests/README.md:L1",
       "file:tests/README.md:L17",
@@ -439,19 +472,10 @@
       "file:tests/README.md:L46",
       "file:tests/README.md:L5",
       "file:tests/README.md:L54",
-      "file:tests/README.md:L69"
+      "file:tests/README.md:L69",
+      "file:tests/README.md:L80"
     ],
-    "16": [
-      "processing_silver_local_json",
-      "processing_silver_rationale_214",
-      "processing_silver_resources",
-      "processing_silver_resources_checkpoint",
-      "processing_silver_resources_close",
-      "processing_silver_resources_init",
-      "processing_silver_resources_monitor",
-      "processing_silver_resources_sample"
-    ],
-    "17": [
+    "18": [
       "tests_test_download_amazon_hf_downloadtests",
       "tests_test_download_amazon_hf_downloadtests_test_default_scope_and_outside_scope_rejected",
       "tests_test_download_amazon_hf_downloadtests_test_download_verifies_and_second_run_makes_no_transfer",
@@ -461,7 +485,7 @@
       "tests_test_download_amazon_hf_downloadtests_test_selection_is_exact_and_deduplicated",
       "tests_test_download_amazon_hf_downloadtests_test_verified_existing_file_is_reused_without_manifest"
     ],
-    "18": [
+    "19": [
       "file:README.md",
       "file:README.md:L1",
       "file:README.md:L20",
@@ -470,70 +494,92 @@
       "file:README.md:L77",
       "file:README.md:L9"
     ],
-    "19": [
-      "tests_test_model_readiness_readinesschecks",
-      "tests_test_model_readiness_readinesschecks_frames",
-      "tests_test_model_readiness_readinesschecks_setupclass",
-      "tests_test_model_readiness_readinesschecks_teardownclass",
-      "tests_test_model_readiness_readinesschecks_test_first_next_ties_repeat_and_empty_history",
-      "tests_test_model_readiness_readinesschecks_test_output_and_run_boundaries",
-      "tests_test_model_readiness_readinesschecks_test_profiles_full_diagnostic_and_empty"
-    ],
     "20": [
+      "file:docs/architecture.md",
+      "file:docs/architecture.md:L1",
+      "file:docs/architecture.md:L3",
+      "file:docs/architecture.md:L38",
+      "file:docs/architecture.md:L48",
+      "file:docs/architecture.md:L62"
+    ],
+    "21": [
+      "file:docs/als-baseline.md",
+      "file:docs/als-baseline.md:L1",
+      "file:docs/als-baseline.md:L25",
+      "file:docs/als-baseline.md:L58"
+    ],
+    "22": [
+      "file:docs/graphify.md",
+      "file:docs/graphify.md:L1"
+    ],
+    "23": [
+      "file:infrastructure/graphify/Dockerfile",
+      "service:graphify"
+    ],
+    "24": [
+      "file:ingestion/README.md",
+      "file:ingestion/README.md:L1"
+    ],
+    "25": [
       "ingestion_scripts_init_hdfs",
       "ingestion_scripts_init_hdfs_sh__entry"
     ],
-    "21": [
+    "26": [
       "ingestion_scripts_migrate_hdfs_layout",
       "ingestion_scripts_migrate_hdfs_layout_sh__entry"
     ],
-    "22": [
+    "27": [
       "ingestion_scripts_put_amazonraw",
       "ingestion_scripts_put_amazonraw_invoke_hdfs"
     ],
-    "23": [
+    "28": [
       "ingestion_scripts_publish_file"
     ],
-    "24": [
+    "29": [
       "tools_graphify_refresh_graph"
     ],
-    "25": [
+    "30": [
       "tools_maintenance_reclaim_dockerdisk"
     ]
   },
   "cohesion": {
-    "0": 0.14130434782608695,
-    "1": 0.0703962703962704,
-    "2": 0.1354679802955665,
-    "3": 0.05187074829931973,
-    "4": 0.08205128205128205,
-    "5": 0.0625,
+    "0": 0.15151515151515152,
+    "1": 0.07759562841530054,
+    "2": 0.09758454106280193,
+    "3": 0.06060606060606061,
+    "4": 0.06313497822931785,
+    "5": 0.10344827586206896,
     "6": 0.07407407407407407,
     "7": 0.07692307692307693,
     "8": 0.08695652173913043,
     "9": 0.09523809523809523,
-    "10": 0.14285714285714285,
+    "10": 0.20952380952380953,
     "11": 0.14285714285714285,
-    "12": 0.15384615384615385,
-    "13": 0.2727272727272727,
+    "12": 0.14285714285714285,
+    "13": 0.15384615384615385,
     "14": 0.18181818181818182,
-    "15": 0.25,
-    "16": 0.32142857142857145,
-    "17": 0.25,
-    "18": 0.2857142857142857,
-    "19": 0.42857142857142855,
-    "20": 1.0,
-    "21": 1.0,
+    "15": 0.18181818181818182,
+    "16": 0.2,
+    "17": 0.2222222222222222,
+    "18": 0.25,
+    "19": 0.2857142857142857,
+    "20": 0.3333333333333333,
+    "21": 0.5,
     "22": 1.0,
     "23": 1.0,
     "24": 1.0,
-    "25": 1.0
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0
   },
   "gods": [
     {
       "id": "file:compose.yaml",
       "label": "Compose services, ports, mounts and resource limits",
-      "degree": 24
+      "degree": 25
     },
     {
       "id": "notebooks_eda_recommendation_analyze_category",
@@ -566,19 +612,19 @@
       "degree": 15
     },
     {
+      "id": "notebooks_als_baseline_run_baseline_5f4229",
+      "label": "_run_baseline()",
+      "degree": 12
+    },
+    {
       "id": "service:spark-notebook",
       "label": "spark-notebook Compose service",
       "degree": 12
     },
     {
-      "id": "notebooks_eda_recommendation_report",
-      "label": "Report",
+      "id": "notebooks_als_baseline_run_baseline",
+      "label": "run_baseline()",
       "degree": 11
-    },
-    {
-      "id": "processing_silver_hdfs",
-      "label": "Hdfs",
-      "degree": 10
     }
   ],
   "surprises": [
@@ -627,22 +673,22 @@
       "why": "connects across different repos/directories; bridges separate communities"
     },
     {
-      "source": "nested()",
-      "target": "canonical()",
+      "source": "run_silver()",
+      "target": "digest()",
       "source_files": [
         "processing/silver.py",
         "notebooks/eda_recommendation.py"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "connects across different repos/directories; peripheral node `nested()` unexpectedly reaches hub `canonical()`"
+      "why": "connects across different repos/directories; bridges separate communities"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `Compose services, ports, mounts and resource limits` connect `Community 3` to `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 10`, `Community 11`, `Community 12`, `Community 15`, `Community 18`?",
-      "why": "High betweenness centrality (0.200) - this node is a cross-community bridge."
+      "question": "Why does `Compose services, ports, mounts and resource limits` connect `Community 10` to `Community 3`, `Community 6`, `Community 7`, `Community 9`, `Community 11`, `Community 12`, `Community 13`, `Community 14`, `Community 16`, `Community 17`, `Community 19`, `Community 20`, `Community 21`, `Community 22`, `Community 23`, `Community 24`?",
+      "why": "High betweenness centrality (0.186) - this node is a cross-community bridge."
     },
     {
       "type": "verify_inferred",
@@ -652,16 +698,16 @@
     {
       "type": "isolated_nodes",
       "question": "What connects `JAVA_OPTS`, `data/staging mounted path`, `data/spool mounted path` to the rest of the system?",
-      "why": "172 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "177 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Community 0` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.14130434782608695 - nodes in this community are weakly interconnected."
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.07759562841530054 - nodes in this community are weakly interconnected."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `RuntimeChecks` connect `Community 14` to `Community 4`?",
+      "question": "Why does `RuntimeChecks` connect `Community 15` to `Community 4`?",
       "why": "High betweenness centrality (0.020) - this node is a cross-community bridge."
     },
     {
@@ -671,8 +717,8 @@
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Community 1` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.0703962703962704 - nodes in this community are weakly interconnected."
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09758454106280193 - nodes in this community are weakly interconnected."
     }
   ]
 }

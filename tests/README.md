@@ -76,3 +76,15 @@ docker compose -f compose.yaml -f compose.datanodes.yaml -f compose.eda-light.ya
 ```
 
 Host mocks không truy cập Docker thật; kiểm tra shared lock, active job, selected fsck, reserve, OOM/exit, manifest và cleanup/native stderr. Spark fixture là DataFrames nhỏ, không đọc raw/Silver production; kiểm tra first-next, ties, repeat, partial/outside candidates, verified-only, target rating leakage, text flags/excerpts, empty population và negative feasibility khi đã thấy hết catalog. Xem [EDA mục 8](../docs/eda.md#8-kế-hoạch-eda-bổ-sung-trên-silver-trước-gold). Không chạy encoder/model hay tạo Gold.
+
+## Kiểm tra baseline ALS
+
+Với notebook container đang idle, chạy trên host PowerShell:
+
+```powershell
+docker compose exec -T spark-notebook python -W ignore::ResourceWarning /workspace/tests/test_als_baseline.py
+```
+
+Dữ liệu giả: temporal cutoff/ties/repeat, binary pairs, cold user/target ngoài
+candidates, Recall/NDCG đối chiếu tay, sample ổn định và fit/save/load ALS thật.
+Không đọc production Silver. Xem [hướng dẫn pilot](../docs/als-baseline.md).

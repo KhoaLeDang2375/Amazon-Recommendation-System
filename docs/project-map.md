@@ -13,6 +13,7 @@
 | Raw Video metadata finalized | [manifest](../ingestion/manifests/video_games_metadata.v1.json) |
 | EDA spec/run/report | [eda.md](eda.md), [implementation](../notebooks/eda_recommendation.py), [notebook 02](../notebooks/02_eda_recommendation.ipynb) |
 | EDA bổ sung trên Silver trước Gold | [kế hoạch và vận hành](eda.md#8-kế-hoạch-eda-bổ-sung-trên-silver-trước-gold), [implementation](../notebooks/eda_model_readiness.py), [notebook 03](../notebooks/03_eda_model_readiness.ipynb), [runner](../tools/eda/Run-ModelReadiness.ps1) |
+| Pilot implicit ALS trên mẫu Silver | [hướng dẫn](als-baseline.md), [notebook 04](../notebooks/04_als_baseline.ipynb), [implementation](../notebooks/als_baseline.py), [kiểm tra](../tests/test_als_baseline.py) |
 | Kết quả ba full EDA, rules và kế hoạch processing/snapshot | [processing.md](processing.md) |
 | Silver: code/schema/lưu trữ, vận hành và kết quả | [silver.md](silver.md), [silver.py](../processing/silver.py), [Run-Silver.ps1](../tools/silver/Run-Silver.ps1) |
 | Batch/host disk monitor | [Run-Eda.ps1](../tools/eda/Run-Eda.ps1) |
@@ -22,7 +23,7 @@
 | Hồ sơ đợt cleanup đã hoàn thành pha 0–6 | [KE_HOACH_DON_DEP_REPO.md](KE_HOACH_DON_DEP_REPO.md) |
 | Graph/code navigation | [graphify.md](graphify.md), [refresh](../tools/graphify/Refresh-Graph.ps1), [GRAPH_REPORT](../graphify-out/GRAPH_REPORT.md) |
 
-Raw thật: /project/raw/<category_lower>_{reviews,metadata}/v1; chỉ sáu dataset thuộc thực nghiệm. Pha 5 ngày 14/10/2026 đã dọn Sports/Toys/Health khỏi HDFS và staging; inventory/bằng chứng ở outputs/validation/phase5-20261014/, không commit. Testing: /project/testing/{raw,processed,analytics}/smoke/v1, legacy riêng. Silver ba category đã complete ngày 16/10/2026; Gold/model/web chưa triển khai.
+Raw thật: /project/raw/<category_lower>_{reviews,metadata}/v1; chỉ sáu dataset thuộc thực nghiệm. Pha 5 ngày 14/10/2026 đã dọn Sports/Toys/Health khỏi HDFS và staging; inventory/bằng chứng ở outputs/validation/phase5-20261014/, không commit. Testing: /project/testing/{raw,processed,analytics}/smoke/v1, legacy riêng. Silver ba category đã complete ngày 16/10/2026; pilot ALS trên mẫu Silver chạy ngày 22/10/2026. Pipeline Gold tổng quát và web chưa triển khai.
 
 Giữ identity hadoop-demo và tất cả named volumes, gồm ba DataNode hiện có và Flume state. Block replication 1 có thể trên cả ba node; không format/xóa volume/giảm node như bước dọn. Flume drain trước routing changes; .COMPLETED khác Sink finalized, không bảo đảm exactly-once.
 
