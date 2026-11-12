@@ -314,3 +314,137 @@ Verified-only ở test làm mất 1.022/11.971/10.358 queries có history+target
 Báo cáo local [BAO_CAO_TONG_HOP.md](../outputs/eda_model_readiness/comparison_20261018_final/BAO_CAO_TONG_HOP.md) có A/B cho cả validation/test, text/negative tables, ghi chú rà mẫu và đề xuất Gold. [summarize_model_readiness.py](../tools/eda/summarize_model_readiness.py) chỉ tổng hợp các run/batch complete được chỉ định, kiểm tra population conservation và cùng code/protocol, không chọn latest tự động. Outputs ignored không đi cùng Git clone.
 
 Fixture cuối đạt 3 tests; host mocks đạt PowerShell 7/Windows PowerShell 5.1. SHA256 của EDA raw, notebook 01/02 và Silver producer code hiện hành giữ nguyên. Hai attempt All Beauty trước khi chạy thành công được giữ: run_20261018T082625136366Z failed do guard so thứ tự cột quá chặt; run_20261018T082804538472Z bị dừng có chủ đích do AQE chờ nested cache, exit 137 nhưng OOM=false. Đã sửa guard so theo tên/type/nullability/metadata và materialize cache hẹp tuần tự; không tăng RAM/CPU hay thay source. Ba runs được chọn sau sửa đều complete, không OOM. Bằng chứng ở outputs/validation/model-readiness-20261018/ và host/container logs từng run.
+
+### 8.8. So sánh cutoff và cửa sổ trước Gold
+
+Phần bổ sung ngày 30/10/2026 dùng [eda_cutoff.py](../notebooks/eda_cutoff.py), chỉ đọc
+ba snapshot Silver đã nghiệm thu. Giữ policy mọi review, first-next timestamp,
+ties nhiều nhãn, repeat và candidates là distinct items train. Không train model,
+tạo embeddings, ghi Gold hoặc thay Silver.
+
+Grid gồm cutoff 01/01/2019, 01/01/2020, 01/01/2021 và cửa sổ 3/6/12 tháng.
+Các cutoff đầu năm giúp so cùng mùa; giới hạn validation đến năm 2021 để còn
+một năm test đầy đủ sau refit. Đây là grid vận hành hữu hạn, không tìm cutoff
+tối ưu trên mọi ngày. Khi đọc các năm phải tính đến thay đổi hoạt động theo thời
+gian; tăng support không tự chứng minh phân bố ổn định.
+
+| Phép đo | Mẫu số và cách đọc |
+|---|---|
+| Train users/items/pairs/events và density | Toàn history trước cutoff; pairs khác số review |
+| Query có nhãn; warm-full | Mỗi user một query; warm-full cần history và toàn bộ target items thuộc candidates |
+| History 0/1/2/3–4/≥5 | Báo riêng events, distinct items, timestamp groups; trên toàn query và warm-full |
+| Cold user | Query history=0 / query có nhãn |
+| Cold item | Target pairs ngoài candidates / tổng target pairs; thêm query có ít nhất một target ngoài catalog |
+| Horizon và target lag | Cửa sổ lịch chính xác theo tháng/ngày; số ngày từ cutoff tới first-next P50/P90 |
+
+Chọn cutoff gần nhất có ít nhất **2.401 warm-full queries ở cả ba ngành**,
+rồi chọn cửa sổ ngắn nhất tại cutoff đó. Ngưỡng được khai báo trước khi xem
+bảng mới: `ceil(1.96² × 0.25 / 0.02²)`. Nó là dự toán cỡ mẫu cho sai số xấp xỉ
+±2 điểm phần trăm ở mức 95% của **một tỷ lệ hit**, dưới giả định các query độc lập.
+Không phải kiểm định power của hai model, bảo đảm NDCG hoặc ngưỡng support cho
+từng user/item. Các counts trên full Silver là chính xác theo snapshot; công thức
+chỉ định ngân sách đánh giá. Nhóm history≥2 vẫn phải báo riêng cỡ mẫu thực tế.
+Tham khảo công thức xấp xỉ cỡ mẫu tỷ lệ trong
+[NIST: Selecting Sample Sizes](https://itl.nist.gov/div898/handbook/ppc/section3/ppc333.htm).
+Mức ±2 điểm phần trăm và ưu tiên dữ liệu gần đây là lựa chọn thiết kế của đợt này,
+không phải một chuẩn cutoff bắt buộc từ NIST hay paper recommendation.
+
+Không tối đa hóa warm rate, không thay rating/k-core để đạt ngưỡng. Nếu không
+phương án nào đủ thì xuất `insufficient_support`, chưa khóa. Sau lựa chọn,
+đo test tại cutoff cộng một năm với **cùng độ dài cửa sổ**; công bố coverage
+test, không dùng nó để đổi lựa chọn. Ngưỡng trên áp dụng cho validation; test
+có thể ít warm hơn và phải báo mức hạn chế tương ứng.
+
+PowerShell host tại `project/`, HDFS sẵn sàng và không có notebook/job Spark khác:
+
+```powershell
+& ./tools/eda/Run-ModelReadiness.ps1 -Category All_Beauty -SilverRun run_20261016T021632209982Z -CutoffStudy
+& ./tools/eda/Run-ModelReadiness.ps1 -Category Video_Games -SilverRun run_20261016T022209697481Z -CutoffStudy
+& ./tools/eda/Run-ModelReadiness.ps1 -Category Industrial_and_Scientific -SilverRun run_20261016T053543469765Z -CutoffStudy
+```
+
+Chạy tuần tự và kiểm tra từng run complete. Mỗi run xuất `cutoff_comparison.csv`,
+`cutoff_history.csv`, manifest nguồn/code và tài nguyên trong root readiness hiện
+có. Runner tái sử dụng shared lock, preflight selected fsck, host/VHDX reserve,
+OOM/exit, log và cleanup; không bỏ qua guard để chạy song song.
+
+Tổng hợp bằng Python trong container, `eda_cutoff.py --summarize <ba run.json>
+--output <thư mục mới>`. Chỉ nhận đủ ba ngành, run complete cùng code/helper và
+grid. Lệnh tạo report, biểu đồ và `protocol-lock.json` trạng thái `selected`.
+Sau đó chạy runner với `-CutoffStudy -TestStart <test_start> -Months <months>`
+cho từng ngành. Lệnh `eda_cutoff.py --attach-test <ba test run.json> --output
+<thư mục report>` kiểm tra đúng nguồn/cửa sổ/code, thêm bảng/biểu đồ test và đổi
+trạng thái thành `locked`; không chọn lại protocol. Chỉ đọc aggregate khi tổng hợp.
+
+#### Kết quả so sánh toàn Silver ngày 30/10/2026
+
+Ba run selection complete: All Beauty `run_20261030T025218957854Z`, Video Games
+`run_20261030T025354686962Z`, Industrial `run_20261030T025639607633Z`. Cùng source
+Silver của đợt 16/10 và cùng code/helper; tổng cộng 27 tổ hợp ngành/cutoff/horizon.
+
+Tại cutoff gần nhất trong grid, 01/01/2021:
+
+| Ngành | User train | Item train | Cặp train | Warm 3 tháng | Warm 6 tháng | Warm 12 tháng |
+|---|---:|---:|---:|---:|---:|---:|
+| All Beauty | 457.324 | 80.187 | 495.387 | 1.707 | 2.681 | 3.632 |
+| Video Games | 2.119.819 | 104.148 | 3.511.273 | 27.391 | 44.239 | 63.612 |
+| Industrial and Scientific | 2.252.334 | 311.642 | 3.237.493 | 41.554 | 72.503 | 112.703 |
+
+![Số query warm theo cutoff và cửa sổ](cutoff-warm-support.png)
+
+Mỗi panel có thang trục Y riêng. All Beauty là ngành giới hạn cỡ mẫu: 3 tháng
+thiếu ngưỡng 2.401, 6 tháng đạt; hai ngành còn lại đều đạt. Tăng lên 12 tháng có
+thêm mẫu nhưng kéo dài khoảng chờ target. Theo quy tắc đã khai báo, chọn cutoff
+2021 và **6 tháng**, thay cho việc mặc định dùng cả năm hoặc toàn đuôi dataset.
+
+| Validation 6 tháng | Tổng query | Warm | Warm có ≥2 history items | Cold user | Cold target item | Lag P50/P90, ngày |
+|---|---:|---:|---:|---:|---:|---|
+| All Beauty | 69.848 | 2.681 | 667 | 93,27% | 35,15% | 85 / 160 |
+| Video Games | 242.638 | 44.239 | 20.832 | 78,94% | 11,32% | 78 / 156 |
+| Industrial and Scientific | 394.153 | 72.503 | 33.190 | 78,52% | 13,36% | 86 / 159 |
+
+Cold-user và cold-item giao nhau, không cộng tỷ lệ. Target lag tính trên tất cả
+query có nhãn. Cửa sổ 6 tháng vẫn là dự đoán tương tác trong nửa năm: median
+target khoảng 78–86 ngày, không phải dự đoán lần mua trong vài ngày. Train có
+hàng triệu pairs chưa chứng minh CF tốt; density rất thấp và history ngắn.
+
+Kết quả 12 tháng tại 2021 khớp query/warm/train-pair counts của EDA ngày 18/10.
+Bảng 27 phương án, bins events/items/timestamps và manifests nằm trong
+[báo cáo cutoff local](../outputs/eda_model_readiness/cutoff_20261030_final/BAO_CAO_CUTOFF.md).
+
+**Protocol đã khóa:** train trước 01/01/2021; validation [01/01/2021,
+01/07/2021); sau tuning refit trước 01/01/2022 và test [01/01/2022, 01/07/2022),
+tất cả UTC. Cấu hình có source/code hashes trong
+[processing/gold_protocol.json](../processing/gold_protocol.json). Hai cửa sổ cùng
+181 ngày, cùng mùa. History cố định tại đầu cửa sổ; không cập nhật từ events bên
+trong validation/test. Events tháng 7–12/2021 được dùng trong refit, còn events
+ngoài cửa sổ đánh giá vẫn giữ nguyên ở Silver.
+
+Coverage test được đo sau selection, không dùng để chọn lại:
+
+| Ngành | Tổng query | Warm | Warm có ≥2 history items | Cold user | Cold target item | Lag P50/P90, ngày |
+|---|---:|---:|---:|---:|---:|---|
+| All Beauty | 32.466 | 1.751 | 377 | 91,40% | 28,13% | 80 / 159 |
+| Video Games | 161.663 | 36.893 | 18.454 | 73,48% | 11,56% | 75 / 158 |
+| Industrial and Scientific | 325.569 | 74.055 | 35.371 | 74,04% | 10,67% | 80 / 160 |
+
+![Phân bố độ dài lịch sử tại test](cutoff-test-history.png)
+
+All Beauty test có ít warm hơn validation, phần lớn warm chỉ có một item history.
+Ngân sách xấp xỉ của một tỷ lệ hit theo cùng công thức là ±2,34 điểm phần trăm
+với 1.751 query, và ±5,05 điểm với nhóm 377 query history≥2. Không dùng các mức
+này như sai số NDCG hay power phân biệt hai model. Đây là giới hạn cần công bố,
+không hạ ngưỡng rồi tuyên bố mọi nhóm đã đủ mẫu.
+
+ALS/NeuMF thuần ID báo metric trên nhóm warm chung để so khả năng cá nhân hóa;
+báo thêm toàn population với cùng Popularity fallback và coverage. Không bỏ
+cold-start khỏi Gold hoặc dùng cùng điểm tổng bị fallback chi phối để kết luận
+backbone nào tốt hơn. Target ngoài candidates vẫn ở mẫu số đánh giá toàn bộ.
+
+Ba test runs complete: `run_20261030T030009600352Z`,
+`run_20261030T030102138698Z`, `run_20261030T030223223854Z` theo thứ tự ngành ở
+bảng. Cả sáu runs giữ nguyên manifest Silver trước/sau, không OOM/exit failure,
+host reserve đạt. Peak cgroup quan sát sát 2 GiB, không coi là giới hạn peak cho
+Gold/encoder. Fixture cutoff đạt 2 tests, runner fault mocks đạt PowerShell 7 và
+Windows PowerShell 5.1. Bằng chứng đối soát:
+`outputs/validation/cutoff-20261030/verification.json`.

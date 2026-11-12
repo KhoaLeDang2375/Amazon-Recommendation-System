@@ -1,5 +1,26 @@
 # Kiểm thử nhỏ
 
+NCF/NeuMF và DeepFM D0/D1/D2 — PowerShell host tại project/:
+
+Bao gồm sampler vector hóa (uniform, không trùng/seen, độc lập batch/order),
+Top-K FP32/ties và merge, projection cache theo checkpoint, prefetch so với
+đồng bộ, chặn non-finite trước optimizer update. CUDA parity tự bỏ qua khi
+máy không có CUDA; CPU tests không chứng minh throughput trên T4.
+
+```powershell
+python -X utf8 tools/gold/Build-NeuralNotebooks.py
+python -X utf8 -m unittest discover -s tests -p test_kaggle_neural_recommendation.py -v
+```
+
+Dùng PyTorch CPU và Parquet thật, không cần Docker hoặc mạng. Bao phủ temporal
+features/missing/ties, sampler, FM/MLP và scoring parity, train→val→refit/test,
+checkpoint resume qua phiên, upload Dataset giả lập và notebook/source sync.
+Compact defaults có kiểm tra số tham số; early stopping bao phủ warm-up,
+patience theo validation checks, tiny gains, best khác last, actual stopped
+epoch, max cap và resume trước/sau commit validation hoặc completion. Refit
+chỉ dùng selected_epoch và không đọc validation/test để tự dừng.
+Không phải full-data hoặc CUDA benchmark.
+
 `fixtures/ingestion/smoke.jsonl` gồm ba record; `fixtures/legacy/test.txt` lưu ví dụ cũ. Smoke HDFS nằm riêng dưới `/project/testing/raw/smoke/v1`.
 
 ## Scope và ingestion offline — PowerShell host
@@ -77,7 +98,66 @@ docker compose -f compose.yaml -f compose.datanodes.yaml -f compose.eda-light.ya
 
 Host mocks không truy cập Docker thật; kiểm tra shared lock, active job, selected fsck, reserve, OOM/exit, manifest và cleanup/native stderr. Spark fixture là DataFrames nhỏ, không đọc raw/Silver production; kiểm tra first-next, ties, repeat, partial/outside candidates, verified-only, target rating leakage, text flags/excerpts, empty population và negative feasibility khi đã thấy hết catalog. Xem [EDA mục 8](../docs/eda.md#8-kế-hoạch-eda-bổ-sung-trên-silver-trước-gold). Không chạy encoder/model hay tạo Gold.
 
+## Kiểm tra Gold G0–G2 và encoder notebook
+
+Hai notebook training 07/08 dùng source chung và kiểm tra bằng
+`python tests/test_kaggle_recommendation.py` (numpy, scipy, pandas, pyarrow,
+psutil, nbformat; Torch tùy chọn để kiểm tra nhánh tie-break bằng tensor CPU).
+Chạy thêm fit ALS CPU thật bằng RECOMMENDATION_ALS_TEST=1 trong môi trường Linux
+Python 3.11 có implicit==0.7.2, numpy==1.26.4, scipy==1.14.1, pandas==2.2.3 và
+libgomp1. Fixture chỉ dùng Parquet nhỏ local, không chạy Spark/HDFS hoặc Kaggle.
+Kết quả/checksum notebook sync và load Gold All Beauty thật được ghi local
+outputs/validation/recommendation-notebooks. Hướng dẫn [training Kaggle](../docs/kaggle-recommendation-plan.md#8-cách-dùng-notebook-đã-triển-khai).
+
+Gold training export/upload: `python tests/test_gold_kaggle.py` kiểm tra Parquet,
+manifest/checksums, whitelist snapshot, private guard và upload giả lập.
+`tests/test_gold_publish_runtime.ps1` mock runner (PS7/5.1), ba export tuần tự,
+finalize trước upload, chặn active job/fsck lỗi/OOM và cleanup.
+Fixture Spark đầy đủ (chỉ một category nhỏ, không production/Kaggle):
+
+```powershell
+docker compose -f compose.yaml -f compose.datanodes.yaml -f compose.gold-light.yaml run --rm --pull never --no-deps -e GOLD_KAGGLE_SPARK_TEST=1 spark-notebook python -W ignore::ResourceWarning /workspace/tests/test_gold_kaggle.py
+```
+
+Notebook tải/đọc local 06 có fixture Parquet/checkpoints và chạy luồng offline:
+`python tests/test_download_read_embeddings.py` (cần numpy, pyarrow, pandas).
+Không đăng nhập, tải Dataset private hay gọi GPU trong fixture.
+
+`test_gold.py` bao phủ split/anchors, labels/cohorts, text cleaning/dedup/export
+và HDFS publish/fail-before-publish (bật `GOLD_TEST_HDFS=1`).
+`test_gold_runtime.ps1` mock các fault của runner trên host.
+`test_kaggle_text_embeddings.py` kiểm tra Parquet/vector keys, shape/norm,
+checksum/resume, giới hạn shard mới mỗi lượt, snapshot Dataset partial chỉ gồm
+shard hợp lệ và notebook nhúng đúng script đã kiểm tra, không cần GPU.
+`integration/verify_gold_outputs.py --run-id ...` đối chiếu production với EDA
+và gói text, gồm lineage parent khi chỉ refresh G2. Lệnh cụ thể ở [Gold](../docs/gold.md#kiểm-tra); không chạy hai Spark
+jobs đồng thời. Kiểm tra inference T4 thực tế bằng pilot trong notebook Kaggle.
+
+## Kiểm tra EDA cutoff
+
+Kiểm tra EDA cutoff (không chạy đồng thời với batch/Spark notebook):
+
+```powershell
+docker compose -f compose.yaml -f compose.datanodes.yaml -f compose.eda-light.yaml run --rm --pull never --no-deps spark-notebook python -W ignore::ResourceWarning /workspace/tests/test_eda_cutoff.py
+```
+
+Fixture kiểm tra ranh giới nửa mở, ties nhiều targets, cold-item theo target pairs,
+history events khác distinct items, target lag, empty population và quy tắc chọn
+latest-feasible/shortest-horizon. `test_model_readiness_runtime.ps1` kiểm tra thêm
+route `-CutoffStudy -TestStart ... -Months ...` và giữ các fault checks cũ.
+
 ## Kiểm tra baseline ALS
+
+Two-Tower và hồi quy neural chạy bằng Python host, không cần Spark/GPU:
+
+```powershell
+python -m unittest discover -s tests -p test_kaggle_two_tower.py
+python -m unittest discover -s tests -p test_kaggle_neural_recommendation.py
+```
+
+Two-Tower kiểm tra hai encoder/cached dot-product, missing text, temporal features,
+training/refit, resume, validation-before-test và notebook 11 tự chứa. Fixtures ở
+outputs/validation, không đọc production data. GPU benchmark chạy riêng trên Kaggle.
 
 Với notebook container đang idle, chạy trên host PowerShell:
 

@@ -1,5 +1,8 @@
 # Thử baseline implicit ALS trên Silver
 
+Kế hoạch thực nghiệm full Gold mới: [ALS và content-based trên Kaggle](kaggle-recommendation-plan.md).
+Các số liệu bên dưới là pilot trên mẫu và cửa sổ validation cũ.
+
 Notebook `notebooks/04_als_baseline.ipynb` dùng cùng implementation với
 `notebooks/als_baseline.py`. Không sửa Silver hoặc notebook EDA cũ. Đây là snapshot
 thí nghiệm nhỏ, chưa triển khai pipeline Gold tổng quát.

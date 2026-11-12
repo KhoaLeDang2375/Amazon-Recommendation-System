@@ -4,7 +4,10 @@ param(
     [string]$DockerDiskPath = (Join-Path $env:LOCALAPPDATA 'Docker/wsl/disk/docker_data.vhdx'),
     [ValidateRange(1, 2147483647)][int]$MinFreeGiB = 20,
     [ValidateSet(1, 2)][int]$Cores = 2,
-    [ValidateRange(1, 2147483647)][int]$ShufflePartitions = 64
+    [ValidateRange(1, 2147483647)][int]$ShufflePartitions = 64,
+    [switch]$CutoffStudy,
+    [ValidatePattern('^20[0-9]{2}-01-01$')][string]$TestStart,
+    [ValidateSet(3, 6, 12)][int]$Months = 12
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
@@ -23,6 +26,7 @@ try {
     . (Join-Path $repoRoot 'ingestion/scripts/Get-ExperimentScope.ps1')
     $scope = Get-ExperimentScope
     if ($Category -cnotin $scope.categories) { throw "Category outside experiment scope: $Category" }
+    if ($TestStart -and -not $CutoffStudy) { throw 'TestStart requires CutoffStudy' }
     $disk = Get-Item -LiteralPath $DockerDiskPath
     if ($disk.PSIsContainer -or $disk.Extension -ine '.vhdx' -or ($disk.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
         throw 'DockerDiskPath must be an existing VHDX file, not a symlink'
@@ -44,7 +48,7 @@ try {
     $batchPath = Join-Path $outputRoot "$runId.batch.json"
     $logPath = Join-Path $outputRoot "$runId.log"
     $resourcePath = Join-Path $outputRoot "$runId.host.resources.jsonl"
-    $batch = [ordered]@{ run_id=$runId; category=$Category; silver_run=$SilverRun; status='running'; docker_disk_path=$disk.FullName }
+    $batch = [ordered]@{ run_id=$runId; category=$Category; silver_run=$SilverRun; status='running'; docker_disk_path=$disk.FullName; cutoff_study=[bool]$CutoffStudy; test_start=$TestStart }
     $batch | ConvertTo-Json | Set-Content -LiteralPath $batchPath -Encoding UTF8
     function Save-ReadinessResources {
         $outputFree = [IO.DriveInfo]::new([IO.Path]::GetPathRoot($outputRoot)).AvailableFreeSpace
@@ -54,10 +58,13 @@ try {
         if ([Math]::Min($outputFree, $dockerFree) -lt ([long]$MinFreeGiB * 1GB)) { throw 'Host disk reserve below threshold' }
     }
     Save-ReadinessResources
-    $created = @(Invoke-ReadinessDocker -Arguments @('compose', '-f', 'compose.yaml', '-f', 'compose.datanodes.yaml', '-f', 'compose.eda-light.yaml',
+    $module = if ($CutoffStudy) { '/workspace/notebooks/eda_cutoff.py' } else { '/workspace/notebooks/eda_model_readiness.py' }
+    $jobArguments = @('compose', '-f', 'compose.yaml', '-f', 'compose.datanodes.yaml', '-f', 'compose.eda-light.yaml',
         'run', '--detach', '--pull', 'never', '--no-deps', '--name', "hadoop-demo-readiness-$runId", 'spark-notebook',
-        'python', '/workspace/notebooks/eda_model_readiness.py', '--category', $Category, '--silver-run', $SilverRun,
-        '--run-id', $runId, '--cores', "$Cores", '--shuffle-partitions', "$ShufflePartitions", '--min-free-gb', "$MinFreeGiB"))
+        'python', $module, '--category', $Category, '--silver-run', $SilverRun,
+        '--run-id', $runId, '--cores', "$Cores", '--shuffle-partitions', "$ShufflePartitions", '--min-free-gb', "$MinFreeGiB")
+    if ($TestStart) { $jobArguments += @('--test-start', $TestStart, '--months', "$Months") }
+    $created = @(Invoke-ReadinessDocker -Arguments $jobArguments)
     $ids = @($created | Where-Object { $_ -match '^[a-f0-9]{64}$' })
     if ($ids.Count -ne 1) { throw 'Docker did not return one owned container ID' }
     $containerId = $ids[0]
@@ -73,6 +80,10 @@ try {
     if ($state.ExitCode -ne 0 -or $state.OOMKilled) { throw "Readiness exit=$($state.ExitCode), OOM=$($state.OOMKilled); inspect $logPath" }
     $job = Get-Content -LiteralPath (Join-Path $outputRoot "$runId/run.json") -Raw -Encoding UTF8 | ConvertFrom-Json
     if ($job.status -cne 'complete' -or $job.category -cne $Category -or $job.silver_run -cne $SilverRun -or $job.run_id -cne $runId) { throw 'Job manifest did not confirm completion' }
+    if ($CutoffStudy) {
+        $expectedKind = if ($TestStart) { 'cutoff_test_diagnostic' } else { 'cutoff_selection' }
+        if ($job.kind -cne $expectedKind) { throw 'Wrong cutoff job kind' }
+    }
     $complete = $true
     $result = [pscustomobject]@{ Category=$Category; RunId=$runId; ReportDirectory=(Join-Path $outputRoot "$runId/$Category"); LogPath=$logPath }
 } catch {

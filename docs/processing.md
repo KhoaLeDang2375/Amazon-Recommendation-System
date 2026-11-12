@@ -1,6 +1,6 @@
 # Processing: từ EDA đến Silver, Gold và dữ liệu đánh giá
 
-**Cập nhật: 18/10/2026.** Silver đã nghiệm thu cả ba category; kết quả từng run ở [silver.md](silver.md). EDA bổ sung trên ba Silver snapshots đã complete; xem [eda.md mục 8.7](eda.md#87-kết-quả-full-silver-ngày-18102026). Gold, đặc trưng model và protocol đánh giá bên dưới vẫn là đề xuất chưa triển khai. Mục tiêu: **khuyến nghị sản phẩm tiếp theo; đánh giá qua tương tác review, dùng rating/review quá khứ làm đặc trưng khi có**. Phạm vi chỉ mua được xác minh cần chọn policy verified-only; timestamp hiện có là thời điểm review.
+**Cập nhật: 30/10/2026.** Silver đã nghiệm thu cả ba category; kết quả từng run ở [silver.md](silver.md). EDA bổ sung trên ba Silver snapshots đã complete; xem [eda.md mục 8.7](eda.md#87-kết-quả-full-silver-ngày-18102026). Cutoff/cửa sổ đã khóa bằng thống kê toàn Silver ở [EDA mục 8.8](eda.md#88-so-sánh-cutoff-và-cửa-sổ-trước-gold), cấu hình [gold_protocol.json](../processing/gold_protocol.json). G0–G2 đã có producer/runner, contract và notebook Kaggle; trạng thái từng run ở [Gold](gold.md). Import embeddings, rating/review profiles và model training mới là bước sau; pilot ALS cũ trên mẫu là thí nghiệm riêng. Mục tiêu: **khuyến nghị sản phẩm tiếp theo; đánh giá qua tương tác review, dùng rating/review quá khứ làm đặc trưng khi có**. Protocol khóa dùng mọi review; timestamp hiện có là thời điểm review.
 
 Đọc mục 1–3 để hiểu bài toán; mục 4–5 là các bước sẽ làm; mục 6 là những lựa chọn cần xem xét; mục 7–8 là nghiệm thu và bằng chứng. [EDA](eda.md) giữ đặc tả phân tích; [kế hoạch tổng quát](../../doc/KE_HOACH_TONG_QUAT.md) giữ backlog học thuật.
 
@@ -61,7 +61,7 @@ flowchart TD
 | --- | --- | --- |
 | Bronze / raw hiện có | Sáu dataset reviews/metadata đúng nguồn và manifests | Thêm batch/version có chủ đích; không sửa để làm sạch |
 | Silver | Reviews sạch, catalog, quality flags, quarantine và audit bản sao | Nguồn hoặc policy làm sạch đổi |
-| Gold | Split, lịch sử từng mẫu, đặc trưng, nhãn riêng, mappings/candidates/cohorts và protocol manifest | Cutoff, cách tạo nhãn, encoder hoặc thí nghiệm đổi |
+| Gold | G0–G2: split, lịch sử tham chiếu, nhãn riêng, mappings/candidates/cohorts và text export; feature bundles bổ sung sau | Cutoff, cách tạo nhãn, encoder hoặc thí nghiệm đổi |
 
 Silver giữ text/rating/verified_purchase/event_time. Gold quyết định **mẫu nào được nhìn thấy review nào** và cách biểu diễn chúng. Tạo embeddings toàn bộ review rồi join theo user vẫn có thể gây leakage nếu không ràng buộc thời gian.
 
@@ -78,7 +78,7 @@ Bronze dùng `/project/raw/<category_lower>_{reviews,metadata}/v1` như hiện t
     feature_manifest.json                       manifest.json
 ~~~
 
-Gold dự kiến có `inputs/`, `labels/`, `eligibility/` tách riêng và tham chiếu Silver bằng run/version/record hash để tránh copy text. Silver đã ghi theo layout trên; Gold chưa được tạo. Report `outputs/processing/` được ignore Git; fixture dưới `/project/testing/...`.
+Gold G0–G2 tách queries, labels, cohorts và tham chiếu Silver bằng run/version/record hash để tránh copy text vào từng mẫu. Layout triển khai ở [Gold](gold.md); text export là artifact riêng có manifest và checksum. Report `outputs/processing/` được ignore Git; fixture dưới `/project/testing/...`.
 
 ## 3. Chia tập và xử lý người ít tương tác
 
@@ -87,10 +87,12 @@ Gold dự kiến có `inputs/`, `labels/`, `eligibility/` tách riêng và tham 
 | Tập | Khoảng đề xuất, UTC | Mục đích |
 | --- | --- | --- |
 | Train | Trước 01/01/2021 | Học model và fit các phép biến đổi |
-| Validation | [01/01/2021, 01/01/2022) | Chọn cấu hình bằng đáp án chưa cho model học |
-| Test | [01/01/2022, 01/10/2023) | Kiểm tra sau khi đã khóa lựa chọn |
+| Validation | [01/01/2021, 01/07/2021) | Chọn cấu hình bằng đáp án chưa cho model học |
+| Test | [01/01/2022, 01/07/2022) | Kiểm tra sau khi đã khóa lựa chọn |
 
-**Các mốc là đề xuất để xem xét, không phải kết luận bắt buộc từ EDA hoặc cutoff nguyên bản BLaIR.** EDA mới đo ranh giới 2022, chưa đo đủ mẫu Gold cho validation 2021. Diagnostic phải đi trước khóa protocol; không chọn ngày bằng metric test.
+**Đã khóa ngày 30/10/2026 sau 27 tổ hợp cutoff/horizon/ngành và ba lượt coverage test.** Chọn cutoff validation gần nhất trong grid có ≥2.401 warm-full queries ở cả ba ngành, rồi horizon ngắn nhất: 6 tháng. Đây là tiêu chí vận hành có ngân sách cỡ mẫu, không phải cutoff tối ưu duy nhất hay cutoff nguyên bản BLaIR. Không dùng điểm model hoặc coverage test để chọn lại. All Beauty test chỉ có 1.751 warm queries, nên ngưỡng validation không bảo đảm độ chính xác cho mọi nhóm test; giới hạn ở EDA mục 8.8.
+
+Hai cửa sổ cùng 181 ngày và cùng mùa trong năm. Events tháng 7–12/2021 không tạo nhãn validation nhưng được dùng khi refit trước 2022. Events từ 01/07/2022 trở đi vẫn giữ nguyên ở Silver, chưa nằm trong cửa sổ đánh giá của protocol này. Báo cáo EDA/pilot cũ với cửa sổ dài hơn giữ nguyên như bằng chứng lịch sử; không so trực tiếp metric khác cửa sổ như cùng protocol.
 
 Khi tuning, lịch sử validation chỉ lấy trước 2021. Sau khi chọn cấu hình, refit trên dữ liệu trước 2022, rebuild transforms/history/mappings rồi test một lần. “Đã thấy” lúc test được tính theo dữ liệu huấn luyện cuối đó. Mọi model so sánh dùng cùng lịch sử được phép, nhãn, candidates và cohort.
 
@@ -106,7 +108,12 @@ Khi tuning, lịch sử validation chỉ lấy trước 2021. Sau khi chọn c�
 
 Nhiệm vụ cụ thể là “tương tác đầu tiên sau mốc từ lịch sử đã biết tại mốc”, không dùng tập mọi sản phẩm của cả năm như một nhãn next-item.
 
-Train examples cũng có cặp lịch sử–nhãn: trong khoảng train, mỗi timestamp group có lịch sử trước đó có thể làm target; history chỉ lấy events có thời gian nhỏ hơn target. Mọi events train vẫn dùng được cho popularity/history; user chỉ có một timestamp chưa tạo được mẫu tuần tự có lịch sử. Việc fit vocabulary từ tập train không thay kiểm tra history theo từng query.
+Với NCF và D0/D1/D2 hiện hành, tạo một positive cho mỗi distinct train pair;
+thời điểm xuất hiện đầu tiên của pair là mốc tính feature. Giữ cả positive có
+history rỗng, không yêu cầu đã có một tương tác trước đó. Mọi events train vẫn
+dùng cho popularity/history; history feature của một mẫu chỉ lấy events trước
+mốc của chính mẫu đó. Việc fit vocabulary từ tập train không thay kiểm tra thời
+gian. Grain và negative sampling cụ thể ở mục 6.3.
 
 ### 3.3. Một sản phẩm khác một review duy nhất
 
@@ -201,7 +208,7 @@ Các bước 1–5 đã được triển khai trong Silver và có read-back gat
 
 - Đặc trưng nền: events/distinct items, last interaction time/gaps tới prediction_time, rating summaries từ history, verified_purchase và tỷ lệ text usable.
 - Proxy theo rating đề xuất: 1–2 unfavorable, 3 neutral, 4–5 favorable, null unknown. Đây **không phải sentiment phân tích từ text** và không phải nhãn target.
-- Giữ review text để làm TF-IDF hoặc encoder được chọn sau. Đề xuất kênh favorable/unfavorable riêng cùng kênh all-history; thiếu text dùng rating/history/item content với flags. Review 2 sao vẫn có thể khen một khía cạnh; không coi mọi câu đều tiêu cực. NLP sentiment/aspect là mở rộng cần kiểm tra mẫu/version, chưa tự thêm LLM job nặng.
+- Giữ review text để tạo embedding bằng encoder được chọn sau pilot. D2 hiện hành dùng mean review profile cùng rating-history features; chưa tách nhiều kênh embedding favorable/unfavorable. Thiếu text/rating dùng missing flags và cách điền đã đặc tả. Review 2 sao vẫn có thể khen một khía cạnh; không coi mọi câu đều tiêu cực. NLP sentiment/aspect chưa thuộc ba bản D0/D1/D2.
 - Fit vocabulary/IDF/scaler/encoder thích nghi từ train của fold. Khi tạo input một query, chỉ transform/aggregate review quá khứ được phép; không dùng target text/rating hoặc review tương lai của user.
 - Chưa tổng hợp reviews mọi user thành product-review feature mặc định. Nếu bổ sung, phải lọc as-of cho từng query để tránh reviews tương lai.
 - **Output:** input features/references và feature manifest (method/version/fit period/history bounds). **Đạt khi:** thay text/rating target trong fixture không làm đổi input features.
@@ -218,25 +225,25 @@ Các bước 1–5 đã được triển khai trong Silver và có read-back gat
 - Read-back kiểm tra input–label keys, time bounds, mapping/candidate versions; inference inputs không chứa labels. Manifest complete mới cho downstream dùng.
 - Khóa protocol trước tuning; chọn cấu hình xong mới refit train+validation và tạo test inputs/features/mappings theo cùng quy tắc trước mốc test.
 - **Output:** versioned Gold, feature manifest, metric toy examples và report mà người khác load lại được.
-- Đề xuất thí nghiệm sau processing: A=Popularity từ distinct users/item trong train; B=model dùng history item; C=cùng backbone thêm rating-history; D=cùng backbone thêm review text/sentiment. So B/C/D trên cùng protocol để đo đóng góp; chưa khẳng định sentiment tăng metric hoặc chọn sẵn thuật toán.
+- Bộ thí nghiệm hiện hành ở mục 6.2: Popularity, content-based, implicit ALS, NCF thuần và đúng ba phiên bản DeepFM D0/D1/D2. Không tạo thêm biến thể chỉ vì đã có thêm trường ở Silver.
 
 ## 6. Các lựa chọn để nhóm xem xét
 
 | Quyết định | Đề xuất | Trạng thái |
 | --- | --- | --- |
 | Mục tiêu chính | Next observed review interaction, giữ rating thấp/cao | Hướng cập nhật theo trao đổi, không gọi purchase prediction |
-| Silver/Gold | Raw là Bronze; clean Silver; split/features/labels Gold | Silver ba category đã complete; Gold chưa triển khai |
+| Silver/Gold | Raw là Bronze; clean Silver; split/features/labels Gold | Silver complete; G0–G2 có implementation, xem trạng thái chạy ở gold.md; feature bundles chưa nhập |
 | Exact dedup | Canonical full-record hash trong source_category | Có EDA expected counts |
 | Rating lỗi/thiếu | Giữ interaction với null/flag nếu keys/time hợp lệ | Sửa policy cũ từng reject vì rating |
-| Ground truth | First next timestamp sau mốc, ties là tập items | Đề xuất cụ thể, cần đo số mẫu/ties |
+| Ground truth | First next timestamp sau mốc, ties là tập items | Đã đo toàn Silver và khóa cùng protocol ngày 30/10 |
 | Repeat | Giữ item từng thấy trong candidate chính | Discovery-only là thí nghiệm khác |
-| Cutoff | Train trước 2021, validation 2021, test từ 2022 | Cần diagnostic, không coi là split của paper |
-| Review features | Rating proxy trước, text theo kênh riêng, giữ phủ định | Chọn TF-IDF/encoder và đo cost sau Silver |
+| Cutoff | Train trước 2021, validation nửa đầu 2021; refit trước 2022, test nửa đầu 2022 | Đã khóa theo EDA 30/10 và gold_protocol.json; không coi là split của paper |
+| Review features | D2 dùng rating-history và mean review embedding quá khứ, giữ phủ định | Encoder chọn sau pilot; không mở thêm kênh/biến thể trong đợt này |
 | History cap | Silver đầy đủ; thử 50 events gần nhất nếu cần ở Gold | Chưa chốt, báo impact; không cắt ties bằng hash |
 | Minimum history | Không k-core/≥5 ở Silver; history=0 dùng fallback | Train sequence cần history; đo events/timestamp groups |
-| Candidates | Items observed train của source_category, có repeat | Cold-item coverage riêng; mở catalog là protocol khác |
+| Candidates | Items observed train của source_category, có repeat | Đã dùng trong protocol khóa; cold-item coverage riêng; mở catalog là protocol khác |
 | Train riêng/chung | Baseline riêng category trước | Chung cần đo overlap/conflicting metadata |
-| Verified purchase | Giữ thuộc tính, không lọc bắt buộc | Chỉ lọc khi đặt bài toán verified-review riêng |
+| Verified purchase | Giữ thuộc tính, không lọc bắt buộc | Protocol chính đã khóa dùng mọi review; verified-only là thí nghiệm riêng |
 
 Metadata không có effective-time: kể cả title/description là crawl snapshot. Content/hybrid phải khai báo giả định **catalog snapshot được cung cấp**, không chứng minh nội dung tồn tại ở review time. Mở rộng cold-item candidates cần giả định/manifest chung cho các model được so.
 
@@ -246,18 +253,21 @@ Explicit ALS nếu thử là baseline phụ dùng ratings quá khứ; rating lab
 
 | Phương pháp | Dữ liệu cần chuẩn bị | Phần chưa khóa |
 | --- | --- | --- |
-| Content-based | Text item; history item trước mốc; content availability/fallback | TF-IDF hay text embeddings; title-only hay expanded; mean item profile là một lựa chọn biểu diễn |
+| Content-based | Item text embedding dùng chung D1/D2; mean distinct history item profile trước mốc | Title-only làm mốc; encoder/chiều vector chọn sau pilot; giữ missing flags/fallback |
 | Implicit ALS | Distinct train user–item pairs; mappings Int; strength nếu có policy riêng | Binary pairs làm đề xuất khởi đầu; không tự dùng rating 1–5 làm confidence |
 | NCF/NeuMF thuần | Train pairs, user/item ID mappings, train-only negative sampler | Baseline chỉ dùng user ID và item ID; chưa thêm rating, metadata hoặc text; cấu hình neural network để giai đoạn model |
-| DeepFM chỉ ID, sau đó bổ sung đặc trưng | Khởi đầu cùng user/item IDs và train pairs như NCF; chuẩn bị thêm các nhóm đặc trưng cho ablation | Đo bản chỉ ID trước; sau đó thêm từng nhóm theo mục 6.2; cách đưa content vector vào mô hình cần đặc tả, chưa chọn encoder |
+| DeepFM D0/D1/D2 | ID; thêm item embedding; thêm rating-history và review profile theo mục 6.2 | Chưa chọn encoder/chiều vector; lớp chiếu text thuộc bước model, không học trong Gold |
 
 Popularity là baseline/fallback chung; ItemKNN và hybrid trộn điểm không còn là hai thí nghiệm chính trong bộ bốn này. Bốn thuật toán chính là content-based, implicit ALS, NCF thuần và DeepFM; các mức thêm đặc trưng là biến thể của DeepFM. Chưa train hay tạo embeddings trong EDA.
 
 [EDA bổ sung trên Silver](eda.md#8-kế-hoạch-eda-bổ-sung-trên-silver-trước-gold) đo first-next queries, verification-policy retention, candidate/content eligibility, train support, text chất lượng/đuôi dài và negative feasibility. Không lặp EDA raw, không pilot mô hình hoặc tài nguyên encoder. Hai policy mọi review và verified-only là diagnostic riêng: false không phải nhãn chưa mua; thay policy có thể đổi target, lịch sử và candidates. Các thuật toán phải so sánh trên cùng policy/fold/candidates khi đánh giá.
 
-### 6.2. Ghi nhớ kế hoạch so sánh sau trao đổi ngày 18/10/2026
+### 6.2. Ba phiên bản DeepFM theo trao đổi ngày 30/10/2026
 
-**Ý định đã thống nhất:** so hai phương pháp cơ sở content-based và implicit ALS với **NCF thuần ID** và **DeepFM chỉ ID** trước, rồi lần lượt thêm các nhóm đặc trưng vào DeepFM để thử. Chưa mặc định mở rộng NCF; giữ NCF thuần để làm mốc so sánh. Đây là kế hoạch thực nghiệm, chưa phải kết quả hoặc cam kết mô hình nào tốt hơn.
+**Phạm vi đã thống nhất:** giữ content-based, implicit ALS, NCF thuần ID và đúng
+ba phiên bản DeepFM dưới đây. Popularity là baseline/fallback chung. Kế hoạch
+D0 đến D5 trước đây được thay bằng D0/D1/D2; không mở rộng NCF hoặc thêm thí nghiệm
+metadata riêng trong đợt này. Chưa có kết quả chứng minh phiên bản nào tốt hơn.
 
 | Thí nghiệm | Đầu vào | Câu hỏi cần trả lời |
 | --- | --- | --- |
@@ -265,13 +275,16 @@ Popularity là baseline/fallback chung; ItemKNN và hybrid trộn điểm không
 | Implicit ALS | Distinct train user–item pairs, khởi đầu binary | Collaborative filtering tuyến tính theo latent factors đạt mức nào? |
 | NCF thuần | User ID + item ID | Tương tác phi tuyến từ ID có giúp hơn các baseline không? |
 | DeepFM D0 | Chỉ user ID + item ID | Với cùng thông tin ID, DeepFM khác NCF thuần như thế nào? |
-| DeepFM D1 | D0 + metadata dạng trường, ví dụ category/store nếu có ích và đủ coverage | Các thuộc tính sản phẩm bổ sung được gì? |
-| DeepFM D2 | D1 + thống kê lịch sử hành vi trước prediction_time | Thông tin số lượng/tần suất/lần tương tác gần nhất giúp đến đâu? |
-| DeepFM D3 | D2 + đặc trưng rating quá khứ | Phân biệt phản hồi thuận lợi/bất lợi có cải thiện dự đoán next-item không? |
-| DeepFM D4 | D3 + biểu diễn nội dung sản phẩm | Text item có thêm giá trị ngoài metadata dạng trường không? |
-| DeepFM D5 | D4 + biểu diễn review quá khứ của user | Nội dung đánh giá cá nhân có thêm giá trị ngoài item text và rating không? |
+| DeepFM D1 | D0 + item text embedding | Nội dung sản phẩm có thêm giá trị ngoài ID không? |
+| DeepFM D2 | D1 + rating-history features + embedding review quá khứ của user | Nhóm phản hồi cá nhân có thêm giá trị ngoài ID và item text không? |
 
-**D1–D5 là thứ tự thử đề xuất để nhớ việc**, chưa khóa encoder, cách tổng hợp hoặc danh sách trường cụ thể. Mỗi bước giữ các nhóm trước và thêm một nhóm; so với bước ngay trước và D0. Nếu cần xác định đóng góp độc lập, thử thêm từng nhóm riêng trên D0 hoặc bỏ từng nhóm khỏi bản đầy đủ; kết quả cộng dồn phụ thuộc thứ tự nên không tự coi là đóng góp độc lập. NLP sentiment/aspect là mở rộng riêng, không mặc định đã có trong review vectors.
+D1 không thêm category/store hoặc nhóm thống kê hành vi khác. D2 thêm rating
+và review text cùng lúc, nên chỉ kết luận về đóng góp của **nhóm phản hồi cá
+nhân**, chưa tách được đóng góp riêng của hai thành phần. Không gọi review
+embedding là sentiment label; đợt này chưa thêm NLP sentiment/aspect. Cùng item
+embedding được tái sử dụng cho content-based và D1/D2. Với D1/D2, giữ backbone
+FM theo đặc tả, nối vector nội dung qua lớp chiếu vào nhánh Deep; lớp chiếu được
+học ở bước model và được ghi rõ là phần mở rộng text của DeepFM.
 
 Quy tắc so sánh và diễn giải:
 
@@ -282,6 +295,158 @@ Quy tắc so sánh và diễn giải:
 - User có một interaction trong train vẫn có thể đóng góp mẫu user–item cho NCF/DeepFM, nhưng tín hiệu cá nhân hóa yếu. User chỉ có một event trong toàn dữ liệu không đồng thời cung cấp history train và target tương lai độc lập. Không tự lọc k-core chỉ để làm đẹp kết quả; nếu thử phải báo retention và cohort.
 - NCF/DeepFM có user ID đều phải lưu embedding theo số user train. Lookup không tạo one-hot dense cho mỗi batch, nhưng tổng tham số vẫn tăng theo số user/item. Trước train, tính ngân sách bằng distinct train users/items, số chiều, số bảng embedding, gradient và optimizer; giảm batch không làm nhỏ bảng tham số. Khởi đầu riêng từng category, thử embedding nhỏ theo ngân sách thực tế.
 - Thêm nhiều feature không bảo đảm cải thiện; giữ và báo cả biến thể không cải thiện. User cold chưa có embedding được học cần fallback theo protocol, không dùng ID mới như đã cá nhân hóa.
+
+### 6.3. Kế hoạch triển khai tầng Gold
+
+Kế hoạch ngày 30/10/2026; G0–G2 đã có implementation, hướng dẫn và trạng thái
+thực thi ở [Gold](gold.md). Notebook 05 chuẩn bị bước encode trên Kaggle; chưa
+chạy GPU hoặc import embeddings tại local. Đầu vào là ba Silver
+snapshots trong `gold_protocol.json`; không sửa Silver, chọn lại cutoff hay lặp
+EDA. Thực hiện từng category: All Beauty trước để đo chi phí, rồi Video Games,
+Industrial. Chưa ấn định số ngày hoàn thành: bước Kaggle phụ thuộc phiên chạy
+và thời gian encode đo từ pilot.
+
+| Pha | Công việc | Đầu ra và điều kiện chuyển pha |
+|---|---|---|
+| G0: hợp đồng | Chốt schema, khóa query/event, policy train examples và feature manifest; đối chiếu protocol/source hashes | Tài liệu + fixture mô tả được đúng một mẫu của mỗi model, thống nhất D0/D1/D2 |
+| G1: Gold nền | Tạo pairs, lịch sử tham chiếu, queries, labels, candidates, mappings, cohorts cho từng fold | Parquet đọc lại đạt; counts validation/test khớp EDA; đủ cho Popularity/ALS và ID-only models |
+| G2: dữ liệu encode | Làm sạch text có version, tạo text_id, dedup text, chia shard; xuất riêng item/review corpora | Export manifest, file hashes, counts/độ dài/token pilot; chưa chọn cap hoặc encoder bằng test score |
+| G3: Kaggle và nhập về | Thử encoder pretrained cố định trên shard nhỏ; đo throughput/bộ nhớ; encode từng shard, lưu tiến độ; kiểm tra khi nhập | Embedding bundle đủ khóa, đúng dimension/dtype, finite, checksums, model revision và cleaning version |
+| G4: feature theo thời gian | Tạo item-profile cho content-based, rating-history và review profile cho D2; tạo view D0/D1/D2 | Tất cả feature chỉ dùng history trước prediction_time; giữ nguyên mẫu khi thiếu text/rating |
+| G5: nghiệm thu | Load lại dữ liệu, đối soát coverage, tài nguyên và hợp đồng từng model; đóng manifest | Gold nền và feature bundles complete riêng, người khác có thể load và tạo batch mẫu; chưa train/evaluate test |
+
+#### G1: các bảng chung và quy tắc tạo mẫu
+
+| Bảng | Một dòng đại diện cho | Trường/khóa chính |
+|---|---|---|
+| `history_events` | Một review Silver trong phần lịch sử của fold | category, user_id, parent_asin, event_time, record_hash; tham chiếu rating/text Silver |
+| `train_pairs` | Một cặp user–item khác nhau trong train | user_idx, item_idx, strength=1, first_pair_time, event_count |
+| `train_examples` | Một positive pair với mốc tính feature | example_id, user_id, parent_asin, prediction_time=first_pair_time |
+| `queries` | Một user tại cutoff validation/test | query_id, user_id, prediction_time, history counts |
+| `labels` | Một query–target item | query_id, parent_asin, target_time, source references; lưu riêng khỏi inputs |
+| `candidates` | Một item đã xuất hiện trong train của fold | category, parent_asin, item_idx |
+| `mappings` | Một ID train và mã Int của nó | mapping_version, user_id/user_idx hoặc parent_asin/item_idx |
+| `cohorts` | Điều kiện đánh giá của một query | has_history, target coverage full/partial/outside, history bins, repeat/ties/feature flags |
+
+Mỗi fold có mapping/candidates riêng, được tạo từ training portion. Unknown IDs
+giữ ID gốc/flag, không gán chung vào một factor đã học. User cold được báo cùng
+Popularity fallback; target ngoài candidates vẫn giữ trong labels và mẫu số.
+Users chỉ có train events không có query đánh giá vẫn đóng góp pairs/history.
+
+Với NCF và cả ba bản DeepFM, dùng **cùng một positive cho mỗi distinct train
+pair**. Lấy thời điểm xuất hiện đầu tiên của pair làm mốc feature. History chỉ
+gồm events có thời gian nhỏ hơn mốc này, loại cả timestamp group hiện tại.
+Không lấy rating/text của chính event làm feature để dự đoán pair đó. Những
+positive không có history vẫn giữ với missing flags, để D2 không được đánh giá
+trên tập mẫu thuận lợi hơn D0/D1. Review lặp vẫn góp vào history các mẫu sau;
+không tạo thêm positive pair trùng. Đây là bài toán học pair cho các model ID,
+khác với nhãn first-next dùng đánh giá.
+
+Lưu positives và cấu hình negative sampler, không xuất trước bảng âm lớn.
+Khởi đầu đề xuất 4 negatives/positive, seed cố định, sampling uniform từ
+candidates train trừ các item user đã tương tác trong train; số lượng cuối khóa
+cùng cấu hình model trước tuning. NCF và D0/D1/D2 dùng cùng sampler/seed/positives.
+Không dùng nhãn validation/test để loại negatives. Feature của negatives dùng
+cùng user/prediction_time với positive; thay candidate item, không đổi history.
+Không sinh toàn tích users×items và không coi sampled negatives là nhãn ghét.
+
+Counts nghiệm thu query/warm-full theo thứ tự All Beauty / Video Games /
+Industrial: validation **69.848/2.681; 242.638/44.239; 394.153/72.503**; test
+**32.466/1.751; 161.663/36.893; 325.569/74.055**. Đối soát thêm train pairs và
+bins từ EDA 8.8; không chỉ kiểm tra tổng row count.
+
+#### G2 và G3: embedding tạo trên Kaggle
+
+Local thực hiện split/cleaning/export. Kaggle chỉ encode text, không random
+split lại, học user mapping hoặc chọn nhãn. Dùng dataset riêng tư cho gói làm
+việc; không cần đưa raw đầy đủ, user IDs hoặc evaluation labels lên Kaggle.
+
+- Item corpus: lấy item thuộc hợp candidates của hai fold, một dòng/item;
+  từ 03/11/2026 dùng title + description sau khi kiểm tra coverage/độ dài/mẫu
+  thực tế. Bỏ đoạn trùng chính xác, thiếu description dùng title. Đây là đầu
+  vào item text chung của D1/D2, vẫn giữ ba bản DeepFM. Không thêm features.
+  Metadata chỉ có snapshot, chưa có phiên bản lịch sử theo cutoff; ghi giới
+  hạn này trong báo cáo, không khẳng định item text hoàn toàn as-of.
+- Review corpus: text review quá khứ trước 01/01/2022; ghép title/body usable
+  theo quy tắc có version, giữ phủ định/số/model/đơn vị. Không encode phần review
+  trong test window cho profile của chính phép đánh giá đó. Tạo cache trước
+  2022 vẫn phải lọc lại history trước 2021 cho validation và trước t cho train.
+- `text_id` là hash của text sau cleaning và cleaning version; bảng ánh xạ từ
+  item/record_hash sang text_id giữ ở local. Dedup text để giảm lượt encode,
+  không gộp các events thật hoặc đổi trọng số lịch sử vì chúng có cùng text.
+- Export Parquet theo shard, gồm text_id/text và manifest. Pilot có các mức độ
+  dài của item/review, đo token/truncation, throughput và bộ nhớ trước full run.
+  Chọn một encoder pretrained giữ nguyên trọng số, pin revision và cấu hình;
+  chưa fine-tune encoder trong đợt Gold. Dùng chung encoder cho hai corpora nếu
+  pilot xác nhận phù hợp; mọi khác biệt phải được version hóa.
+- Output dự kiến `text_id, embedding: array<float>` dạng Parquet từng shard,
+  float32 làm mốc ban đầu; lưu dimension, pooling, normalization, token cap,
+  dtype và checksums. Khi tiếp tục phiên chạy, chỉ nhận lại shard complete có
+  manifest khớp; không dựa vào thứ tự row ngầm định để ghép vectors.
+
+Nhập về phải kiểm tra đủ text_ids mong đợi, không trùng khóa, không thừa khóa
+không rõ nguồn, vector cùng chiều/finite và đúng export hash. Text rỗng không
+encode; giữ missing flags. Item text là crawl snapshot, không chứng minh đã có
+đúng nội dung đó ở review time. Frozen encoder cho phép tái sử dụng cache; nếu
+sau này fine-tune thì phải tạo phiên bản mới và giới hạn dữ liệu học theo fold.
+
+#### G4: ba nhóm input được bàn giao
+
+| View | Feature bổ sung | Quy tắc |
+|---|---|---|
+| Content-based | Mean embedding của distinct history items, rồi L2-normalize | Chỉ item trước mốc; thiếu usable item vectors dùng fallback và báo coverage |
+| DeepFM D0 | User/item IDs | Không tự thêm metadata hoặc số lượng history |
+| DeepFM D1 | D0 + item embedding | Dùng cùng vector item với content-based; missing vector có flag và cách điền thống nhất |
+| DeepFM D2 | D1 + rating features + review profile | rating_count_valid, mean_rating, tỷ lệ 1–2/4–5 trên valid ratings; mean review vectors quá khứ rồi normalize; text/rating count và missing flags phục vụ diễn giải |
+
+D2 tính rating/review features trước prediction_time của **từng train example**,
+không gắn profile cuối kỳ train cho mọi positive quá khứ. Validation/test dùng
+history cố định tại cutoff. Cùng source event có thể góp vào history của lần
+dự đoán muộn hơn, nhưng không vào input của chính lần nó làm target.
+
+Tính thống kê tích lũy theo user/timestamp group; tránh join mỗi example với
+toàn bộ reviews quá khứ hoặc lưu lặp history arrays/text cho mọi dòng. Rating
+thiếu giữ null/flag; mean/rate khi không có valid rating không được hiểu là 0
+sao. Cách điền, scaler và mọi transform học từ dữ liệu chỉ fit train của fold.
+Không đưa category/store, price, average_rating hoặc rating_number vào ba view
+DeepFM này. Lớp chiếu embedding và trọng số FM/Deep thuộc bước model.
+
+#### G5: publish, tài nguyên và nghiệm thu
+
+Gold nền lưu Parquet Snappy trên HDFS dưới
+`/project/processed/gold/<category>/v1/<gold_run>/<protocol_id>/`;
+feature/embedding bundles có version và manifest riêng, tham chiếu gold_run.
+Gold nền có thể complete trước khi Kaggle xong; nhập embeddings không sửa một
+snapshot đã complete. Reports/logs/export local nằm trong outputs ignored Git;
+fixtures chỉ ở `/project/testing/processed/gold/...`.
+
+Triển khai tối thiểu dự kiến: `processing/gold.py`, runner PowerShell theo guard
+đã có và một fixture Spark; phần export/import embedding chỉ thêm khi tới G2.
+Không tạo service hoặc framework mới. Preflight selected fsck/schema/hash,
+shared job exclusion, host/VHDX reserve, output/scratch budget và failure
+manifest theo pattern Silver/EDA. Đo footprint All Beauty trước hai ngành lớn;
+không suy cấu hình EDA 2 GiB sẽ đủ cho vector joins. Chưa full encode hoặc chạy
+lại category lớn nếu pilot vượt budget mà chưa điều chỉnh kế hoạch bằng số đo.
+
+Các gate bắt buộc:
+
+1. Keys và mappings unique; joins không làm nhân/mất example/query; đọc lại
+   Parquet đối soát schema, counts và population/cohorts với EDA.
+2. Fixtures có first-next khác latest, cutoff boundary, ties, repeat, target
+   rating thấp, outside candidates, cold user và positive đầu tiên history rỗng.
+3. Đổi rating/text target hoặc future events không làm đổi input của query đó;
+   mọi history timestamp nhỏ hơn prediction_time, kể cả train examples.
+4. D0/D1/D2 và NCF có cùng example IDs/positives, sampler và evaluation labels;
+   thiếu feature không làm drop rows. Text cache đổi encoder/cleaning phải bị
+   từ chối khi import nếu manifest không khớp.
+5. Manifest complete sau read-back; failed/running không dùng downstream;
+   rerun tạo version mới, không append trùng hoặc sửa snapshot đã publish.
+
+Sau nghiệm thu mới train các model. Validation dùng chọn cấu hình; refit trước
+2022 rồi test sau khi khóa lựa chọn. Gold có thể chuẩn bị dữ liệu test đúng
+protocol từ trước, nhưng không dùng điểm test để chọn encoder, feature hoặc
+negative-sampling ratio. Kế hoạch này không bao gồm API/web hay upload Kaggle tự
+động.
 
 ## 7. Triển khai và nghiệm thu
 
@@ -362,8 +527,8 @@ Nguồn từng run: summary/overview/quality, duplicates/timestamp_units/time_ra
 
 - Đã đo trên Silver ngày 18/10: first-next queries/history events-items-timestamp groups, no-target/cold-user, candidate/content eligibility, repeat/ties, train support/rating conflicts, policy A/B retention và negative feasibility. [Kết quả](eda.md#87-kết-quả-full-silver-ngày-18102026) dùng mẫu số query, không thay bằng raw event rates ở mục 8.1.
 - Đã đo text sản phẩm: độ dài ký tự/bytes từng trường và sau ghép, flags và rà excerpts có giới hạn. Chưa đo tokenization, tỷ lệ ngôn ngữ/encoding lỗi toàn corpus, chất lượng embeddings hoặc review sentiment. Không có bằng chứng sentiment tăng metric.
-- Gold chưa tạo train examples/mappings/labels hoặc kiểm tra model score coverage; cần khóa mục tiêu A/B, đặc tả feature cleaning và triển khai read-back/leakage gates trước huấn luyện.
-- TF-IDF/encoder/model cost và pilot tài nguyên nằm ngoài đợt EDA bổ sung theo yêu cầu, chưa được đo hay cam kết vừa tài nguyên.
-- Global overlap/conflicting metadata nếu train/catalog chung; RAM/đĩa thực, Parquet read-back, leakage tests, baseline/ablation và model coverage.
+- G0–G2 có train examples/mappings/labels, text cleaning/export và read-back gates theo protocol đã khóa; xem runs ở gold.md. Model score coverage chưa đo vì chưa train các model trên Gold mới.
+- Notebook Kaggle chuẩn bị token/throughput pilot và encode bằng MiniLM; chưa có token/GPU measurements thực tế ở local, chưa cam kết thời gian full encode.
+- Còn đo global overlap nếu train/catalog chung, chất lượng/cost embeddings, feature as-of ở G4, baseline/ablation và model coverage.
 
-**Bước tiếp theo:** dùng bằng chứng EDA bổ sung để khóa interaction policy, split/query/candidates và feature contract, rồi triển khai Gold đọc ba run Silver complete. Giữ title/content references, binary pair baseline và train-only sampler; encoder/model config là giai đoạn sau. Gold/model chưa triển khai; sentiment chưa được trích thành feature tại Silver.
+**Bước tiếp theo sau G0–G2:** chạy notebook Kaggle trên gói text đã complete, nhập embedding bundle có version và kiểm tra keys/checksums, rồi tạo feature as-of cho content-based/D1/D2. Giữ binary pair baseline và train-only sampler; model config/tuning thuộc giai đoạn model. Chưa trích sentiment label hoặc train model mới trên Gold này.

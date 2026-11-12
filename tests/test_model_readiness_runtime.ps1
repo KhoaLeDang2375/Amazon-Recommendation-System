@@ -27,7 +27,8 @@ function docker {
         $folder = Join-Path $repo "outputs/eda_model_readiness/$runId"
         New-Item -ItemType Directory -Path $folder -Force | Out-Null
         @{ status = $(if ($global:readinessFault -eq 'manifest') { 'running' } else { 'complete' });
-           category = 'All_Beauty'; run_id = $runId; silver_run = 'run_20261016T021632209982Z' } |
+           category = 'All_Beauty'; run_id = $runId; silver_run = 'run_20261016T021632209982Z';
+           kind = $(if ($args -contains '--test-start') { 'cutoff_test_diagnostic' } else { 'cutoff_selection' }) } |
             ConvertTo-Json | Set-Content -LiteralPath (Join-Path $folder 'run.json') -Encoding UTF8
         'a' * 64
     }
@@ -68,6 +69,10 @@ function Invoke-Case {
 
 try {
     Invoke-Case ''
+    $global:readinessCalls.Clear()
+    & (Join-Path $repo 'tools/eda/Run-ModelReadiness.ps1') -Category All_Beauty -SilverRun run_20261016T021632209982Z -DockerDiskPath $fakeDisk -CutoffStudy -TestStart '2022-01-01' -Months 6 | Out-Null
+    $cutoffCall = @($global:readinessCalls | Where-Object { $_ -match ' --detach ' })
+    if ($cutoffCall.Count -ne 1 -or $cutoffCall[0] -notmatch 'eda_cutoff.py.*--test-start 2022-01-01 --months 6') { throw 'Cutoff mode arguments lost' }
     Invoke-Case active 'already running'
     Invoke-Case fsck 'not HEALTHY'
     Invoke-Case space 'below threshold' 999999

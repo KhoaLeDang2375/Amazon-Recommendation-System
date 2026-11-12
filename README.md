@@ -13,9 +13,21 @@ Phạm vi chuẩn nằm trong [experiment-scope.json](ingestion/manifests/experi
 - Ba job EDA full-category đã complete ngày 14/10/2026: All Beauty 701.528, Video Games 4.624.615 và Industrial and Scientific 5.183.005 reviews; cùng scope/code/cutoff. Phân tích và kế hoạch chuyển sang ETL nằm trong [processing.md](docs/processing.md). All Beauty gặp lỗi lưu log wrapper lịch sử, đã sửa; run/summary/resources vẫn có đủ.
 - Pha 5 ngày 14/10/2026 đã dọn dữ liệu Sports/Toys/Health ngoài phạm vi; sáu dataset selected HEALTHY trước/sau, vẫn giữ sáu bản nguồn local và toàn bộ HDFS/Flume volumes. Kết quả dung lượng và biên bản nằm trong [kế hoạch dọn repo](docs/KE_HOACH_DON_DEP_REPO.md).
 - Đợt điều chỉnh scope và cleanup đã hoàn thành pha 0–6 ngày 14/10/2026. Tài liệu/graph đã cập nhật; notebook cũ đã sao lưu và bỏ output, giữ nguyên source. Checkpoint code/EDA/Silver đã commit tại `2eaa8ba` ngày 22/10/2026; chưa push.
-- Silver đã hoàn tất cả ba category ngày 16/10/2026: 10.395.239 reviews, 677.423 catalog rows, loại 113.909 bản sao chính xác; quarantine=0. Parquet đã đọc lại và đối soát. Xem [Silver](docs/silver.md) để lấy run/path và kết quả kiểm tra. [Notebook 04](notebooks/04_als_baseline.ipynb) thử implicit ALS và Popularity trên mẫu Silver; [hướng dẫn](docs/als-baseline.md). Pipeline Gold tổng quát, API và web chưa triển khai.
+- Silver đã hoàn tất cả ba category ngày 16/10/2026: 10.395.239 reviews, 677.423 catalog rows, loại 113.909 bản sao chính xác; quarantine=0. Parquet đã đọc lại và đối soát. Xem [Silver](docs/silver.md) để lấy run/path và kết quả kiểm tra. [Notebook 04](notebooks/04_als_baseline.ipynb) thử implicit ALS và Popularity trên mẫu Silver; [hướng dẫn](docs/als-baseline.md). G0–G2 Gold ở trạng thái bên dưới; API và web chưa triển khai.
 
 Batch dữ liệu hiện tại đi theo **staging → direct HDFS put → raw → EDA → Silver**. Flume là nhánh ingestion event/batch theo dòng đã có; metadata Video Games được giữ theo layout Flume, không publish lại.
+
+Gold G0–G2 đã có [producer/runner và hợp đồng dữ liệu](docs/gold.md): temporal
+pairs/queries/labels/mappings/cohorts, text refs và ZIP text-only cho Kaggle.
+[Notebook 05 T4 × 2](notebooks/05_kaggle_text_embeddings.ipynb) dùng MiniLM đã pin
+revision, chunk-mean cho review dài, pilot và resume từng shard. Trạng thái từng
+full run ở Gold; chưa chạy GPU local, import embeddings hoặc train model mới.
+
+Ngày 30/10/2026 đã bổ sung EDA cutoff trên toàn Silver và khóa validation nửa đầu
+2021, refit trước 2022, test nửa đầu 2022; hai cửa sổ cùng 6 tháng. Xem
+[cơ sở thống kê và biểu đồ](docs/eda.md#88-so-sánh-cutoff-và-cửa-sổ-trước-gold),
+[protocol có version](processing/gold_protocol.json). Chưa tạo Gold; kết quả pilot
+ALS cũ giữ nguyên với protocol lịch sử, chưa phải metric của cutoff mới.
 
 ## Bắt đầu trên máy đã có dữ liệu — PowerShell host
 
@@ -45,6 +57,16 @@ Khi cần chạy lại EDA dữ liệu thật, chọn một category:
 Wrapper không tự khởi động HDFS, build image hoặc compact đĩa. Nó kiểm tra tài nguyên, lưu log và dọn container sở hữu. Xem [EDA](docs/eda.md) trước khi chạy; không bật notebook và batch đồng thời. Xem báo cáo cũ bằng cell REPORT_DIRECTORY trong notebook, không tạo Spark.
 
 ## Tài liệu và cấu trúc
+
+Notebook train trên Kaggle: [07 ALS](notebooks/07_kaggle_als_full.ipynb),
+[08 Content-based](notebooks/08_kaggle_content_based.ipynb),
+[09 NCF/NeuMF](notebooks/09_kaggle_ncf.ipynb),
+[10 DeepFM D0/D1/D2](notebooks/10_kaggle_deepfm.ipynb).
+Các notebook neural có train/validation/refit-test, checkpoint/resume và upload
+Dataset private; hướng dẫn và giới hạn ở [kế hoạch/vận hành](docs/kaggle-recommendation-plan.md#10-vận-hành-notebook-ncf-và-deepfm-đã-triển-khai).
+Mặc định compact: một trial, ID dim 8, MLP [32,16], projection 16; trần 20
+epochs và early stopping theo warm_full NDCG@10. Giữ đủ user/item/tương tác.
+Đã có kiểm tra CPU trên dữ liệu nhỏ; chưa benchmark neural full trên Kaggle.
 
 | Nội dung | Điểm đọc chính |
 | --- | --- |

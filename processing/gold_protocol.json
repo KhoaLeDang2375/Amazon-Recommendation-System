@@ -1,0 +1,64 @@
+{
+  "status": "locked",
+  "rule": "latest feasible validation cutoff, then shortest horizon; >=2401 warm-full queries in every category; test starts one year later with equal horizon",
+  "minimum_warm": 2401,
+  "validation_start": "2021-01-01",
+  "validation_end": "2021-07-01",
+  "test_start": "2022-01-01",
+  "test_end": "2022-07-01",
+  "months": 6,
+  "policy": "all observed review interactions",
+  "candidates": "distinct train items; repeats allowed",
+  "population": "all labeled queries; warm-full model comparison reported separately",
+  "evidence": [
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T025218957854Z/run.json",
+      "category": "All_Beauty",
+      "silver_run": "run_20261016T021632209982Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "59af291f44ba9aada55efc00bbf8d09a5570cdc53b67b72d11ee8aaf43f61100"
+    },
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T025354686962Z/run.json",
+      "category": "Video_Games",
+      "silver_run": "run_20261016T022209697481Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "734bfd33fc44aec34bbc4a2c710881ba7b8461103d09d24642fe9fa9624ea113"
+    },
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T025639607633Z/run.json",
+      "category": "Industrial_and_Scientific",
+      "silver_run": "run_20261016T053543469765Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "74f39b08576f45004b09ac5152833d78166f592f95288d911c10fb1293b3d700"
+    }
+  ],
+  "caveat": "2401 approximates worst-case 95% +/-2 percentage points for one hit-rate proportion; not an NDCG or paired-comparison power guarantee",
+  "test_evidence": [
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T030009600352Z/run.json",
+      "category": "All_Beauty",
+      "silver_run": "run_20261016T021632209982Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "59af291f44ba9aada55efc00bbf8d09a5570cdc53b67b72d11ee8aaf43f61100"
+    },
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T030102138698Z/run.json",
+      "category": "Video_Games",
+      "silver_run": "run_20261016T022209697481Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "734bfd33fc44aec34bbc4a2c710881ba7b8461103d09d24642fe9fa9624ea113"
+    },
+    {
+      "path": "/workspace/outputs/eda_model_readiness/run_20261030T030223223854Z/run.json",
+      "category": "Industrial_and_Scientific",
+      "silver_run": "run_20261016T053543469765Z",
+      "code_sha256": "1c1755d9b1b61ca4650e43c817a5cf8aecebd124624c7319af91a93484ff76c1",
+      "silver_manifest_sha256": "74f39b08576f45004b09ac5152833d78166f592f95288d911c10fb1293b3d700"
+    }
+  ],
+  "protocol_id": "fixed_origin_first_next_all_reviews_6m_v1",
+  "timezone": "UTC",
+  "locked_date": "2026-10-30",
+  "minimum_warm_applies_to": "validation_only"
+}

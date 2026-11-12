@@ -1,0 +1,60 @@
+{
+  "contract_version": "gold_g0_g2_v2",
+  "protocol_id": "fixed_origin_first_next_all_reviews_6m_v1",
+  "timezone": "UTC",
+  "models": [
+    "popularity",
+    "implicit_als",
+    "content_based",
+    "ncf_id",
+    "deepfm_d0",
+    "deepfm_d1",
+    "deepfm_d2"
+  ],
+  "positive_policy": "one distinct train user-item pair; anchor at first_pair_time",
+  "history_policy": "event_time strictly before prediction_time; exclude whole current timestamp group",
+  "unknown_policy": "retain native IDs and null model index; no invented learned factor",
+  "evaluation_policy": "first next timestamp; retain all distinct tied items, repeats and outside-candidate labels",
+  "sampler": {
+    "distribution": "uniform",
+    "negatives_per_positive_proposed": 4,
+    "seed": 42,
+    "exclude": "all observed train items for this user",
+    "future_labels_used": false,
+    "materialized": false
+  },
+  "text": {
+    "cleaning_version": "gold_text_nfc_html_whitespace_v1",
+    "item": "title_description_exact_paragraph_dedup_v1; title fallback; metadata snapshot without historical versions",
+    "review": "usable review title and body; remove exact title-body repetition",
+    "review_end_exclusive": "2022-01-01",
+    "text_id": "sha256(cleaning_version + NUL + cleaned_text)",
+    "blank": "null text_id plus missing flag; event/item retained",
+    "dedup": "encode unique text; preserve event multiplicity in local references"
+  },
+  "encoder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "dimension": 384,
+    "max_seq_length": 256,
+    "normalize_embeddings": true,
+    "output_dtype": "float32",
+    "fine_tuned": false,
+    "long_text_policy": "chunk_mean",
+    "chunk_policy": "non-overlapping tokenizer overflow chunks; normalize each chunk; token-weighted mean; L2 normalize final text vector"
+  },
+  "tables": {
+    "history_events": "one Silver record, no review text copied; keys user_id,parent_asin,event_time,record_hash",
+    "train_pairs": "one distinct user-item pair with Int indices, first_pair_time,event_count,strength=1",
+    "train_examples": "same positives across NCF/D0/D1/D2; prediction_time=first_pair_time, including empty history",
+    "queries": "one labeled user at fixed prediction_time; input columns only",
+    "labels": "one query-target item; evaluation only, target time and source reference",
+    "cohorts": "evaluation-only coverage/ties/repeat and history bins",
+    "candidates": "all distinct training items, including repeat items",
+    "users": "native user_id to deterministic sorted Int index, train-only",
+    "items": "native parent_asin to deterministic sorted Int index, train-only",
+    "item_text_refs": "one refit candidate item to nullable text_id; local/HDFS only",
+    "review_text_refs": "one history Silver record to nullable text_id; local/HDFS only"
+  },
+  "artifact_policy": "immutable complete Gold; embeddings are separate versioned bundles; no raw/user IDs/labels in Kaggle package"
+}

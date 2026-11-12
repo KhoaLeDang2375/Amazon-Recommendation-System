@@ -1,0 +1,687 @@
+{
+  "dataset_manifest_sha256": "ad0c4f75de6ddb17e76652f013695b68b24a770366a09c6afae0804dcb67882d",
+  "source": "C:\\Study\\Big data\\Đồ án\\project\\outputs\\processing\\gold_training\\gold_training_export_v1_566ed959afa207d6",
+  "definition": "All mapped train users; count distinct user-item pairs, not raw review events; no evaluation-cohort filter",
+  "checks": "Dataset/category/shard hashes and sizes; Parquet row counts; integer IDs/range; sum of degrees and all-positive user degrees; exhaustive bins",
+  "hypothetical_reduction": "Keep full item mapping and all examples; users below threshold share one user embedding/bias row. Analysis only; no notebook/data changes.",
+  "records": [
+    {
+      "category": "All_Beauty",
+      "fold": "validation",
+      "train_end_exclusive_utc": "2021-01-01",
+      "users": 457324,
+      "items": 80187,
+      "train_pairs": 495387,
+      "bins": {
+        "1": 429006,
+        "2": 23343,
+        "3": 3330,
+        "4": 846,
+        "5": 317,
+        ">5": 482
+      },
+      "percentages": {
+        "1": 93.80789112314245,
+        "2": 5.10425868749508,
+        "3": 0.728148970970253,
+        "4": 0.1849891980302805,
+        "5": 0.06931628342269376,
+        ">5": 0.10539573693923783
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 28318,
+          "users_pct": 6.192108876857545,
+          "pairs_from_these_users": 66381,
+          "pair_pct": 13.399826802075953,
+          "hypothetical_user_table_rows": 28319,
+          "dim32_parameters": {
+            "NCF_ID": 6951201,
+            "D0": 3587484,
+            "D1": 3601916,
+            "D2": 3616732
+          },
+          "ncf_parameter_reduction_pct": 79.79743731029039,
+          "deepfm_d2_parameter_reduction_pct": 79.65144053664764
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 4975,
+          "users_pct": 1.087850189362465,
+          "pairs_from_these_users": 19695,
+          "pair_pct": 3.9756796201757414,
+          "hypothetical_user_table_rows": 4976,
+          "dim32_parameters": {
+            "NCF_ID": 5457249,
+            "D0": 2817165,
+            "D1": 2831597,
+            "D2": 2846413
+          },
+          "ncf_parameter_reduction_pct": 84.13937173794066,
+          "deepfm_d2_parameter_reduction_pct": 83.98543099467719
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 1645,
+          "users_pct": 0.3597012183922121,
+          "pairs_from_these_users": 9705,
+          "pair_pct": 1.959074420604497,
+          "hypothetical_user_table_rows": 1646,
+          "dim32_parameters": {
+            "NCF_ID": 5244129,
+            "D0": 2707275,
+            "D1": 2721707,
+            "D2": 2736523
+          },
+          "ncf_parameter_reduction_pct": 84.75877120005245,
+          "deepfm_d2_parameter_reduction_pct": 84.60369720832746
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 799,
+          "users_pct": 0.1747120203619316,
+          "pairs_from_these_users": 6321,
+          "pair_pct": 1.2759721187677513,
+          "hypothetical_user_table_rows": 800,
+          "dim32_parameters": {
+            "NCF_ID": 5189985,
+            "D0": 2679357,
+            "D1": 2693789,
+            "D2": 2708605
+          },
+          "ncf_parameter_reduction_pct": 84.91613214448086,
+          "deepfm_d2_parameter_reduction_pct": 84.76077024638997
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 482,
+          "users_pct": 0.10539573693923783,
+          "pairs_from_these_users": 4736,
+          "pair_pct": 0.956020242759701,
+          "hypothetical_user_table_rows": 483,
+          "dim32_parameters": {
+            "NCF_ID": 5169697,
+            "D0": 2668896,
+            "D1": 2683328,
+            "D2": 2698144
+          },
+          "ncf_parameter_reduction_pct": 84.97509599718039,
+          "deepfm_d2_parameter_reduction_pct": 84.819626219281
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 34407521,
+        "D0": 17744649,
+        "D1": 17759081,
+        "D2": 17773897
+      },
+      "category_manifest_sha256": "f44e2dbfe2b8d549ad941fe5c4bfbbe6f165f1127e60f4a146d9e3a400027cbe"
+    },
+    {
+      "category": "All_Beauty",
+      "fold": "test",
+      "train_end_exclusive_utc": "2022-01-01",
+      "users": 565977,
+      "items": 102003,
+      "train_pairs": 618845,
+      "bins": {
+        "1": 528902,
+        "2": 30204,
+        "3": 4506,
+        "4": 1163,
+        "5": 422,
+        ">5": 780
+      },
+      "percentages": {
+        "1": 93.44938045185582,
+        "2": 5.336612618533969,
+        "3": 0.7961454264042532,
+        "4": 0.2054853819148128,
+        "5": 0.07456133376444626,
+        ">5": 0.13781478752670162
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 37075,
+          "users_pct": 6.550619548144183,
+          "pairs_from_these_users": 89943,
+          "pair_pct": 14.534010939734506,
+          "hypothetical_user_table_rows": 37076,
+          "dim32_parameters": {
+            "NCF_ID": 8907873,
+            "D0": 4596393,
+            "D1": 4610825,
+            "D2": 4625641
+          },
+          "ncf_parameter_reduction_pct": 79.16654319915575,
+          "deepfm_d2_parameter_reduction_pct": 79.04994498485328
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 6871,
+          "users_pct": 1.2140069296102138,
+          "pairs_from_these_users": 29535,
+          "pair_pct": 4.772600570417471,
+          "hypothetical_user_table_rows": 6872,
+          "dim32_parameters": {
+            "NCF_ID": 6974817,
+            "D0": 3599661,
+            "D1": 3614093,
+            "D2": 3628909
+          },
+          "ncf_parameter_reduction_pct": 83.68751455445154,
+          "deepfm_d2_parameter_reduction_pct": 83.56425775477149
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 2365,
+          "users_pct": 0.41786150320596066,
+          "pairs_from_these_users": 16017,
+          "pair_pct": 2.588208679071496,
+          "hypothetical_user_table_rows": 2366,
+          "dim32_parameters": {
+            "NCF_ID": 6686433,
+            "D0": 3450963,
+            "D1": 3465395,
+            "D2": 3480211
+          },
+          "ncf_parameter_reduction_pct": 84.36197809990786,
+          "deepfm_d2_parameter_reduction_pct": 84.23772793558368
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 1202,
+          "users_pct": 0.21237612129114788,
+          "pairs_from_these_users": 11365,
+          "pair_pct": 1.8364857112847321,
+          "hypothetical_user_table_rows": 1203,
+          "dim32_parameters": {
+            "NCF_ID": 6612001,
+            "D0": 3412584,
+            "D1": 3427016,
+            "D2": 3441832
+          },
+          "ncf_parameter_reduction_pct": 84.53605735054384,
+          "deepfm_d2_parameter_reduction_pct": 84.41155079849636
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 780,
+          "users_pct": 0.13781478752670162,
+          "pairs_from_these_users": 9255,
+          "pair_pct": 1.495527959343616,
+          "hypothetical_user_table_rows": 781,
+          "dim32_parameters": {
+            "NCF_ID": 6584993,
+            "D0": 3398658,
+            "D1": 3413090,
+            "D2": 3427906
+          },
+          "ncf_parameter_reduction_pct": 84.59922282239971,
+          "deepfm_d2_parameter_reduction_pct": 84.47462323886538
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 42757537,
+        "D0": 22050126,
+        "D1": 22064558,
+        "D2": 22079374
+      },
+      "category_manifest_sha256": "f44e2dbfe2b8d549ad941fe5c4bfbbe6f165f1127e60f4a146d9e3a400027cbe"
+    },
+    {
+      "category": "Video_Games",
+      "fold": "validation",
+      "train_end_exclusive_utc": "2021-01-01",
+      "users": 2119819,
+      "items": 104148,
+      "train_pairs": 3511273,
+      "bins": {
+        "1": 1551309,
+        "2": 313740,
+        "3": 113032,
+        "4": 52370,
+        "5": 28204,
+        ">5": 61164
+      },
+      "percentages": {
+        "1": 73.18120084780823,
+        "2": 14.800320216018443,
+        "3": 5.332153358376352,
+        "4": 2.4704939431149544,
+        "5": 1.3304909522935684,
+        ">5": 2.885340682388449
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 568510,
+          "users_pct": 26.81879915219177,
+          "pairs_from_these_users": 1959964,
+          "pair_pct": 55.81918580526208,
+          "hypothetical_user_table_rows": 568511,
+          "dim32_parameters": {
+            "NCF_ID": 43056993,
+            "D0": 22204533,
+            "D1": 22218965,
+            "D2": 22233781
+          },
+          "ncf_parameter_reduction_pct": 69.75075190192432,
+          "deepfm_d2_parameter_reduction_pct": 69.71986101287477
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 254770,
+          "users_pct": 12.018478936173324,
+          "pairs_from_these_users": 1332484,
+          "pair_pct": 37.94874394557188,
+          "hypothetical_user_table_rows": 254771,
+          "dim32_parameters": {
+            "NCF_ID": 22977633,
+            "D0": 11851113,
+            "D1": 11865545,
+            "D2": 11880361
+          },
+          "ncf_parameter_reduction_pct": 83.85729999018903,
+          "deepfm_d2_parameter_reduction_pct": 83.82016165863907
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 141738,
+          "users_pct": 6.686325577796972,
+          "pairs_from_these_users": 993388,
+          "pair_pct": 28.291391754500435,
+          "hypothetical_user_table_rows": 141739,
+          "dim32_parameters": {
+            "NCF_ID": 15743585,
+            "D0": 8121057,
+            "D1": 8135489,
+            "D2": 8150305
+          },
+          "ncf_parameter_reduction_pct": 88.9395060956035,
+          "deepfm_d2_parameter_reduction_pct": 88.90011698021755
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 89368,
+          "users_pct": 4.215831634682018,
+          "pairs_from_these_users": 783908,
+          "pair_pct": 22.325464297421476,
+          "hypothetical_user_table_rows": 89369,
+          "dim32_parameters": {
+            "NCF_ID": 12391905,
+            "D0": 6392847,
+            "D1": 6407279,
+            "D2": 6422095
+          },
+          "ncf_parameter_reduction_pct": 91.29419444704871,
+          "deepfm_d2_parameter_reduction_pct": 91.25376249822187
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 61164,
+          "users_pct": 2.885340682388449,
+          "pairs_from_these_users": 642888,
+          "pair_pct": 18.30925707001421,
+          "hypothetical_user_table_rows": 61165,
+          "dim32_parameters": {
+            "NCF_ID": 10586849,
+            "D0": 5462115,
+            "D1": 5476547,
+            "D2": 5491363
+          },
+          "ncf_parameter_reduction_pct": 92.56231799610659,
+          "deepfm_d2_parameter_reduction_pct": 92.52132442661205
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 142340705,
+        "D0": 73397697,
+        "D1": 73412129,
+        "D2": 73426945
+      },
+      "category_manifest_sha256": "7086b525322cc615839c0eeaf431dfb7aac3bca27d82640aaa80c76e679177ae"
+    },
+    {
+      "category": "Video_Games",
+      "fold": "test",
+      "train_end_exclusive_utc": "2022-01-01",
+      "users": 2427960,
+      "items": 118531,
+      "train_pairs": 3984667,
+      "bins": {
+        "1": 1782670,
+        "2": 359196,
+        "3": 128112,
+        "4": 59040,
+        "5": 31422,
+        ">5": 67520
+      },
+      "percentages": {
+        "1": 73.42254402873193,
+        "2": 14.794148173775515,
+        "3": 5.27652844363169,
+        "4": 2.4316710324717046,
+        "5": 1.2941728858795039,
+        ">5": 2.780935435509646
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 645290,
+          "users_pct": 26.577455971268062,
+          "pairs_from_these_users": 2201997,
+          "pair_pct": 55.26175713052057,
+          "hypothetical_user_table_rows": 645291,
+          "dim32_parameters": {
+            "NCF_ID": 48891425,
+            "D0": 25212912,
+            "D1": 25227344,
+            "D2": 25242160
+          },
+          "ncf_parameter_reduction_pct": 70.00199242566556,
+          "deepfm_d2_parameter_reduction_pct": 69.97491514149057
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 286094,
+          "users_pct": 11.783307797492546,
+          "pairs_from_these_users": 1483605,
+          "pair_pct": 37.232847813882564,
+          "hypothetical_user_table_rows": 286095,
+          "dim32_parameters": {
+            "NCF_ID": 25902881,
+            "D0": 13359444,
+            "D1": 13373876,
+            "D2": 13388692
+          },
+          "ncf_parameter_reduction_pct": 84.10693039863159,
+          "deepfm_d2_parameter_reduction_pct": 84.07439722098083
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 157982,
+          "users_pct": 6.506779353860854,
+          "pairs_from_these_users": 1099269,
+          "pair_pct": 27.587474687345267,
+          "hypothetical_user_table_rows": 157983,
+          "dim32_parameters": {
+            "NCF_ID": 17703713,
+            "D0": 9131748,
+            "D1": 9146180,
+            "D2": 9160996
+          },
+          "ncf_parameter_reduction_pct": 89.13764291656783,
+          "deepfm_d2_parameter_reduction_pct": 89.10316382241197
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 98942,
+          "users_pct": 4.07510832138915,
+          "pairs_from_these_users": 863109,
+          "pair_pct": 21.660756093294623,
+          "hypothetical_user_table_rows": 98943,
+          "dim32_parameters": {
+            "NCF_ID": 13925153,
+            "D0": 7183428,
+            "D1": 7197860,
+            "D2": 7212676
+          },
+          "ncf_parameter_reduction_pct": 91.4560304763511,
+          "deepfm_d2_parameter_reduction_pct": 91.42065461288041
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 67520,
+          "users_pct": 2.780935435509646,
+          "pairs_from_these_users": 705999,
+          "pair_pct": 17.71789210993039,
+          "hypothetical_user_table_rows": 67521,
+          "dim32_parameters": {
+            "NCF_ID": 11914145,
+            "D0": 6146502,
+            "D1": 6160934,
+            "D2": 6175750
+          },
+          "ncf_parameter_reduction_pct": 92.68991214815853,
+          "deepfm_d2_parameter_reduction_pct": 92.65405901020596
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 162982241,
+        "D0": 84040989,
+        "D1": 84055421,
+        "D2": 84070237
+      },
+      "category_manifest_sha256": "7086b525322cc615839c0eeaf431dfb7aac3bca27d82640aaa80c76e679177ae"
+    },
+    {
+      "category": "Industrial_and_Scientific",
+      "fold": "validation",
+      "train_end_exclusive_utc": "2021-01-01",
+      "users": 2252334,
+      "items": 311642,
+      "train_pairs": 3237493,
+      "bins": {
+        "1": 1784070,
+        "2": 282628,
+        "3": 88798,
+        "4": 38151,
+        "5": 20024,
+        ">5": 38663
+      },
+      "percentages": {
+        "1": 79.20983299990144,
+        "2": 12.548227749525603,
+        "3": 3.942488103451797,
+        "4": 1.6938429202773657,
+        "5": 0.8890333316461946,
+        ">5": 1.7165748951976039
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 468264,
+          "users_pct": 20.790167000098563,
+          "pairs_from_these_users": 1453423,
+          "pair_pct": 44.893471584340105,
+          "hypothetical_user_table_rows": 468265,
+          "dim32_parameters": {
+            "NCF_ID": 49920865,
+            "D0": 25743717,
+            "D1": 25758149,
+            "D2": 25772965
+          },
+          "ncf_parameter_reduction_pct": 69.57923503351567,
+          "deepfm_d2_parameter_reduction_pct": 69.55250473488552
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 185636,
+          "users_pct": 8.241939250572962,
+          "pairs_from_these_users": 888167,
+          "pair_pct": 27.43378904603037,
+          "hypothetical_user_table_rows": 185637,
+          "dim32_parameters": {
+            "NCF_ID": 31832673,
+            "D0": 16416993,
+            "D1": 16431425,
+            "D2": 16446241
+          },
+          "ncf_parameter_reduction_pct": 80.60181321802114,
+          "deepfm_d2_parameter_reduction_pct": 80.57084836857413
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 96838,
+          "users_pct": 4.2994511471211645,
+          "pairs_from_these_users": 621773,
+          "pair_pct": 19.20538515450072,
+          "hypothetical_user_table_rows": 96839,
+          "dim32_parameters": {
+            "NCF_ID": 26149601,
+            "D0": 13486659,
+            "D1": 13501091,
+            "D2": 13515907
+          },
+          "ncf_parameter_reduction_pct": 84.06496229605911,
+          "deepfm_d2_parameter_reduction_pct": 84.03266700644541
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 58687,
+          "users_pct": 2.6056082268437986,
+          "pairs_from_these_users": 469169,
+          "pair_pct": 14.491737897193909,
+          "hypothetical_user_table_rows": 58688,
+          "dim32_parameters": {
+            "NCF_ID": 23707937,
+            "D0": 12227676,
+            "D1": 12242108,
+            "D2": 12256924
+          },
+          "ncf_parameter_reduction_pct": 85.55286292981467,
+          "deepfm_d2_parameter_reduction_pct": 85.51999603247558
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 38663,
+          "users_pct": 1.7165748951976039,
+          "pairs_from_these_users": 369049,
+          "pair_pct": 11.399221558162443,
+          "hypothetical_user_table_rows": 38664,
+          "dim32_parameters": {
+            "NCF_ID": 22426401,
+            "D0": 11566884,
+            "D1": 11581316,
+            "D2": 11596132
+          },
+          "ncf_parameter_reduction_pct": 86.33380503592778,
+          "deepfm_d2_parameter_reduction_pct": 86.30063812356698
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 164101281,
+        "D0": 84617994,
+        "D1": 84632426,
+        "D2": 84647242
+      },
+      "category_manifest_sha256": "1c7373d26902766c8be4463a11e1bf117edd68552dd5018bd81137394cb7d4fb"
+    },
+    {
+      "category": "Industrial_and_Scientific",
+      "fold": "test",
+      "train_end_exclusive_utc": "2022-01-01",
+      "users": 2809564,
+      "items": 364229,
+      "train_pairs": 4071315,
+      "bins": {
+        "1": 2216653,
+        "2": 357231,
+        "3": 112285,
+        "4": 48381,
+        "5": 25304,
+        ">5": 49710
+      },
+      "percentages": {
+        "1": 78.89669002023089,
+        "2": 12.71481980834037,
+        "3": 3.9965275750970615,
+        "4": 1.7220109597076272,
+        "5": 0.9006379637552303,
+        ">5": 1.7693136728688152
+      },
+      "thresholds": [
+        {
+          "min_items": 2,
+          "users_at_or_above": 592911,
+          "users_pct": 21.103309979769104,
+          "pairs_from_these_users": 1854662,
+          "pair_pct": 45.554372481618344,
+          "hypothetical_user_table_rows": 592912,
+          "dim32_parameters": {
+            "NCF_ID": 61263841,
+            "D0": 31592439,
+            "D1": 31606871,
+            "D2": 31621687
+          },
+          "ncf_parameter_reduction_pct": 69.84001822009478,
+          "deepfm_d2_parameter_reduction_pct": 69.8183412096547
+        },
+        {
+          "min_items": 3,
+          "users_at_or_above": 235680,
+          "users_pct": 8.388490171428733,
+          "pairs_from_these_users": 1140200,
+          "pair_pct": 28.0056934921518,
+          "hypothetical_user_table_rows": 235681,
+          "dim32_parameters": {
+            "NCF_ID": 38401057,
+            "D0": 19803816,
+            "D1": 19818248,
+            "D2": 19833064
+          },
+          "ncf_parameter_reduction_pct": 81.09528947998703,
+          "deepfm_d2_parameter_reduction_pct": 81.0701190478838
+        },
+        {
+          "min_items": 4,
+          "users_at_or_above": 123395,
+          "users_pct": 4.391962596331672,
+          "pairs_from_these_users": 803345,
+          "pair_pct": 19.73183111599078,
+          "hypothetical_user_table_rows": 123396,
+          "dim32_parameters": {
+            "NCF_ID": 31214817,
+            "D0": 16098411,
+            "D1": 16112843,
+            "D2": 16127659
+          },
+          "ncf_parameter_reduction_pct": 84.63305113397843,
+          "deepfm_d2_parameter_reduction_pct": 84.6067826480908
+        },
+        {
+          "min_items": 5,
+          "users_at_or_above": 75014,
+          "users_pct": 2.6699516366240457,
+          "pairs_from_these_users": 609821,
+          "pair_pct": 14.978477469810123,
+          "hypothetical_user_table_rows": 75015,
+          "dim32_parameters": {
+            "NCF_ID": 28118433,
+            "D0": 14501838,
+            "D1": 14516270,
+            "D2": 14531086
+          },
+          "ncf_parameter_reduction_pct": 86.15739050773055,
+          "deepfm_d2_parameter_reduction_pct": 86.13064889595665
+        },
+        {
+          "min_items": 6,
+          "users_at_or_above": 49710,
+          "users_pct": 1.7693136728688152,
+          "pairs_from_these_users": 483301,
+          "pair_pct": 11.8708820123228,
+          "hypothetical_user_table_rows": 49711,
+          "dim32_parameters": {
+            "NCF_ID": 26498977,
+            "D0": 13666806,
+            "D1": 13681238,
+            "D2": 13696054
+          },
+          "ncf_parameter_reduction_pct": 86.95464322084985,
+          "deepfm_d2_parameter_reduction_pct": 86.92765415703015
+        }
+      ],
+      "original_dim32_parameters": {
+        "NCF_ID": 203129569,
+        "D0": 104741955,
+        "D1": 104756387,
+        "D2": 104771203
+      },
+      "category_manifest_sha256": "1c7373d26902766c8be4463a11e1bf117edd68552dd5018bd81137394cb7d4fb"
+    }
+  ]
+}

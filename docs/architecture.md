@@ -51,7 +51,7 @@ Direct HDFS put dùng cho batch JSONL hiện tại và định dạng cần gi�
 | --- | --- |
 | /project/raw/<category>_<kind>/v1 | Sáu dataset gốc trong scope; Video metadata giữ batch layout cũ |
 | /project/processed/silver/<category>/v1/<run_id> | Đã có reviews_clean/catalog/quarantine/duplicate audit, Parquet Snappy và manifest complete cho ba category |
-| /project/processed/gold/... | Dự kiến: split, lịch sử, features và labels |
+| /project/processed/gold/... | G0–G2: temporal pairs/history refs, queries/labels, mappings/candidates/cohorts và text refs; xem gold.md; feature/embedding bundles bổ sung sau |
 | /project/analytics/... | Dự kiến: bảng tổng hợp phục vụ phân tích |
 | /project/testing/... | Smoke/fixture; tách khỏi raw thật |
 | outputs/eda/ | Report EDA local, config và log; khác HDFS analytics |
@@ -61,7 +61,13 @@ Snapshot thực nghiệm có thể tham chiếu dữ liệu bất biến bằng 
 
 ## Hướng mở rộng, chưa triển khai
 
-Pipeline mục tiêu: raw → Silver → Gold train/validation/test → baseline/cải tiến → evaluate → model/top-K → phục vụ và batch cập nhật. Ba full EDA và Silver đã complete; [silver.md](silver.md) giữ schema/run/path và kết quả đọc lại. Cohort, split/candidates và features Gold trong [processing.md](processing.md) vẫn là đề xuất. Baseline đề xuất train riêng theo source_category để giới hạn tài nguyên; train chung cần đo overlap và đối chiếu catalog.
+Phần train notebook đã có [09 NCF/NeuMF](../notebooks/09_kaggle_ncf.ipynb) và
+[10 DeepFM D0/D1/D2](../notebooks/10_kaggle_deepfm.ipynb), đọc Gold/embedding
+exports trực tiếp trên Kaggle, gồm D2 prefix features tại từng anchor, model
+checkpoint và private result Dataset. Đã có kiểm tra CPU trên dữ liệu nhỏ;
+chưa benchmark neural full GPU. Xem [vận hành](kaggle-recommendation-plan.md#10-vận-hành-notebook-ncf-và-deepfm-đã-triển-khai).
+
+Pipeline mục tiêu: raw → Silver → Gold train/validation/test → baseline/cải tiến → evaluate → model/top-K → phục vụ và batch cập nhật. Ba full EDA và Silver đã complete; [silver.md](silver.md) giữ schema/run/path và kết quả đọc lại. Gold G0–G2 có producer, cohorts/split/candidates và text export theo [gold.md](gold.md); import embeddings và feature profiles là bước sau. [processing.md](processing.md) giữ kế hoạch ba bản DeepFM. Baseline train riêng theo source_category để giới hạn tài nguyên; train chung cần đo overlap và đối chiếu catalog.
 
 apps/web, artifacts/analytics và artifacts/models hiện là nơi giữ chỗ. Web sau này đọc catalog/top-K/artifact đã xuất hoặc gọi inference API; không chạy EDA/train hay quét raw cho mỗi request. Chốt schema artifact, mapping ID, preprocessing, version và fallback trước viết UI. API/UI có thể gộp cho demo nhỏ; tách khi có nhu cầu cụ thể.
 

@@ -2,6 +2,22 @@
 
 Các mục có ngày là **kết quả lịch sử**, không xác nhận mọi service/dataset đang ở cùng trạng thái hôm nay. Hướng dẫn vận hành hiện hành nằm trong [operations.md](operations.md), phạm vi trong [data-management.md](data-management.md).
 
+## 08/11/2026 — tối ưu train/scoring notebook neural
+
+Notebook 09/10 dùng sampler vector hóa, prefetch một CPU batch/pinned transfer
+trên CUDA, Adam foreach và giảm đồng bộ kiểm tra loss/gradients. Scoring tăng
+query/item/pair blocks lên 32/8192/65536, gộp exact Top-20 trên device và cache
+projection D1/D2 theo checkpoint. Giữ train batch4096, dim8, early stopping,
+population/candidates và FP32; xem mục 12 của kế hoạch Kaggle để điều chỉnh.
+Sampler thưa đổi chuỗi random có version và signature mới; không trộn resume
+với checkpoints trước tối ưu. Builder backup rồi tái tạo hai notebook tự chứa.
+
+Neural suite: 19 tests, 18 đạt và một CUDA parity bỏ qua vì host PyTorch CPU.
+Shared helper regression: 12 tests, 11 đạt và một ALS opt-in bỏ qua. Bằng chứng
+tại outputs/validation/kaggle-neural-performance-tests.log và
+kaggle-recommendation-performance-regression.log. Chưa train/scoring full trên
+Kaggle, chưa đo speedup hoặc GPU utilization, không upload Dataset thật.
+
 ## 11/10/2026 — volume và smoke ban đầu
 
 Demo cũ persist NameNode nhưng DataNode dùng mặc định /tmp/hadoop-hadoop/dfs/data, khác volume mount /tmp/hadoop-root/dfs/data. Cấu hình mới đặt rõ dfs.datanode.data.dir khớp mount, tái sử dụng project identity và named volumes; không format để migrate.
@@ -125,3 +141,167 @@ Thêm module/notebook 03, runner đọc Silver và bộ tổng hợp reports; gi
 Ba complete readiness runs: All Beauty run_20261018T083227913697Z, Video Games run_20261018T083634881633Z, Industrial run_20261018T084441932113Z. Đọc đúng Silver ngày 16/10, đối soát input contracts; cùng code/protocol, local[2], driver 1 GiB, container 2 GiB/2 CPU, không OOM. Source manifest không đổi trước/sau, không ghi raw/Silver và không cài encoder/model.
 
 Đã đo text item, rà 576 excerpts theo category, first-next/history/candidates/content eligibility, verification A/B, train support và negative feasibility. Kết quả và giới hạn ở [EDA mục 8.7](eda.md#87-kết-quả-full-silver-ngày-18102026). Test A warm+full queries lần lượt 2.877/70.794/144.444; không phải toàn bộ query population hoặc model metric. Không train/encode/tạo Gold. Host snapshots và checks local ở outputs/validation/model-readiness-20261018/, báo cáo tổng hợp ở outputs/eda_model_readiness/comparison_20261018_final/; ignored Git.
+
+## 30/10/2026 — khóa cutoff bằng thống kê toàn Silver
+
+Bổ sung `eda_cutoff.py` và route `-CutoffStudy` trong runner readiness hiện có.
+So sánh 2019/2020/2021 × 3/6/12 tháng trên ba ngành, mỗi process một ngành.
+Quy tắc khai báo trước: cutoff gần nhất đủ ≥2.401 warm-full queries cho mỗi
+ngành, rồi horizon ngắn nhất. Chọn validation nửa đầu 2021; refit trước 2022,
+test nửa đầu 2022. Đã đo riêng test sau selection; không chọn bằng model score.
+Chi tiết counts, giả định cỡ mẫu, hai biểu đồ và giới hạn ở
+[EDA mục 8.8](eda.md#88-so-sánh-cutoff-và-cửa-sổ-trước-gold).
+
+Sáu runs complete, code/hash và source manifest nhất quán; 2021 full-year
+query/warm/pair counts khớp EDA 18/10. Fixture Spark đạt 2 tests; runner success
+và fault mocks đạt PowerShell 7/5.1. All Beauty test có 1.751 warm queries và
+377 history≥2; không tuyên bố ngưỡng validation bảo đảm mọi nhóm test đủ mẫu.
+Không train model, tạo embeddings/Gold hoặc sửa Silver. Protocol khóa lưu ở
+`processing/gold_protocol.json`; báo cáo aggregate local ở
+`outputs/eda_model_readiness/cutoff_20261030_final/`, verification ở
+`outputs/validation/cutoff-20261030/verification.json`.
+
+Lượt `run_20261030T025009518376Z` được dừng có chủ đích để sửa phép tính target
+lag; exit 130, OOM=false, không được đưa vào kết quả. Phép tính đã có fixture
+kiểm tra trước khi chạy lại. Đầu phiên chỉ một DataNode hoạt động, NameNode
+safemode ON; đã khởi động đúng hai container DataNode cũ để HDFS tự rời safemode.
+Jupyter không có kernel/job được tạm dừng khi chạy batch và khởi động lại sau đó.
+Không format, đổi volume hoặc republish dữ liệu.
+
+## 30/10/2026 — cập nhật kế hoạch Gold theo ba phiên bản DeepFM
+
+Thay kế hoạch D0 đến D5 bằng đúng ba bản: D0 chỉ ID, D1 thêm item text embedding,
+D2 thêm rating-history và review profile. NCF giữ thuần ID. Kế hoạch Gold ở
+[processing mục 6.3](processing.md#63-kế-hoạch-triển-khai-tầng-gold) chia Gold nền,
+export/Kaggle/import embedding và feature theo thời gian thành các pha nghiệm
+thu riêng. Chốt grain đề xuất một positive/distinct train pair, feature as-of
+first_pair_time; cùng positive/sampler cho NCF và ba bản DeepFM, giữ mẫu thiếu
+history/text/rating. Đây là cập nhật tài liệu kế hoạch, chưa chạy hoặc tạo Gold,
+embeddings hay model mới.
+
+## 30/10/2026 — Gold G0–G2 và notebook Kaggle T4 × 2
+
+Triển khai producer/runner, hợp đồng Gold, read-back/publish và gói text-only.
+Ba category complete từ Silver đã pin, cùng code/contract: All Beauty
+`run_20261030T040703698079Z`, Video Games `run_20261030T041305392174Z`, Industrial
+`run_20261030T043005297574Z`. Tất cả query/warm/pairs và bins history hai fold
+khớp EDA cutoff; source manifests bất biến, selected inputs HEALTHY. Gold giữ
+cold-start/outside labels, ID mappings riêng fold và positive anchors; chưa tạo
+negative rows hoặc rating/review profiles D2.
+
+Parquet Gold tổng 6.748.134.272 bytes; ZIP text tổng 2.007.134.679 bytes. Chi tiết
+run paths, text counts, checksums và measured budgets ở [Gold](gold.md).
+Kaggle packages không có user IDs/labels; refs giữ ở HDFS. Notebook 05 tự chứa
+encoder code, MiniLM revision đã pin, hai GPU workers, chunk-mean review dài,
+pilot, bounded IO, signature/checksum resume và disk preflight.
+
+Fixture Spark/HDFS kiểm tra read-back, fail-before-publish và report directory
+do host tạo; mocks runner đạt PowerShell 7/5.1. CPU tests encoder bao phủ key
+alignment, checksum, resume, vectors và notebook sync/schema. Không có GPU
+local để test inference thật; chưa upload hoặc chạy Kaggle, chưa tạo embedding
+bundle hoặc train model mới. Lượt report collision đầu tiên giữ batch failed;
+không ghi Silver hay tạo final Gold ở lượt đó. Handoff local:
+`outputs/validation/gold-20261030/handoff.json`.
+
+## 03/11/2026 — description và notebook Kaggle theo từng lượt
+
+Đánh giá toàn bộ candidates refit ba ngành, dùng title + description cho G2
+contract v2, bỏ đoạn trùng chính xác, thiếu description dùng title. Ba run mới
+complete: run_20261103T025512333964Z (All Beauty), run_20261103T030034694677Z
+(Video Games), run_20261103T031106166302Z (Industrial). ZIP tương ứng
+135.447.953 / 1.125.511.518 / 882.728.272 bytes; refs mới, folds giữ ở
+parent_gold_path. Verifier độc lập passed cả ba; Silver manifests giữ nguyên.
+
+Notebook 05 chọn một ngành trước giải nén, giới hạn shard mới mỗi lượt, resume
+checkpoint và lưu Dataset tùy chọn qua KaggleHub. Fixture Spark, encoder IO,
+notebook schema/script sync và runner mocks PS7/5.1 đạt. Chưa chạy T4 inference
+hoặc upload tài khoản Kaggle. Metadata chưa có phiên bản description tại cutoff.
+Bằng chứng/ZIP paths ở [Gold](gold.md#g2-title--description-ngày-03112026) và
+[handoff local](../outputs/validation/gold-text-20261103/handoff.json).
+
+## 03/11/2026 — code xuất Gold training lên một Kaggle Dataset
+
+Theo yêu cầu người dùng, chuẩn bị một Dataset `thoandanh/gold-training-v2`,
+ba ngành riêng thư mục. Exporter giữ fold parent đã khóa và refs text mới,
+thêm rating lookup trước 2022 từ Silver, chưa tổng hợp D2 profiles. Không
+copy raw text/vectors; mappings và labels giữ riêng đúng category/fold.
+
+Đã kiểm tra fixture Spark (3 cases), host checksum/whitelist/private guard,
+runner mocks PS7/5.1 và plan trên manifest thật. Chưa export production hoặc
+upload qua tài khoản Kaggle; chưa cài KaggleHub vào host. Jupyter idle được
+khôi phục sau fixture. Kết quả local: outputs/validation/gold-training-code/
+verification.json. Hướng dẫn và lệnh ở [Gold](gold.md#xuất-gold-training-thành-một-kaggle-dataset).
+
+## 04/11/2026 — notebook ALS full và content-based trên Kaggle
+
+Thêm notebook 07/08 tự chứa runtime, đọc Gold đã export và embedding item
+MiniLM đã có. Giữ nguyên temporal split, đánh giá all-query/warm-full, native
+và Popularity fallback; ALS chọn cấu hình bằng validation rồi refit cho test.
+Content dùng trung bình vector các item khác nhau trong history. Exact ranking
+chia block/query shard, hỗ trợ hai GPU khi scoring và checkpoint qua phiên.
+
+Bộ 5 kiểm tra đạt trong Linux Python 3.11, gồm fit ALS CPU thật, refit test,
+metric nhiều target, content, resume và đồng bộ source notebook. Loader đọc
+được toàn validation All Beauty thật. Chưa chạy full train hoặc kiểm tra CUDA
+trên T4; notebook có GPU preflight. Bằng chứng local nằm trong
+outputs/validation/recommendation-notebooks; cách chạy ở
+[hướng dẫn](kaggle-recommendation-plan.md#8-cách-dùng-notebook-đã-triển-khai).
+
+Sửa tiếp môi trường Kaggle Python 3.13: bỏ guard chặn 3.13, dùng implicit 0.7.3
+và scientific stack có wheel tương thích. Mặc định CPU fit ở nhánh này, scoring
+vẫn hai GPU; GPU fit 0.7.3 cần CUDA 13/RMM và bật rõ trong ô cài đặt. Thêm gate
+không cho train sau khi cài dependency thất bại. Bộ 6 kiểm tra đạt trên host
+Python 3.13.12 với implicit 0.7.3 CPU thật; log py313_implicit073.log trong cùng
+thư mục bằng chứng. Chưa xác minh CUDA 13 trên Kaggle.
+
+## 07/11/2026 — notebook NCF/NeuMF và DeepFM D0/D1/D2
+
+Thêm notebook 09/10 tự chứa source, đọc cùng Gold protocol với 07/08. NeuMF
+dùng GMF/MLP embeddings riêng; DeepFM dùng ID FM/Deep chung embedding, D1/D2
+bổ sung item text và rating/review lịch sử vào nhánh Deep. Sampler chung theo
+example_id/epoch; D2 strict-before cả timestamp group, scaler chỉ fit train.
+Validation chọn config/epoch rồi refit/test từ đầu; không đổi candidates/split.
+
+Checkpoint last có optimizer/RNG, best chỉ chứa trọng số; scoring exact chia
+query shard và pair microbatch. Trial/refit complete thu gọn last về weights/
+epoch, còn checkpoint của train chưa xong giữ optimizer/RNG. Kết quả giữ private, upload sau từng variant/
+ngành qua helper của 07/08; bổ sung whitelist .pt cho snapshot và restore.
+Notebook 07/08 chỉ đồng bộ hai dòng whitelist trong source nhúng, giữ các
+cell/cấu hình/outputs khác, có backup trước khi sửa. Trial thua giữ metrics
+và bỏ model payload; D2 thu gọn cache train sau phase hoàn tất.
+
+Kiểm tra host Python 3.13/PyTorch 2.13 CPU dùng Parquet thật và optimizer thật,
+gồm bốn variants, refit/test, timestamp/missing/multiplicity, scoring parity,
+resume và upload giả lập. Logs tại outputs/validation/kaggle-neural-tests.log
+và kaggle-recommendation-regression.log. Chưa train full hoặc xác minh CUDA
+trên T4, chưa upload thật. Graph refresh đã thử nhưng Docker Desktop Linux
+daemon đang tắt; graph cũ chưa phản ánh các symbol mới.
+
+## 08/11/2026 — compact và early stopping cho notebook 09/10
+
+Áp dụng compact_full_users: một trial C8, ID dim 8, MLP [32,16], projection
+item/review 16; giữ mọi user/item/train pairs, cùng sampler và protocol Gold.
+Tăng max_epochs lên 20, full warm_full validation ở [1,3,6,9,12,15,18,20].
+Early stopping bắt đầu cộng bad checks từ epoch 6, patience hai lần validation,
+min_delta=0,00001 NDCG@10. Best checkpoint thực tế được lưu độc lập min_delta;
+refit từ đầu đúng selected_epoch, không dùng test để dừng hoặc chọn lại.
+
+Last checkpoint lưu cả loss/validation history, significant-best và patience
+counter cùng model/optimizer/RNG. Checkpoint là bản commit, JSON trial là
+mirror; phục hồi từ checkpoint khi ngắt giữa hai lần ghi. Stop metadata tách
+stopped_epoch/selected_epoch, lưu epoch thật thay max_epochs, phân biệt
+ranking_plateau/max_epochs/refit_selected_epoch. Model hoàn tất mới thu gọn
+optimizer. Thêm validation.csv và biểu đồ ranking bên cạnh loss curve.
+
+Builder backup notebook cũ trước khi nhúng source mới. Source/config mới có
+signature mới, không dùng lẫn checkpoints bản dim16/32 cũ. Giảm hàng user
+embedding theo ngưỡng lịch sử vẫn chưa triển khai; xem kế hoạch mục 11.
+Kiểm tra CPU và log tại outputs/validation/kaggle-neural-compact-tests.log;
+hồi quy helper 07/08 tại kaggle-recommendation-compact-regression.log. Chưa
+train full hoặc xác minh CUDA/T4, chưa upload Dataset thật trong đợt này.
+
+Kiểm chứng cuối: 14 kiểm tra neural đạt, gồm compact parameter counts và bốn
+điểm ngắt/resume; 11 kiểm tra hồi quy helper đạt, một test ALS full opt-in bỏ
+qua. Graphify đã refresh thành công qua container tools (không khởi động HDFS
+hoặc đổi volumes), graph gồm 858 nodes. Notebook/source sync và các controls
+thực thi trong cell cấu hình đều khớp mặc định compact.
